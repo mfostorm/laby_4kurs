@@ -8,6 +8,7 @@ import subprocess
 from pathlib import Path
 
 from docx import Document
+from docx.enum.section import WD_ORIENT, WD_SECTION
 from docx.enum.table import WD_TABLE_ALIGNMENT
 from docx.enum.text import WD_ALIGN_PARAGRAPH, WD_BREAK
 from docx.oxml import OxmlElement
@@ -200,6 +201,26 @@ class Report:
                        before=3, after=8)
         _set_font(c.add_run(f'Рисунок {self.f} - {caption}'))
         return self.f
+
+    def _new_section(self, landscape):
+        sec = self.doc.add_section(WD_SECTION.NEW_PAGE)
+        w, h = Cm(21.0), Cm(29.7)
+        sec.orientation = WD_ORIENT.LANDSCAPE if landscape else WD_ORIENT.PORTRAIT
+        sec.page_width, sec.page_height = (h, w) if landscape else (w, h)
+        if landscape:
+            sec.left_margin = sec.right_margin = Cm(2.0)
+            sec.top_margin, sec.bottom_margin = Cm(2.0), Cm(1.5)
+        else:
+            sec.left_margin, sec.right_margin = Cm(3.0), Cm(1.5)
+            sec.top_margin = sec.bottom_margin = Cm(2.0)
+        return sec
+
+    def figure_landscape(self, path, caption, width=25.0):
+        """Рисунок на отдельной странице альбомной ориентации."""
+        self._new_section(True)
+        n = self.figure(path, caption, width=width)
+        self._new_section(False)
+        return n
 
     # --- сохранение --------------------------------------------------------
     def save(self, path, pdf=True):
