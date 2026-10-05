@@ -16,10 +16,18 @@ from load_dwh import DB_HOST, DB_NAME, DB_PORT, DB_USER, HERE, RES, URL
 sys.path.insert(0, str(HERE.parent / 'tools'))
 from docx_report import Report, num  # noqa: E402
 
-load = json.load(open(RES / 'load.json'))
-chk = json.load(open(RES / 'checks.json'))
-opt = json.load(open(RES / 'optimize.json'))
-bench = json.load(open(RES / 'bench_load.json'))
+def read_json(path):
+    """UTF-8; файлы, сохранённые на Windows старой версией скриптов, - в cp1251."""
+    try:
+        return json.loads(path.read_text(encoding='utf-8'))
+    except UnicodeDecodeError:
+        return json.loads(path.read_text(encoding='cp1251'))
+
+
+load = read_json(RES / 'load.json')
+chk = read_json(RES / 'checks.json')
+opt = read_json(RES / 'optimize.json')
+bench = read_json(RES / 'bench_load.json')
 IMG = HERE / 'img'
 
 # Если EXPLAIN «до» и «после» сняты отдельными скриншотами (pgAdmin), они
@@ -36,7 +44,7 @@ if _before.exists() and _after.exists():
 # Версии ПО: из results/env.json (env_info.py на машине, где выполнялась лаба),
 # иначе - текущего окружения; версия сервера - запросом к СУБД
 if (RES / 'env.json').exists():
-    ENV = json.load(open(RES / 'env.json'))
+    ENV = read_json(RES / 'env.json')
 else:
     with create_engine(URL).connect() as _c:
         _server = _c.execute(text('SHOW server_version')).scalar_one().split()[0]
@@ -84,6 +92,8 @@ r.table('Версии программного обеспечения', ['Ком
          ['pandas', ENV['pandas'], 'Чтение CSV, построение таблиц измерений и фактов', 'BSD-3-Clause'],
          ['SQLAlchemy', ENV['sqlalchemy'], 'Подключение, транзакции, to_sql', 'MIT'],
          ['psycopg2', ENV['psycopg2'], 'Драйвер PostgreSQL, команда COPY', 'LGPL'],
+         *([['Операционная система', ENV['os'].replace('-', ' ', 1).split('-')[0],
+             'Рабочая станция', '-']] if ENV.get('os') else []),
          ['Docker (необязательно)', 'postgres:16', 'Альтернативный способ развертывания', 'Apache-2.0']],
         widths=[3.6, 2.6, 6.8, 3.5])
 r.p('Создание базы данных и таблиц:', keep=True)
@@ -315,7 +325,7 @@ for k, title in opt['queries'].items():
     b, a = opt['dwh_before'][k], opt['dwh_after'][k]
     bb, ba = opt['bench_before'][k], opt['bench_after'][k]
     rows.append([f'{k}. {title}', num(b['ms'], 3), num(a['ms'], 3),
-                 num(bb['ms'], 1), num(ba['ms'], 2),
+                 num(bb['ms'], 1), num(ba['ms'], 3 if ba['ms'] < 1 else 1),
                  a['node'].replace('Bitmap Heap Scan + Bitmap Index Scan', 'Bitmap Index Scan')])
 r.table('Время выполнения запросов до и после создания индексов, мс',
         ['Запрос', '10 тыс.: до', '10 тыс.: после', '2 млн: до', '2 млн: после', 'План после'],
@@ -324,13 +334,29 @@ r.p('Тексты запросов:', keep=True)
 r.code('\n'.join(f'{k}: {q};' for k, q in opt['sql'].items()), size=8)
 r.p('План запроса Q1 до и после создания индекса показан на рисунке 5. До создания индекса '
     'СУБД читает всю таблицу (Seq Scan) и отбрасывает фильтром 9 919 строк из 10 000; после - '
-    'находит 81 строку цикла инструмента по индексу (Index Scan).')
+    'находит 81 строку цикла инструмента по индексу (Index Scan). На рисунке показано время '
+    'одного запуска, включая первое чтение страниц с диска, а в таблице 9 - медиана семи '
+    'запусков, поэтому абсолютные значения различаются; соотношение «до» и «после» то же.')
 r.figure(IMG / '05_explain.png', 'EXPLAIN ANALYZE запроса Q1 до и после создания индекса', width=14.5)
 q = {k: (opt['dwh_before'][k]['ms'] / opt['dwh_after'][k]['ms'],
          opt['bench_before'][k]['ms'] / opt['bench_after'][k]['ms']) for k in opt['queries']}
 MAX_MS = math.ceil(max(max(opt['dwh_before'][k]['ms'], opt['dwh_after'][k]['ms']) for k in opt['queries']))
 SEL10 = [q[k][0] for k in ('Q1', 'Q2', 'Q3', 'Q4')]
 SEL2M = [q[k][1] for k in ('Q1', 'Q2', 'Q3', 'Q4')]
+_q5a, _q5b = opt['dwh_after']['Q5'], opt['bench_after']['Q5']
+if 'Index' in _q5a['node']:
+    Q5_TEXT = (f'агрегация по всей таблице (Q5) на 10 тыс. строк ускорилась в {num(q["Q5"][0], 1)} раза: '
+               'планировщик прочитал все строки из составного индекса (class_key, machine_failure), '
+               f'не обращаясь к таблице ({_q5a["node"]}). На 2 млн строк он выбрал {_q5b["node"]}, и '
+               f'время не изменилось ({num(opt["bench_before"]["Q5"]["ms"], 0)} и '
+               f'{num(_q5b["ms"], 0)} мс): чтение всех строк остаётся чтением всех строк. Для таких '
+               'запросов при росте объёма следует использовать материализованные представления '
+               '(агрегаты по классам и циклам), а не индексы;')
+else:
+    Q5_TEXT = ('агрегация по всей таблице (Q5) индексами не ускоряется - СУБД всё равно читает все строки, '
+               'и планировщик обоснованно выбирает Seq Scan. Для таких запросов при росте объёма '
+               'следует использовать материализованные представления (агрегаты по классам и циклам), '
+               'а не индексы;')
 r.p('Выводы по оптимизации:', keep=True)
 r.items([
     f'для избирательных запросов (Q1, Q4) индекс заменяет полное чтение таблицы точечным '
@@ -341,10 +367,7 @@ r.items([
     f'{num(q["Q2"][0], 0)} и {num(q["Q3"][0], 0)} раз на текущем объёме. На 2 млн строк выигрыш '
     f'меньше ({num(q["Q2"][1], 1)} и {num(q["Q3"][1], 1)} раза): запрос возвращает уже десятки тысяч '
     'строк, и основное время уходит на их чтение;',
-    'агрегация по всей таблице (Q5) индексами не ускоряется - СУБД всё равно читает все строки, '
-    'и планировщик обоснованно выбирает Seq Scan. Для таких запросов при росте объёма '
-    'следует использовать материализованные представления (агрегаты по классам и циклам), '
-    'а не индексы;',
+    Q5_TEXT,
     f'на текущем объёме все запросы выполняются быстрее {MAX_MS} мс и с индексами, и без них, '
     'поэтому основная ценность индексов - запас производительности при росте парка '
     'оборудования до требуемых 2 млн записей.'])
@@ -370,7 +393,7 @@ r.p('Перенос в СУБД с точной десятичной арифм�
     'в нестрогой форме и снижать коэффициент уверенности для граничных значений.')
 r.p('Созданы семь индексов под типовые запросы системы. Для избирательных запросов (Q1-Q4) '
     f'они ускоряют выполнение в {num(min(SEL10), 0)}-{num(max(SEL10), 0)} раз на текущем объёме '
-    f'и в {num(min(SEL2M), 0)}-{num(max(SEL2M), 0)} раз на '
+    f'и до {num(max(SEL2M), 0)} раз на '
     'нагрузочной копии из 2 млн строк, что обеспечивает выполнение требования '
     'масштабируемости из лабы 1. Хранилище готово к использованию базой знаний и модулем '
     'оптимизации на следующих этапах проекта.')

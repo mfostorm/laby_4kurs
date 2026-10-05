@@ -15,5 +15,5 @@ with create_engine(URL).connect() as conn:
 env = {'postgresql': server, 'python': platform.python_version(), 'pandas': pd.__version__,
        'sqlalchemy': sqlalchemy.__version__, 'psycopg2': psycopg2.__version__.split()[0],
        'os': platform.platform()}
-json.dump(env, open(RES / 'env.json', 'w'), ensure_ascii=False, indent=1)
+json.dump(env, open(RES / 'env.json', 'w', encoding='utf-8'), ensure_ascii=False, indent=1)
 print(env)

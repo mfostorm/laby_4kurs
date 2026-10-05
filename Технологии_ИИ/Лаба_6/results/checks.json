@@ -191,16 +191,16 @@
      "43"
     ],
     [
-     "PWF",
-     "95",
-     "95",
-     "95"
-    ],
-    [
      "OSF",
      "98",
      "98",
      "98"
+    ],
+    [
+     "PWF",
+     "95",
+     "95",
+     "95"
     ]
    ]
   }
@@ -254,32 +254,32 @@
   [
    "Несуществующий класс качества (class_key = 99)",
    "ForeignKeyViolation",
-   "insert or update on table \"fact_observation\" violates foreign key constraint \"fact_observation_class_key_fkey\""
+   "ОШИБКА:  INSERT или UPDATE в таблице \"fact_observation\" нарушает ограничение внешнего ключа \"fact_observation_class_key_fkey\""
   ],
   [
    "Температура 27 K вместо 300 K (ошибка единиц)",
    "CheckViolation",
-   "new row for relation \"fact_observation\" violates check constraint \"fact_observation_air_temp_k_check\""
+   "ОШИБКА:  новая строка в отношении \"fact_observation\" нарушает ограничение-проверку \"fact_observation_air_temp_k_check\""
   ],
   [
    "Отказ без подтипа и без флага failure_type_unknown",
    "CheckViolation",
-   "new row for relation \"fact_observation\" violates check constraint \"fact_observation_check\""
+   "ОШИБКА:  новая строка в отношении \"fact_observation\" нарушает ограничение-проверку \"fact_observation_check\""
   ],
   [
    "Повтор UDI существующего наблюдения",
    "UniqueViolation",
-   "duplicate key value violates unique constraint \"fact_observation_udi_key\""
+   "ОШИБКА:  повторяющееся значение ключа нарушает ограничение уникальности \"fact_observation_udi_key\""
   ],
   [
    "Повторная загрузка того же файла (тот же MD5)",
    "UniqueViolation",
-   "duplicate key value violates unique constraint \"dim_batch_source_md5_key\""
+   "ОШИБКА:  повторяющееся значение ключа нарушает ограничение уникальности \"dim_batch_source_md5_key\""
   ],
   [
    "Событие отказа для несуществующего наблюдения",
    "ForeignKeyViolation",
-   "insert or update on table \"fact_failure_event\" violates foreign key constraint \"fact_failure_event_udi_fkey\""
+   "ОШИБКА:  INSERT или UPDATE в таблице \"fact_failure_event\" нарушает ограничение внешнего ключа \"fact_failure_event_udi_fkey\""
   ]
  ],
  "rows_before": 10000,

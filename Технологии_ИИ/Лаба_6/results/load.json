@@ -18,12 +18,12 @@
   "fact_failure_event": 382
  },
  "timings": {
-  "ddl": 0.04409017400007542,
-  "dim_tool": 0.030969793000167556,
-  "fact_observation": 0.43404106399998454,
-  "fact_failure_event": 0.03213136299996222
+  "ddl": 0.11755020008422434,
+  "dim_tool": 0.06564749998506159,
+  "fact_observation": 0.2533040000125766,
+  "fact_failure_event": 0.019895099918358028
  },
- "total_s": 0.8318014079998193,
+ "total_s": 0.8925691000185907,
  "source_md5": "8625fd2b88212259b9fc0de1c8176465",
  "batch_key": 1
 }

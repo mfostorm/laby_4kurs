@@ -161,7 +161,7 @@ def main():
         print(f'  {tbl:20s} {n:>6}  {mark}')
     json.dump({'counts': counts, 'expected': expected, 'timings': timings, 'total_s': total,
                'source_md5': md5, 'batch_key': batch_key},
-              open(RES / 'load.json', 'w'), ensure_ascii=False, indent=1)
+              open(RES / 'load.json', 'w', encoding='utf-8'), ensure_ascii=False, indent=1)
 
 
 if __name__ == '__main__':

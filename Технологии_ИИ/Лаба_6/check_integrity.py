@@ -99,4 +99,4 @@ print('Граница HDF:', hdf_edge)
 
 json.dump({'checks': checks, 'compare': compare, 'negative': negative,
            'rows_before': before, 'rows_after': after, 'hdf_edge': hdf_edge},
-          open(RES / 'checks.json', 'w'), ensure_ascii=False, indent=1)
+          open(RES / 'checks.json', 'w', encoding='utf-8'), ensure_ascii=False, indent=1)

@@ -1,6 +1,6 @@
 {
- "INSERT по одной строке": 1.5187727569998515,
- "pandas.to_sql (executemany)": 1.010120046999873,
- "INSERT множественный (to_sql, method=multi)": 4.9064445960000285,
- "COPY FROM STDIN": 0.12980491400003302
+ "INSERT по одной строке": 1.1401808999944478,
+ "pandas.to_sql (executemany)": 0.6320969000225887,
+ "INSERT множественный (to_sql, method=multi)": 2.374269700027071,
+ "COPY FROM STDIN": 0.06778309994842857
 }

@@ -109,4 +109,4 @@ for k in QUERIES:
     bb, ba = result['bench_before'][k], result['bench_after'][k]
     print(f"{k}: 10 тыс. {b['ms']:.3f} -> {a['ms']:.3f} мс ({b['node']} -> {a['node']}); "
           f"2 млн {bb['ms']:.2f} -> {ba['ms']:.2f} мс ({bb['node']} -> {ba['node']})")
-json.dump(result, open(RES / 'optimize.json', 'w'), ensure_ascii=False, indent=1)
+json.dump(result, open(RES / 'optimize.json', 'w', encoding='utf-8'), ensure_ascii=False, indent=1)

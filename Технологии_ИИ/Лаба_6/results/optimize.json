@@ -13,125 +13,147 @@
   "Q4": "SELECT udi, tool_wear_min FROM fact_observation WHERE tool_wear_min BETWEEN 230 AND 240",
   "Q5": "SELECT class_key, avg(machine_failure) FROM fact_observation GROUP BY class_key"
  },
- "size_before": "2624 kB",
+ "size_before": "2328 kB",
  "dwh_before": {
   "Q1": {
-   "ms": 0.671,
+   "ms": 0.362,
    "node": "Seq Scan",
    "index": null,
-   "rows": 81,
+   "rows": 81.0,
    "text": [
-    "Seq Scan on fact_observation (actual rows=81 loops=1)",
+    "Seq Scan on fact_observation (actual rows=81.00 loops=1)",
     "  Filter: (tool_key = 57)",
-    "  Rows Removed by Filter: 9919"
+    "  Rows Removed by Filter: 9919",
+    "  Buffers: shared hit=183"
    ]
   },
   "Q2": {
-   "ms": 1.137,
+   "ms": 0.636,
    "node": "Seq Scan",
    "index": null,
-   "rows": 339,
+   "rows": 339.0,
    "text": [
-    "Seq Scan on fact_observation (actual rows=339 loops=1)",
+    "Seq Scan on fact_observation (actual rows=339.00 loops=1)",
     "  Filter: (machine_failure = 1)",
-    "  Rows Removed by Filter: 9661"
+    "  Rows Removed by Filter: 9661",
+    "  Buffers: shared hit=183"
    ]
   },
   "Q3": {
-   "ms": 1.059,
+   "ms": 0.632,
    "node": "Seq Scan",
    "index": null,
-   "rows": 1,
+   "rows": 1.0,
    "text": [
-    "Aggregate (actual rows=1 loops=1)",
-    "  ->  Seq Scan on fact_observation (actual rows=21 loops=1)",
+    "Aggregate (actual rows=1.00 loops=1)",
+    "  Buffers: shared hit=183",
+    "  ->  Seq Scan on fact_observation (actual rows=21.00 loops=1)",
     "        Filter: ((class_key = 3) AND (machine_failure = 1))",
-    "        Rows Removed by Filter: 9979"
+    "        Rows Removed by Filter: 9979",
+    "        Buffers: shared hit=183"
    ]
   },
   "Q4": {
-   "ms": 0.778,
+   "ms": 0.484,
    "node": "Seq Scan",
    "index": null,
-   "rows": 34,
+   "rows": 34.0,
    "text": [
-    "Seq Scan on fact_observation (actual rows=34 loops=1)",
+    "Seq Scan on fact_observation (actual rows=34.00 loops=1)",
     "  Filter: ((tool_wear_min >= 230) AND (tool_wear_min <= 240))",
-    "  Rows Removed by Filter: 9966"
+    "  Rows Removed by Filter: 9966",
+    "  Buffers: shared hit=183"
    ]
   },
   "Q5": {
-   "ms": 2.28,
+   "ms": 1.4,
    "node": "Seq Scan",
    "index": null,
-   "rows": 3,
+   "rows": 3.0,
    "text": [
-    "HashAggregate (actual rows=3 loops=1)",
+    "HashAggregate (actual rows=3.00 loops=1)",
     "  Group Key: class_key",
-    "  Batches: 1  Memory Usage: 24kB",
-    "  ->  Seq Scan on fact_observation (actual rows=10000 loops=1)"
+    "  Batches: 1  Memory Usage: 32kB",
+    "  Buffers: shared hit=183",
+    "  ->  Seq Scan on fact_observation (actual rows=10000.00 loops=1)",
+    "        Buffers: shared hit=183"
    ]
   }
  },
  "dwh_after": {
   "Q1": {
-   "ms": 0.028,
+   "ms": 0.016,
    "node": "Index Scan",
    "index": "idx_obs_tool",
-   "rows": 81,
+   "rows": 81.0,
    "text": [
-    "Index Scan using idx_obs_tool on fact_observation (actual rows=81 loops=1)",
-    "  Index Cond: (tool_key = 57)"
+    "Index Scan using idx_obs_tool on fact_observation (actual rows=81.00 loops=1)",
+    "  Index Cond: (tool_key = 57)",
+    "  Index Searches: 1",
+    "  Buffers: shared hit=5"
    ]
   },
   "Q2": {
-   "ms": 0.108,
+   "ms": 0.056,
    "node": "Index Scan",
    "index": "idx_obs_failures",
-   "rows": 339,
+   "rows": 339.0,
    "text": [
-    "Index Scan using idx_obs_failures on fact_observation (actual rows=339 loops=1)"
+    "Index Scan using idx_obs_failures on fact_observation (actual rows=339.00 loops=1)",
+    "  Index Searches: 1",
+    "  Buffers: shared hit=136"
    ]
   },
   "Q3": {
-   "ms": 0.066,
-   "node": "Index Scan",
-   "index": "idx_obs_failures",
-   "rows": 1,
+   "ms": 0.014,
+   "node": "Index Only Scan",
+   "index": "idx_obs_class_failure",
+   "rows": 1.0,
    "text": [
-    "Aggregate (actual rows=1 loops=1)",
-    "  ->  Index Scan using idx_obs_failures on fact_observation (actual rows=21 loops=1)",
-    "        Filter: (class_key = 3)",
-    "        Rows Removed by Filter: 318"
+    "Aggregate (actual rows=1.00 loops=1)",
+    "  Buffers: shared hit=3",
+    "  ->  Index Only Scan using idx_obs_class_failure on fact_observation (actual rows=21.00 loops=1)",
+    "        Index Cond: ((class_key = 3) AND (machine_failure = 1))",
+    "        Heap Fetches: 0",
+    "        Index Searches: 1",
+    "        Buffers: shared hit=3"
    ]
   },
   "Q4": {
-   "ms": 0.016,
+   "ms": 0.017,
    "node": "Bitmap Heap Scan + Bitmap Index Scan",
    "index": "idx_obs_wear",
-   "rows": 34,
+   "rows": 34.0,
    "text": [
-    "Bitmap Heap Scan on fact_observation (actual rows=34 loops=1)",
+    "Bitmap Heap Scan on fact_observation (actual rows=34.00 loops=1)",
     "  Recheck Cond: ((tool_wear_min >= 230) AND (tool_wear_min <= 240))",
     "  Heap Blocks: exact=11",
-    "  ->  Bitmap Index Scan on idx_obs_wear (actual rows=34 loops=1)",
-    "        Index Cond: ((tool_wear_min >= 230) AND (tool_wear_min <= 240))"
+    "  Buffers: shared hit=13",
+    "  ->  Bitmap Index Scan on idx_obs_wear (actual rows=34.00 loops=1)",
+    "        Index Cond: ((tool_wear_min >= 230) AND (tool_wear_min <= 240))",
+    "        Index Searches: 1",
+    "        Buffers: shared hit=2",
+    "Planning:",
+    "  Buffers: shared hit=6"
    ]
   },
   "Q5": {
-   "ms": 2.201,
-   "node": "Seq Scan",
-   "index": null,
-   "rows": 3,
+   "ms": 0.818,
+   "node": "Index Only Scan",
+   "index": "idx_obs_class_failure",
+   "rows": 3.0,
    "text": [
-    "HashAggregate (actual rows=3 loops=1)",
+    "GroupAggregate (actual rows=3.00 loops=1)",
     "  Group Key: class_key",
-    "  Batches: 1  Memory Usage: 24kB",
-    "  ->  Seq Scan on fact_observation (actual rows=10000 loops=1)"
+    "  Buffers: shared hit=12",
+    "  ->  Index Only Scan using idx_obs_class_failure on fact_observation (actual rows=10000.00 loops=1)",
+    "        Heap Fetches: 49",
+    "        Index Searches: 1",
+    "        Buffers: shared hit=12"
    ]
   }
  },
- "size_after": "2992 kB",
+ "size_after": "2696 kB",
  "indexes": [
   [
    "fact_failure_event_pkey",
@@ -197,155 +219,187 @@
  "bench_rows": 2000000,
  "bench_before": {
   "Q1": {
-   "ms": 43.661,
+   "ms": 46.593,
    "node": "Seq Scan",
    "index": null,
-   "rows": 81,
+   "rows": 81.0,
    "text": [
-    "Gather (actual rows=81 loops=1)",
+    "Gather (actual rows=81.00 loops=1)",
     "  Workers Planned: 2",
     "  Workers Launched: 2",
-    "  ->  Parallel Seq Scan on fact_observation (actual rows=27 loops=3)",
+    "  Buffers: shared hit=4372 read=12332",
+    "  ->  Parallel Seq Scan on fact_observation (actual rows=27.00 loops=3)",
     "        Filter: (tool_key = 57)",
-    "        Rows Removed by Filter: 666640"
+    "        Rows Removed by Filter: 666640",
+    "        Buffers: shared hit=4372 read=12332"
    ]
   },
   "Q2": {
-   "ms": 56.476,
+   "ms": 51.898,
    "node": "Seq Scan",
    "index": null,
-   "rows": 67800,
+   "rows": 67800.0,
    "text": [
-    "Gather (actual rows=67800 loops=1)",
+    "Gather (actual rows=67800.00 loops=1)",
     "  Workers Planned: 2",
     "  Workers Launched: 2",
-    "  ->  Parallel Seq Scan on fact_observation (actual rows=22600 loops=3)",
+    "  Buffers: shared hit=6440 read=10264",
+    "  ->  Parallel Seq Scan on fact_observation (actual rows=22600.00 loops=3)",
     "        Filter: (machine_failure = 1)",
-    "        Rows Removed by Filter: 644067"
+    "        Rows Removed by Filter: 644067",
+    "        Buffers: shared hit=6440 read=10264"
    ]
   },
   "Q3": {
-   "ms": 46.906,
+   "ms": 47.937,
    "node": "Seq Scan",
    "index": null,
-   "rows": 1,
+   "rows": 1.0,
    "text": [
-    "Finalize Aggregate (actual rows=1 loops=1)",
-    "  ->  Gather (actual rows=3 loops=1)",
+    "Finalize Aggregate (actual rows=1.00 loops=1)",
+    "  Buffers: shared hit=8508 read=8196",
+    "  ->  Gather (actual rows=3.00 loops=1)",
     "        Workers Planned: 2",
     "        Workers Launched: 2",
-    "        ->  Partial Aggregate (actual rows=1 loops=3)",
-    "              ->  Parallel Seq Scan on fact_observation (actual rows=1400 loops=3)",
+    "        Buffers: shared hit=8508 read=8196",
+    "        ->  Partial Aggregate (actual rows=1.00 loops=3)",
+    "              Buffers: shared hit=8508 read=8196",
+    "              ->  Parallel Seq Scan on fact_observation (actual rows=1400.00 loops=3)",
     "                    Filter: ((class_key = 3) AND (machine_failure = 1))",
-    "                    Rows Removed by Filter: 665267"
+    "                    Rows Removed by Filter: 665267",
+    "                    Buffers: shared hit=8508 read=8196"
    ]
   },
   "Q4": {
-   "ms": 53.182,
+   "ms": 49.806,
    "node": "Seq Scan",
    "index": null,
-   "rows": 6800,
+   "rows": 6800.0,
    "text": [
-    "Gather (actual rows=6800 loops=1)",
+    "Gather (actual rows=6800.00 loops=1)",
     "  Workers Planned: 2",
     "  Workers Launched: 2",
-    "  ->  Parallel Seq Scan on fact_observation (actual rows=2267 loops=3)",
+    "  Buffers: shared hit=10670 read=6034",
+    "  ->  Parallel Seq Scan on fact_observation (actual rows=2266.67 loops=3)",
     "        Filter: ((tool_wear_min >= 230) AND (tool_wear_min <= 240))",
-    "        Rows Removed by Filter: 664400"
+    "        Rows Removed by Filter: 664400",
+    "        Buffers: shared hit=10670 read=6034"
    ]
   },
   "Q5": {
-   "ms": 155.85,
+   "ms": 107.149,
    "node": "Seq Scan",
    "index": null,
-   "rows": 3,
+   "rows": 3.0,
    "text": [
-    "Finalize GroupAggregate (actual rows=3 loops=1)",
+    "Finalize GroupAggregate (actual rows=3.00 loops=1)",
     "  Group Key: class_key",
-    "  ->  Gather Merge (actual rows=9 loops=1)",
+    "  Buffers: shared hit=12658 read=4060",
+    "  ->  Gather Merge (actual rows=9.00 loops=1)",
     "        Workers Planned: 2",
     "        Workers Launched: 2",
-    "        ->  Sort (actual rows=3 loops=3)",
+    "        Buffers: shared hit=12658 read=4060",
+    "        ->  Sort (actual rows=3.00 loops=3)",
     "              Sort Key: class_key",
     "              Sort Method: quicksort  Memory: 25kB",
+    "              Buffers: shared hit=12658 read=4060",
     "              Worker 0:  Sort Method: quicksort  Memory: 25kB",
     "              Worker 1:  Sort Method: quicksort  Memory: 25kB",
-    "              ->  Partial HashAggregate (actual rows=3 loops=3)",
+    "              ->  Partial HashAggregate (actual rows=3.00 loops=3)",
     "                    Group Key: class_key",
-    "                    Batches: 1  Memory Usage: 24kB",
-    "                    Worker 0:  Batches: 1  Memory Usage: 24kB",
-    "                    Worker 1:  Batches: 1  Memory Usage: 24kB",
-    "                    ->  Parallel Seq Scan on fact_observation (actual rows=666667 loops=3)"
+    "                    Batches: 1  Memory Usage: 32kB",
+    "                    Buffers: shared hit=12644 read=4060",
+    "                    Worker 0:  Batches: 1  Memory Usage: 32kB",
+    "                    Worker 1:  Batches: 1  Memory Usage: 32kB",
+    "                    ->  Parallel Seq Scan on fact_observation (actual rows=666666.67 loops=3)",
+    "                          Buffers: shared hit=12644 read=4060"
    ]
   }
  },
  "bench_after": {
   "Q1": {
-   "ms": 0.016,
+   "ms": 0.015,
    "node": "Index Scan",
    "index": "fact_observation_tool_key_idx",
-   "rows": 81,
+   "rows": 81.0,
    "text": [
-    "Index Scan using fact_observation_tool_key_idx on fact_observation (actual rows=81 loops=1)",
-    "  Index Cond: (tool_key = 57)"
+    "Index Scan using fact_observation_tool_key_idx on fact_observation (actual rows=81.00 loops=1)",
+    "  Index Cond: (tool_key = 57)",
+    "  Index Searches: 1",
+    "  Buffers: shared hit=5"
    ]
   },
   "Q2": {
-   "ms": 28.605,
+   "ms": 17.512,
    "node": "Index Scan",
    "index": "fact_observation_udi_idx",
-   "rows": 67800,
+   "rows": 67800.0,
    "text": [
-    "Index Scan using fact_observation_udi_idx on fact_observation (actual rows=67800 loops=1)"
+    "Index Scan using fact_observation_udi_idx on fact_observation (actual rows=67800.00 loops=1)",
+    "  Index Searches: 1",
+    "  Buffers: shared hit=16320"
    ]
   },
   "Q3": {
-   "ms": 18.335,
+   "ms": 10.786,
    "node": "Index Scan",
    "index": "fact_observation_udi_idx",
-   "rows": 1,
+   "rows": 1.0,
    "text": [
-    "Aggregate (actual rows=1 loops=1)",
-    "  ->  Index Scan using fact_observation_udi_idx on fact_observation (actual rows=4200 loops=1)",
+    "Aggregate (actual rows=1.00 loops=1)",
+    "  Buffers: shared hit=16320",
+    "  ->  Index Scan using fact_observation_udi_idx on fact_observation (actual rows=4200.00 loops=1)",
     "        Filter: (class_key = 3)",
-    "        Rows Removed by Filter: 63600"
+    "        Rows Removed by Filter: 63600",
+    "        Index Searches: 1",
+    "        Buffers: shared hit=16320"
    ]
   },
   "Q4": {
-   "ms": 2.336,
+   "ms": 1.456,
    "node": "Bitmap Heap Scan + Bitmap Index Scan",
    "index": "fact_observation_tool_wear_min_idx",
-   "rows": 6800,
+   "rows": 6800.0,
    "text": [
-    "Bitmap Heap Scan on fact_observation (actual rows=6800 loops=1)",
+    "Bitmap Heap Scan on fact_observation (actual rows=6800.00 loops=1)",
     "  Recheck Cond: ((tool_wear_min >= 230) AND (tool_wear_min <= 240))",
     "  Heap Blocks: exact=2266",
-    "  ->  Bitmap Index Scan on fact_observation_tool_wear_min_idx (actual rows=6800 loops=1)",
-    "        Index Cond: ((tool_wear_min >= 230) AND (tool_wear_min <= 240))"
+    "  Buffers: shared hit=2275",
+    "  ->  Bitmap Index Scan on fact_observation_tool_wear_min_idx (actual rows=6800.00 loops=1)",
+    "        Index Cond: ((tool_wear_min >= 230) AND (tool_wear_min <= 240))",
+    "        Index Searches: 1",
+    "        Buffers: shared hit=9",
+    "Planning:",
+    "  Buffers: shared hit=8"
    ]
   },
   "Q5": {
-   "ms": 145.864,
+   "ms": 107.232,
    "node": "Seq Scan",
    "index": null,
-   "rows": 3,
+   "rows": 3.0,
    "text": [
-    "Finalize GroupAggregate (actual rows=3 loops=1)",
+    "Finalize GroupAggregate (actual rows=3.00 loops=1)",
     "  Group Key: class_key",
-    "  ->  Gather Merge (actual rows=9 loops=1)",
+    "  Buffers: shared hit=16215 read=503",
+    "  ->  Gather Merge (actual rows=9.00 loops=1)",
     "        Workers Planned: 2",
     "        Workers Launched: 2",
-    "        ->  Sort (actual rows=3 loops=3)",
+    "        Buffers: shared hit=16215 read=503",
+    "        ->  Sort (actual rows=3.00 loops=3)",
     "              Sort Key: class_key",
     "              Sort Method: quicksort  Memory: 25kB",
+    "              Buffers: shared hit=16215 read=503",
     "              Worker 0:  Sort Method: quicksort  Memory: 25kB",
     "              Worker 1:  Sort Method: quicksort  Memory: 25kB",
-    "              ->  Partial HashAggregate (actual rows=3 loops=3)",
+    "              ->  Partial HashAggregate (actual rows=3.00 loops=3)",
     "                    Group Key: class_key",
-    "                    Batches: 1  Memory Usage: 24kB",
-    "                    Worker 0:  Batches: 1  Memory Usage: 24kB",
-    "                    Worker 1:  Batches: 1  Memory Usage: 24kB",
-    "                    ->  Parallel Seq Scan on fact_observation (actual rows=666667 loops=3)"
+    "                    Batches: 1  Memory Usage: 32kB",
+    "                    Buffers: shared hit=16201 read=503",
+    "                    Worker 0:  Batches: 1  Memory Usage: 32kB",
+    "                    Worker 1:  Batches: 1  Memory Usage: 32kB",
+    "                    ->  Parallel Seq Scan on fact_observation (actual rows=666666.67 loops=3)",
+    "                          Buffers: shared hit=16201 read=503"
    ]
   }
  }

@@ -64,4 +64,4 @@ for name, fn in METHODS:
     print(f'{name:45s} {res[name]:.3f} с')
 with engine.begin() as conn:
     conn.exec_driver_sql('DROP TABLE dwh.tmp_load')
-json.dump(res, open(RES / 'bench_load.json', 'w'), ensure_ascii=False, indent=1)
+json.dump(res, open(RES / 'bench_load.json', 'w', encoding='utf-8'), ensure_ascii=False, indent=1)
