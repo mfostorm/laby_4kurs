@@ -8,7 +8,7 @@
 | `check_integrity.py`, `sql/05_checks.sql` | Проверки полноты и ссылок, сверка с CSV, 6 негативных тестов |
 | `sql/04_indexes.sql`, `optimize.py` | Индексы и EXPLAIN ANALYZE до и после (10 тыс. и 2 млн строк) |
 | `bench_load.py` | Сравнение способов загрузки: INSERT, to_sql, multi, COPY |
-| `screenshots.py`, `img/` | Снимки вывода psql |
+| `img/` | Скриншоты psql, снятые на Windows (`05_explain.png` склеивается из `_before`/`_after` при сборке отчёта). `screenshots.py` перезапишет их автоматическими снимками |
 | `results/*.json` | Результаты всех замеров |
 | `docker-compose.yml` | Запуск PostgreSQL в Docker |
 
