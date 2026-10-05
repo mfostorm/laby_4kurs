@@ -1,0 +1,16 @@
+# Альтернативный способ развернуть СУБД (вариант Б методических указаний):
+#   docker compose up -d
+#   python load_dwh.py && python check_integrity.py && python optimize.py
+services:
+  postgres:
+    image: postgres:16
+    container_name: postgres-ai
+    environment:
+      POSTGRES_PASSWORD: mysecretpassword
+      POSTGRES_DB: ai_project
+    ports:
+      - "5432:5432"
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+volumes:
+  pgdata:

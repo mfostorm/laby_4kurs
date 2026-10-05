@@ -1,0 +1,301 @@
+{
+ "checks": {
+  "1. Количество записей по таблицам": {
+   "columns": [
+    "table_name",
+    "count"
+   ],
+   "rows": [
+    [
+     "dim_equipment",
+     "1"
+    ],
+    [
+     "dim_quality_class",
+     "3"
+    ],
+    [
+     "dim_tool",
+     "120"
+    ],
+    [
+     "dim_failure_type",
+     "7"
+    ],
+    [
+     "dim_batch",
+     "1"
+    ],
+    [
+     "fact_observation",
+     "10000"
+    ],
+    [
+     "fact_failure_event",
+     "382"
+    ]
+   ]
+  },
+  "2. Строки фактов без соответствующей строки измерения (orphaned rows)": {
+   "columns": [
+    "dim",
+    "orphans"
+   ],
+   "rows": [
+    [
+     "equipment",
+     "0"
+    ],
+    [
+     "quality_class",
+     "0"
+    ],
+    [
+     "tool",
+     "0"
+    ],
+    [
+     "failure_type",
+     "0"
+    ],
+    [
+     "batch",
+     "0"
+    ],
+    [
+     "event -> observation",
+     "0"
+    ]
+   ]
+  },
+  "3. NULL в ключевых полях": {
+   "columns": [
+    "udi_null",
+    "class_null",
+    "tool_null",
+    "failure_type_null"
+   ],
+   "rows": [
+    [
+     "0",
+     "0",
+     "0",
+     "0"
+    ]
+   ]
+  },
+  "4. Базовая статистика показаний датчиков": {
+   "columns": [
+    "avg_air",
+    "sd_air",
+    "avg_speed",
+    "sd_speed",
+    "avg_torque",
+    "min_torque",
+    "max_torque",
+    "avg_wear",
+    "max_wear"
+   ],
+   "rows": [
+    [
+     "300.00",
+     "2.00",
+     "1538.78",
+     "179.28",
+     "39.99",
+     "3.8",
+     "76.6",
+     "107.95",
+     "253"
+    ]
+   ]
+  },
+  "5. Доля отказов по классам качества (сравнить с лабой 2, табл. 6)": {
+   "columns": [
+    "class_code",
+    "observations",
+    "failures",
+    "failure_rate_pct",
+    "twf",
+    "hdf",
+    "pwf",
+    "osf"
+   ],
+   "rows": [
+    [
+     "L",
+     "6000",
+     "235",
+     "3.92",
+     "25",
+     "76",
+     "59",
+     "87"
+    ],
+    [
+     "M",
+     "2997",
+     "83",
+     "2.77",
+     "14",
+     "31",
+     "31",
+     "9"
+    ],
+    [
+     "H",
+     "1003",
+     "21",
+     "2.09",
+     "7",
+     "8",
+     "5",
+     "2"
+    ]
+   ]
+  },
+  "6. Согласованность двух таблиц фактов": {
+   "columns": [
+    "flags_in_observation",
+    "events",
+    "failures",
+    "primary_events"
+   ],
+   "rows": [
+    [
+     "382",
+     "382",
+     "339",
+     "339"
+    ]
+   ]
+  },
+  "7. Проверка продукционных правил по порогам из измерений (лаба 2, табл. 7)": {
+   "columns": [
+    "rule",
+    "fired",
+    "labels",
+    "matched"
+   ],
+   "rows": [
+    [
+     "HDF",
+     "103",
+     "115",
+     "103"
+    ],
+    [
+     "TWF",
+     "790",
+     "46",
+     "43"
+    ],
+    [
+     "PWF",
+     "95",
+     "95",
+     "95"
+    ],
+    [
+     "OSF",
+     "98",
+     "98",
+     "98"
+    ]
+   ]
+  }
+ },
+ "compare": {
+  "air_temp_k": {
+   "csv_sum": 3000049.3,
+   "db_sum": 3000049.3,
+   "equal": true
+  },
+  "process_temp_k": {
+   "csv_sum": 3100055.5999999996,
+   "db_sum": 3100055.5999999996,
+   "equal": true
+  },
+  "rot_speed_rpm": {
+   "csv_sum": 15387761.0,
+   "db_sum": 15387761.0,
+   "equal": true
+  },
+  "torque_nm": {
+   "csv_sum": 399869.1,
+   "db_sum": 399869.1,
+   "equal": true
+  },
+  "tool_wear_min": {
+   "csv_sum": 1079510.0,
+   "db_sum": 1079510.0,
+   "equal": true
+  },
+  "power_w": {
+   "csv_sum": 62797450.7,
+   "db_sum": 62797450.7,
+   "equal": true
+  },
+  "wear_torque": {
+   "csv_sum": 43146645.5,
+   "db_sum": 43146645.5,
+   "equal": true
+  },
+  "machine_failure": {
+   "csv_sum": 339.0,
+   "db_sum": 339.0,
+   "equal": true
+  },
+  "failure_mode": {
+   "equal": true
+  }
+ },
+ "negative": [
+  [
+   "Несуществующий класс качества (class_key = 99)",
+   "ForeignKeyViolation",
+   "insert or update on table \"fact_observation\" violates foreign key constraint \"fact_observation_class_key_fkey\""
+  ],
+  [
+   "Температура 27 K вместо 300 K (ошибка единиц)",
+   "CheckViolation",
+   "new row for relation \"fact_observation\" violates check constraint \"fact_observation_air_temp_k_check\""
+  ],
+  [
+   "Отказ без подтипа и без флага failure_type_unknown",
+   "CheckViolation",
+   "new row for relation \"fact_observation\" violates check constraint \"fact_observation_check\""
+  ],
+  [
+   "Повтор UDI существующего наблюдения",
+   "UniqueViolation",
+   "duplicate key value violates unique constraint \"fact_observation_udi_key\""
+  ],
+  [
+   "Повторная загрузка того же файла (тот же MD5)",
+   "UniqueViolation",
+   "duplicate key value violates unique constraint \"dim_batch_source_md5_key\""
+  ],
+  [
+   "Событие отказа для несуществующего наблюдения",
+   "ForeignKeyViolation",
+   "insert or update on table \"fact_failure_event\" violates foreign key constraint \"fact_failure_event_udi_fkey\""
+  ]
+ ],
+ "rows_before": 10000,
+ "rows_after": 10000,
+ "hdf_edge": {
+  "edge_rows": 27,
+  "edge_hdf": 12,
+  "edge_hdf_float_below": 12,
+  "edge_float_below": 12,
+  "lt": [
+   103,
+   103
+  ],
+  "le": [
+   130,
+   115
+  ]
+ }
+}

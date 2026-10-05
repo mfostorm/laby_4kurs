@@ -1,0 +1,60 @@
+{
+ "filled": {
+  "quality_class": 0,
+  "tool_wear_min": 0,
+  "air_temp_k": 0,
+  "process_temp_k": 0,
+  "torque_nm": 0,
+  "rot_speed_rpm": 0,
+  "twf": 0,
+  "hdf": 0,
+  "pwf": 0,
+  "osf": 0,
+  "rnf": 0
+ },
+ "outliers": {
+  "rot_speed_rpm": {
+   "lo": 1139.5,
+   "hi": 1895.5,
+   "n": 418,
+   "actual": [
+    1139.5,
+    1895.5
+   ],
+   "fail": 35,
+   "z3": 164
+  },
+  "torque_nm": {
+   "lo": 12.8,
+   "hi": 67.2,
+   "n": 69,
+   "actual": [
+    12.800000000000011,
+    67.19999999999999
+   ],
+   "fail": 62,
+   "z3": 25
+  }
+ },
+ "source_md5": "f0adaa9c5e25366c6df1cc2684479871",
+ "rows_in": 10000,
+ "rows_out": 10000,
+ "cols_in": 14,
+ "cols_out": 28,
+ "mem_in_kb": 1162.23828125,
+ "mem_out_kb": 1105.234375,
+ "checks": {
+  "нет пропусков": true,
+  "UDI уникален": true,
+  "Product ID уникален": true,
+  "класс совпадает с буквой Product ID": true,
+  "показания в допустимых диапазонах": true,
+  "метки бинарные": true,
+  "machine_failure = OR(подтипов) или failure_type_unknown": true,
+  "объём не меньше 500 записей": true
+ },
+ "wear_step": [
+  9880,
+  9880
+ ]
+}

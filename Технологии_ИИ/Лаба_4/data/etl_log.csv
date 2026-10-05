@@ -1,0 +1,16 @@
+Операция,Затронуто,Поля
+Переименование полей в snake_case,14,все поля
+"Нормализация текстовых полей (пробелы, регистр)",0,"product_id, quality_class"
+Восстановление класса качества по Product ID,0,quality_class
+Несоответствие буквы Product ID классу качества,0,контроль
+Приведение типов; нечисловые значения -> пропуск,0,числовые поля
+Физически недопустимые значения -> пропуск,0,"air_temp_k, process_temp_k, rot_speed_rpm, torque_nm, tool_wear_min"
+Удаление полных дубликатов,0,все поля
+Удаление дубликатов по ключу UDI,0,udi
+Удаление записей без ключа/метки или с > 50 % пропусков датчиков,0,"udi, product_id, machine_failure, датчики"
+"Флаг выброса is_outlier_speed (IQR), записи сохранены",418,rot_speed_rpm
+"Флаг выброса is_outlier_torque (IQR), записи сохранены",69,torque_nm
+Флаг отказа без подтипа failure_type_unknown,9,machine_failure
+Записи с несколькими подтипами -> failure_mode по приоритету,23,"twf, hdf, pwf, osf"
+RNF выведен из целевых переменных (rnf_ref); несогласованных меток,18,rnf
+Расчёт производных признаков,8,"temp_diff_k, power_w, wear_torque, osf_limit, osf_margin, power_margin, tool_cycle_id, cycle_pos"

@@ -1,0 +1,79 @@
+{
+ "roles": {
+  "udi": "ключ",
+  "product_id": "ключ",
+  "product_serial": "атрибут",
+  "quality_class": "атрибут",
+  "tool_cycle_id": "ключ",
+  "failure_mode": "атрибут",
+  "air_temp_k": "мера",
+  "process_temp_k": "мера",
+  "rot_speed_rpm": "мера",
+  "torque_nm": "мера",
+  "tool_wear_min": "мера",
+  "temp_diff_k": "мера",
+  "power_w": "мера",
+  "power_margin": "мера",
+  "wear_torque": "мера",
+  "osf_limit": "мера",
+  "osf_margin": "мера",
+  "cycle_pos": "мера",
+  "is_outlier_speed": "мера",
+  "is_outlier_torque": "мера",
+  "machine_failure": "мера",
+  "twf": "мера",
+  "hdf": "мера",
+  "pwf": "мера",
+  "osf": "мера",
+  "n_failure_modes": "мера",
+  "failure_type_unknown": "мера",
+  "rnf_ref": "мера"
+ },
+ "fact_table": {
+  "name": "fact_observation",
+  "description": "Наблюдение за станком при обработке одного изделия",
+  "grain": "одна строка data_cleaned (одно изделие)",
+  "measures": [
+   "air_temp_k",
+   "process_temp_k",
+   "rot_speed_rpm",
+   "torque_nm",
+   "tool_wear_min",
+   "temp_diff_k",
+   "power_w",
+   "power_margin",
+   "wear_torque",
+   "osf_margin",
+   "cycle_pos",
+   "machine_failure",
+   "twf",
+   "hdf",
+   "pwf",
+   "osf",
+   "rnf_ref",
+   "n_failure_modes",
+   "failure_type_unknown",
+   "is_outlier_speed",
+   "is_outlier_torque"
+  ],
+  "dimension_keys": [
+   "equipment_key",
+   "class_key",
+   "tool_key",
+   "failure_type_key",
+   "batch_key"
+  ],
+  "degenerate": [
+   "udi",
+   "product_id",
+   "product_serial"
+  ]
+ },
+ "card": {
+  "dim_quality_class": 3,
+  "dim_tool": 120,
+  "dim_failure_type (встречается)": 6,
+  "fact_observation": 10000,
+  "fact_failure_event": 382
+ }
+}
