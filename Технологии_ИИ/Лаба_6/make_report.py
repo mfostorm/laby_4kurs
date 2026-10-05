@@ -2,14 +2,15 @@
 bench_load.py, screenshots.py, затем make_report.py."""
 import json
 import platform
-import subprocess
 import sys
 
 import pandas as pd
 import psycopg2
 import sqlalchemy
 
-from load_dwh import DB_HOST, DB_NAME, DB_PORT, DB_USER, HERE, RES
+from sqlalchemy import create_engine, text
+
+from load_dwh import DB_HOST, DB_NAME, DB_PORT, DB_USER, HERE, RES, URL
 
 sys.path.insert(0, str(HERE.parent / 'tools'))
 from docx_report import Report, num  # noqa: E402
@@ -19,7 +20,21 @@ chk = json.load(open(RES / 'checks.json'))
 opt = json.load(open(RES / 'optimize.json'))
 bench = json.load(open(RES / 'bench_load.json'))
 IMG = HERE / 'img'
-pg_version = subprocess.run(['psql', '--version'], capture_output=True, text=True).stdout.split()[2]
+
+# Если EXPLAIN «до» и «после» сняты отдельными скриншотами (pgAdmin), они
+# склеиваются по вертикали в один рисунок 05_explain.png
+_before, _after = IMG / '05_explain_before.png', IMG / '05_explain_after.png'
+if _before.exists() and _after.exists():
+    from PIL import Image
+    a, b = Image.open(_before).convert('RGB'), Image.open(_after).convert('RGB')
+    w = max(a.width, b.width)
+    out = Image.new('RGB', (w, a.height + b.height + 20), 'white')
+    out.paste(a, (0, 0))
+    out.paste(b, (0, a.height + 20))
+    out.save(IMG / '05_explain.png')
+# версия сервера - запросом к СУБД (psql на Windows обычно не прописан в PATH)
+with create_engine(URL).connect() as _c:
+    pg_version = _c.execute(text('SHOW server_version')).scalar_one().split()[0]
 C = load['counts']
 
 r = Report()
@@ -39,7 +54,7 @@ r.p('Загружается очищенный набор data_cleaned.csv (10 0
 # --- Раздел 2 -------------------------------------------------------------------
 r.section('Раздел 2. Настройка инфраструктуры')
 r.p('Использована свободная СУБД PostgreSQL - рекомендованный методическими указаниями '
-    'вариант. Установка выполнена из пакетов дистрибутива Linux (вариант А). Для '
+    'вариант. Использован вариант А - локальная установка СУБД с клиентом pgAdmin. Для '
     'воспроизведения на другом компьютере подготовлен файл docker-compose.yml (вариант Б): '
     'команда `docker compose up -d` поднимает тот же сервер с теми же параметрами.')
 r.p('Сервер настроен так, чтобы подключение было как к реальному серверу: доступ по TCP '
@@ -56,7 +71,7 @@ r.p('Пароль не записывается в код: скрипты чит
     'а значения по умолчанию совпадают с примером из методических указаний.')
 r.table('Версии программного обеспечения', ['Компонент', 'Версия', 'Назначение', 'Лицензия'],
         [['PostgreSQL', pg_version, 'СУБД хранилища', 'PostgreSQL License'],
-         ['psql', pg_version, 'Консольный клиент: проверочные запросы', 'PostgreSQL License'],
+         ['pgAdmin 4 / psql', 'в комплекте', 'Клиенты: проверочные запросы, снимки экрана', 'PostgreSQL License'],
          ['Python', platform.python_version(), 'Скрипты загрузки и проверки', 'PSF License'],
          ['pandas', pd.__version__, 'Чтение CSV, построение таблиц измерений и фактов', 'BSD-3-Clause'],
          ['SQLAlchemy', sqlalchemy.__version__, 'Подключение, транзакции, to_sql', 'MIT'],
@@ -70,9 +85,8 @@ r.code('''CREATE DATABASE ai_project;
 \\i ../Лаба_5/sql/02_reference_data.sql   -- справочные измерения
 \\i ../Лаба_5/sql/03_views.sql            -- аналитические представления''')
 r.p('В программе загрузки эти же скрипты выполняются автоматически в начале транзакции. '
-    'Результат проверки командой \\dt+ показан на рисунке 1: созданы семь таблиц с '
-    'комментариями из DDL.')
-r.figure(IMG / '01_tables.png', 'Таблицы хранилища (psql, \\dt+)', width=16.5)
+    'Созданные таблицы схемы dwh показаны на рисунке 1: семь таблиц с комментариями из DDL.')
+r.figure(IMG / '01_tables.png', 'Таблицы хранилища', width=16.5)
 
 # --- Раздел 3 -------------------------------------------------------------------
 r.section('Раздел 3. Процесс загрузки данных')

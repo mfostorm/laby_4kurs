@@ -4,6 +4,7 @@ Times New Roman 14, полуторный интервал, абзацный от
 «Таблица N - ...» над таблицей, «Рисунок N - ...» под рисунком,
 номер страницы внизу по центру.
 """
+import shutil
 import subprocess
 from pathlib import Path
 
@@ -227,7 +228,12 @@ class Report:
         path = Path(path)
         self.doc.save(path)
         if pdf:
-            subprocess.run(['soffice', '--headless', '--convert-to', 'pdf',
+            soffice = shutil.which('soffice') or shutil.which('libreoffice')
+            if soffice is None:
+                print('LibreOffice не найден: PDF не создан. Откройте .docx в Word и '
+                      'сохраните как PDF (Файл -> Сохранить как -> PDF).')
+                return path
+            subprocess.run([soffice, '--headless', '--convert-to', 'pdf',
                             '--outdir', str(path.parent), str(path)],
                            check=True, capture_output=True)
         return path
