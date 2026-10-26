@@ -1,0 +1,483 @@
+@prefix pdm:  <http://example.org/pdm#> .
+@prefix owl:  <http://www.w3.org/2002/07/owl#> .
+@prefix rdf:  <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd:  <http://www.w3.org/2001/XMLSchema#> .
+@prefix dc:   <http://purl.org/dc/elements/1.1/> .
+
+# =============================================================================
+# Онтология «Предиктивное обслуживание промышленного оборудования» (вариант 10)
+# Лабораторная работа 7. Формат: OWL 2 DL, синтаксис Turtle (открывается в Protégé).
+# Схема (TBox) + справочные индивиды и примеры из набора AI4I 2020 (ABox).
+# =============================================================================
+
+<http://example.org/pdm> a owl:Ontology ;
+    rdfs:label "Предиктивное обслуживание оборудования"@ru ;
+    dc:description "Понятия, свойства и отношения предметной области ТОиР: оборудование, узлы, датчики, наблюдения, отказы, продукционные правила, прогнозы риска и работы по обслуживанию."@ru ;
+    owl:versionInfo "1.0" .
+
+dc:description a owl:AnnotationProperty .
+
+# =============================================================================
+# 1. КЛАССЫ
+# =============================================================================
+
+# --- Технические объекты ------------------------------------------------------
+pdm:Equipment a owl:Class ;
+    rdfs:label "Оборудование"@ru ;
+    rdfs:comment "Учётная единица технологического оборудования участка."@ru .
+
+pdm:MachineTool a owl:Class ;
+    rdfs:subClassOf pdm:Equipment ;
+    rdfs:label "Металлорежущий станок"@ru ;
+    rdfs:comment "Фрейм-прототип из лабы 1: типовой набор слотов, наследуемых экземплярами."@ru .
+
+pdm:MillingMachine a owl:Class ;
+    rdfs:subClassOf pdm:MachineTool ,
+        [ a owl:Restriction ; owl:onProperty pdm:hasComponent ; owl:someValuesFrom pdm:Spindle ] ,
+        [ a owl:Restriction ; owl:onProperty pdm:hasComponent ; owl:someValuesFrom pdm:Drive ] ,
+        [ a owl:Restriction ; owl:onProperty pdm:hasComponent ; owl:someValuesFrom pdm:CoolingSystem ] ,
+        [ a owl:Restriction ; owl:onProperty pdm:hasComponent ; owl:someValuesFrom pdm:CuttingTool ] ;
+    rdfs:label "Фрезерный станок"@ru ;
+    rdfs:comment "Станок набора AI4I 2020; обязательно имеет шпиндель, привод, систему охлаждения и режущий инструмент."@ru .
+
+pdm:Component a owl:Class ;
+    rdfs:label "Узел (компонент)"@ru ;
+    rdfs:comment "Конструктивная часть оборудования - объект диагностирования и замены."@ru .
+pdm:Spindle a owl:Class ; rdfs:subClassOf pdm:Component ; rdfs:label "Шпиндель"@ru .
+pdm:Drive a owl:Class ; rdfs:subClassOf pdm:Component ; rdfs:label "Привод"@ru .
+pdm:CoolingSystem a owl:Class ; rdfs:subClassOf pdm:Component ; rdfs:label "Система охлаждения"@ru .
+pdm:CuttingTool a owl:Class ; rdfs:subClassOf pdm:Component ; rdfs:label "Режущий инструмент"@ru .
+[] a owl:AllDisjointClasses ; owl:members ( pdm:Spindle pdm:Drive pdm:CoolingSystem pdm:CuttingTool ) .
+
+pdm:Sensor a owl:Class ;
+    rdfs:subClassOf [ a owl:Restriction ; owl:onProperty pdm:installedOn ;
+                      owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ; owl:onClass pdm:Component ] ;
+    rdfs:label "Датчик"@ru ;
+    rdfs:comment "Источник первичных измерений; установлен ровно на одном узле."@ru .
+pdm:TemperatureSensor a owl:Class ; rdfs:subClassOf pdm:Sensor ; rdfs:label "Датчик температуры"@ru .
+pdm:SpeedSensor a owl:Class ; rdfs:subClassOf pdm:Sensor ; rdfs:label "Датчик частоты вращения"@ru .
+pdm:TorqueSensor a owl:Class ; rdfs:subClassOf pdm:Sensor ; rdfs:label "Датчик крутящего момента"@ru .
+pdm:WearCounter a owl:Class ; rdfs:subClassOf pdm:Sensor ; rdfs:label "Счётчик наработки инструмента"@ru .
+[] a owl:AllDisjointClasses ; owl:members ( pdm:TemperatureSensor pdm:SpeedSensor pdm:TorqueSensor pdm:WearCounter ) .
+
+pdm:MonitoredParameter a owl:Class ;
+    rdfs:label "Контролируемый параметр"@ru ;
+    rdfs:comment "Величина, по которой формулируются условия продукционных правил: измеряемая или производная."@ru .
+
+# --- Производственный процесс -------------------------------------------------
+pdm:Product a owl:Class ;
+    rdfs:subClassOf [ a owl:Restriction ; owl:onProperty pdm:hasQualityClass ;
+                      owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ; owl:onClass pdm:QualityClass ] ;
+    rdfs:label "Изделие"@ru ;
+    rdfs:comment "Обрабатываемое изделие; имеет ровно один класс качества."@ru .
+
+pdm:QualityClass a owl:Class ;
+    owl:equivalentClass [ a owl:Class ; owl:oneOf ( pdm:Class_L pdm:Class_M pdm:Class_H ) ] ;
+    rdfs:label "Класс качества"@ru ;
+    rdfs:comment "Перечисление L, M, H. Фрейм-прототип: задаёт порог перегрузки и шаг износа, наследуемые изделием."@ru .
+
+pdm:ToolLifeCycle a owl:Class ;
+    rdfs:subClassOf [ a owl:Restriction ; owl:onProperty pdm:cycleOnEquipment ;
+                      owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ; owl:onClass pdm:Equipment ] ;
+    rdfs:label "Цикл эксплуатации инструмента"@ru ;
+    rdfs:comment "Период работы одного режущего инструмента от установки (износ 0) до замены."@ru .
+
+pdm:Observation a owl:Class ;
+    rdfs:subClassOf
+        [ a owl:Restriction ; owl:onProperty pdm:observedOn ;
+          owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ; owl:onClass pdm:Equipment ] ,
+        [ a owl:Restriction ; owl:onProperty pdm:processesProduct ;
+          owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ; owl:onClass pdm:Product ] ,
+        [ a owl:Restriction ; owl:onProperty pdm:usesToolCycle ;
+          owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ; owl:onClass pdm:ToolLifeCycle ] ,
+        [ a owl:Restriction ; owl:onProperty pdm:udi ; owl:cardinality "1"^^xsd:nonNegativeInteger ] ;
+    rdfs:label "Наблюдение"@ru ;
+    rdfs:comment "Снимок телеметрии станка при обработке одного изделия."@ru .
+
+# --- Отказы ---------------------------------------------------------------------
+pdm:FailureType a owl:Class ;
+    owl:equivalentClass [ a owl:Class ; owl:oneOf ( pdm:TWF pdm:HDF pdm:PWF pdm:OSF pdm:RNF pdm:UnknownFailure ) ] ;
+    rdfs:label "Тип отказа"@ru ;
+    rdfs:comment "Категория отказа, распознаваемая системой."@ru .
+pdm:MechanicalFailureType a owl:Class ; rdfs:subClassOf pdm:FailureType ; rdfs:label "Механический тип отказа"@ru .
+pdm:ThermalFailureType a owl:Class ; rdfs:subClassOf pdm:FailureType ; rdfs:label "Тепловой тип отказа"@ru .
+pdm:ElectricalFailureType a owl:Class ; rdfs:subClassOf pdm:FailureType ; rdfs:label "Электрический тип отказа"@ru .
+pdm:RandomFailureType a owl:Class ; rdfs:subClassOf pdm:FailureType ; rdfs:label "Случайный тип отказа"@ru .
+[] a owl:AllDisjointClasses ; owl:members ( pdm:MechanicalFailureType pdm:ThermalFailureType pdm:ElectricalFailureType pdm:RandomFailureType ) .
+
+pdm:FailureEvent a owl:Class ;
+    rdfs:subClassOf
+        [ a owl:Restriction ; owl:onProperty pdm:occurredDuring ;
+          owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ; owl:onClass pdm:Observation ] ,
+        [ a owl:Restriction ; owl:onProperty pdm:hasFailureType ;
+          owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ; owl:onClass pdm:FailureType ] ;
+    rdfs:label "Событие отказа"@ru ;
+    rdfs:comment "Зафиксированный отказ одного типа в одном наблюдении."@ru .
+
+# Определяемые классы: членство выводит ризонер
+pdm:MechanicalFailureEvent a owl:Class ;
+    owl:equivalentClass [ a owl:Class ; owl:intersectionOf ( pdm:FailureEvent
+        [ a owl:Restriction ; owl:onProperty pdm:hasFailureType ; owl:someValuesFrom pdm:MechanicalFailureType ] ) ] ;
+    rdfs:label "Механический отказ"@ru .
+pdm:ThermalFailureEvent a owl:Class ;
+    owl:equivalentClass [ a owl:Class ; owl:intersectionOf ( pdm:FailureEvent
+        [ a owl:Restriction ; owl:onProperty pdm:hasFailureType ; owl:someValuesFrom pdm:ThermalFailureType ] ) ] ;
+    rdfs:label "Тепловой отказ"@ru .
+pdm:ElectricalFailureEvent a owl:Class ;
+    owl:equivalentClass [ a owl:Class ; owl:intersectionOf ( pdm:FailureEvent
+        [ a owl:Restriction ; owl:onProperty pdm:hasFailureType ; owl:someValuesFrom pdm:ElectricalFailureType ] ) ] ;
+    rdfs:label "Электрический отказ"@ru .
+pdm:FailedObservation a owl:Class ;
+    owl:equivalentClass [ a owl:Class ; owl:intersectionOf ( pdm:Observation
+        [ a owl:Restriction ; owl:onProperty pdm:hasFailureEvent ; owl:someValuesFrom pdm:FailureEvent ] ) ] ;
+    rdfs:label "Наблюдение с отказом"@ru .
+
+# --- База знаний и вывод ------------------------------------------------------
+pdm:ProductionRule a owl:Class ;
+    rdfs:subClassOf
+        [ a owl:Restriction ; owl:onProperty pdm:detects ; owl:someValuesFrom pdm:FailureType ] ,
+        [ a owl:Restriction ; owl:onProperty pdm:usesParameter ; owl:someValuesFrom pdm:MonitoredParameter ] ,
+        [ a owl:Restriction ; owl:onProperty pdm:certaintyFactor ; owl:cardinality "1"^^xsd:nonNegativeInteger ] ;
+    rdfs:label "Продукционное правило"@ru ;
+    rdfs:comment "Правило ЕСЛИ <условие по параметрам> ТО <тип отказа, уровень риска>."@ru .
+pdm:DeterministicRule a owl:Class ;
+    owl:equivalentClass [ a owl:Class ; owl:intersectionOf ( pdm:ProductionRule
+        [ a owl:Restriction ; owl:onProperty pdm:certaintyFactor ; owl:hasValue "1.0"^^xsd:decimal ] ) ] ;
+    rdfs:label "Детерминированное правило"@ru ;
+    rdfs:comment "Правило с коэффициентом уверенности 1,0."@ru .
+
+pdm:RiskForecast a owl:Class ;
+    rdfs:subClassOf
+        [ a owl:Restriction ; owl:onProperty pdm:generatedBy ;
+          owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ; owl:onClass pdm:ProductionRule ] ,
+        [ a owl:Restriction ; owl:onProperty pdm:concernsObservation ;
+          owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ; owl:onClass pdm:Observation ] ;
+    rdfs:label "Прогноз риска"@ru ;
+    rdfs:comment "Результат срабатывания правила на наблюдении: оценка риска и вероятный тип отказа."@ru .
+pdm:HighRiskForecast a owl:Class ;
+    owl:equivalentClass [ a owl:Class ; owl:intersectionOf ( pdm:RiskForecast
+        [ a owl:Restriction ; owl:onProperty pdm:riskLevel ; owl:hasValue "high" ] ) ] ;
+    rdfs:label "Прогноз высокого риска"@ru .
+pdm:ConfirmedForecast a owl:Class ;
+    owl:equivalentClass [ a owl:Class ; owl:intersectionOf ( pdm:RiskForecast
+        [ a owl:Restriction ; owl:onProperty pdm:concernsObservation ; owl:someValuesFrom pdm:FailedObservation ] ) ] ;
+    rdfs:label "Подтверждённый прогноз"@ru ;
+    rdfs:comment "Прогноз, после которого в том же наблюдении зафиксирован отказ."@ru .
+
+# --- Техническое обслуживание -------------------------------------------------
+pdm:MaintenanceAction a owl:Class ; rdfs:label "Вид работ по обслуживанию"@ru .
+pdm:MaintenanceRequest a owl:Class ;
+    rdfs:subClassOf [ a owl:Restriction ; owl:onProperty pdm:basedOnForecast ; owl:someValuesFrom pdm:RiskForecast ] ;
+    rdfs:label "Заявка на ремонт"@ru .
+pdm:WorkOrder a owl:Class ;
+    rdfs:subClassOf [ a owl:Restriction ; owl:onProperty pdm:fulfillsRequest ;
+                      owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ; owl:onClass pdm:MaintenanceRequest ] ;
+    rdfs:label "Наряд на работы"@ru .
+pdm:MaintenanceRegulation a owl:Class ; rdfs:label "Регламент ТО"@ru .
+pdm:RepairTeam a owl:Class ; rdfs:label "Ремонтная бригада"@ru .
+pdm:SparePart a owl:Class ; rdfs:label "Запасная часть"@ru .
+
+# Непересекающиеся понятия верхнего уровня
+[] a owl:AllDisjointClasses ; owl:members (
+    pdm:Equipment pdm:Component pdm:Sensor pdm:MonitoredParameter pdm:Product pdm:QualityClass
+    pdm:ToolLifeCycle pdm:Observation pdm:FailureType pdm:FailureEvent pdm:ProductionRule
+    pdm:RiskForecast pdm:MaintenanceAction pdm:MaintenanceRequest pdm:WorkOrder
+    pdm:MaintenanceRegulation pdm:RepairTeam pdm:SparePart ) .
+
+# =============================================================================
+# 2. ОБЪЕКТНЫЕ СВОЙСТВА (отношения)
+# =============================================================================
+
+# Часть - целое
+pdm:partOf a owl:ObjectProperty , owl:TransitiveProperty ;
+    rdfs:label "является частью"@ru ;
+    rdfs:comment "Отношение часть - целое; транзитивно: датчик узла является частью станка."@ru .
+pdm:hasComponent a owl:ObjectProperty , owl:InverseFunctionalProperty ;
+    owl:inverseOf pdm:componentOf ;
+    rdfs:domain pdm:Equipment ; rdfs:range pdm:Component ; rdfs:label "имеет узел"@ru .
+pdm:componentOf a owl:ObjectProperty , owl:FunctionalProperty ;
+    rdfs:subPropertyOf pdm:partOf ;
+    rdfs:domain pdm:Component ; rdfs:range pdm:Equipment ; rdfs:label "узел оборудования"@ru .
+pdm:installedOn a owl:ObjectProperty , owl:FunctionalProperty ;
+    rdfs:subPropertyOf pdm:partOf ;
+    rdfs:domain pdm:Sensor ; rdfs:range pdm:Component ; rdfs:label "установлен на"@ru .
+
+# Наблюдение и его контекст
+pdm:observedOn a owl:ObjectProperty , owl:FunctionalProperty ;
+    rdfs:domain pdm:Observation ; rdfs:range pdm:Equipment ; rdfs:label "наблюдение на оборудовании"@ru .
+pdm:processesProduct a owl:ObjectProperty , owl:FunctionalProperty , owl:InverseFunctionalProperty ;
+    rdfs:domain pdm:Observation ; rdfs:range pdm:Product ; rdfs:label "обрабатывает изделие"@ru .
+pdm:hasQualityClass a owl:ObjectProperty , owl:FunctionalProperty ;
+    rdfs:domain pdm:Product ; rdfs:range pdm:QualityClass ; rdfs:label "имеет класс качества"@ru .
+pdm:usesToolCycle a owl:ObjectProperty , owl:FunctionalProperty ;
+    rdfs:domain pdm:Observation ; rdfs:range pdm:ToolLifeCycle ; rdfs:label "выполнено в цикле инструмента"@ru .
+pdm:cycleOnEquipment a owl:ObjectProperty , owl:FunctionalProperty ;
+    rdfs:domain pdm:ToolLifeCycle ; rdfs:range pdm:Equipment ; rdfs:label "цикл на оборудовании"@ru .
+pdm:nextObservation a owl:ObjectProperty , owl:FunctionalProperty , owl:InverseFunctionalProperty ,
+        owl:AsymmetricProperty , owl:IrreflexiveProperty ;
+    rdfs:domain pdm:Observation ; rdfs:range pdm:Observation ; rdfs:label "следующее наблюдение"@ru .
+
+# Отказы
+pdm:hasFailureEvent a owl:ObjectProperty , owl:InverseFunctionalProperty ;
+    owl:inverseOf pdm:occurredDuring ;
+    rdfs:domain pdm:Observation ; rdfs:range pdm:FailureEvent ; rdfs:label "содержит отказ"@ru .
+pdm:occurredDuring a owl:ObjectProperty , owl:FunctionalProperty ;
+    rdfs:domain pdm:FailureEvent ; rdfs:range pdm:Observation ; rdfs:label "произошёл в наблюдении"@ru .
+pdm:hasFailureType a owl:ObjectProperty , owl:FunctionalProperty ;
+    rdfs:domain pdm:FailureEvent ; rdfs:range pdm:FailureType ; rdfs:label "имеет тип отказа"@ru .
+pdm:affectsComponent a owl:ObjectProperty ;
+    rdfs:domain pdm:FailureType ; rdfs:range pdm:Component ; rdfs:label "поражает узел"@ru .
+pdm:recommendsAction a owl:ObjectProperty ;
+    rdfs:domain pdm:FailureType ; rdfs:range pdm:MaintenanceAction ; rdfs:label "рекомендуемое действие"@ru .
+
+# Параметры, правила, прогнозы
+pdm:measuredBy a owl:ObjectProperty ;
+    rdfs:domain pdm:MonitoredParameter ; rdfs:range pdm:Sensor ; rdfs:label "измеряется датчиком"@ru .
+pdm:derivedFrom a owl:ObjectProperty , owl:IrreflexiveProperty ;
+    rdfs:domain pdm:MonitoredParameter ; rdfs:range pdm:MonitoredParameter ; rdfs:label "вычисляется из"@ru .
+pdm:detects a owl:ObjectProperty ;
+    rdfs:domain pdm:ProductionRule ; rdfs:range pdm:FailureType ; rdfs:label "распознаёт"@ru .
+pdm:usesParameter a owl:ObjectProperty ;
+    rdfs:domain pdm:ProductionRule ; rdfs:range pdm:MonitoredParameter ; rdfs:label "использует параметр"@ru .
+pdm:generatedBy a owl:ObjectProperty , owl:FunctionalProperty ;
+    rdfs:domain pdm:RiskForecast ; rdfs:range pdm:ProductionRule ; rdfs:label "сформирован правилом"@ru .
+pdm:concernsObservation a owl:ObjectProperty , owl:FunctionalProperty ;
+    rdfs:domain pdm:RiskForecast ; rdfs:range pdm:Observation ; rdfs:label "относится к наблюдению"@ru .
+pdm:predictsFailureType a owl:ObjectProperty ;
+    rdfs:domain pdm:RiskForecast ; rdfs:range pdm:FailureType ; rdfs:label "прогнозирует тип отказа"@ru .
+
+# Обслуживание
+pdm:basedOnForecast a owl:ObjectProperty ;
+    rdfs:domain pdm:MaintenanceRequest ; rdfs:range pdm:RiskForecast ; rdfs:label "основана на прогнозе"@ru .
+pdm:fulfillsRequest a owl:ObjectProperty , owl:FunctionalProperty ;
+    rdfs:domain pdm:WorkOrder ; rdfs:range pdm:MaintenanceRequest ; rdfs:label "исполняет заявку"@ru .
+pdm:performsAction a owl:ObjectProperty ;
+    rdfs:domain pdm:WorkOrder ; rdfs:range pdm:MaintenanceAction ; rdfs:label "выполняет работу"@ru .
+pdm:assignedTo a owl:ObjectProperty , owl:FunctionalProperty ;
+    rdfs:domain pdm:WorkOrder ; rdfs:range pdm:RepairTeam ; rdfs:label "назначен бригаде"@ru .
+pdm:followsRegulation a owl:ObjectProperty ;
+    rdfs:domain pdm:WorkOrder ; rdfs:range pdm:MaintenanceRegulation ; rdfs:label "по регламенту"@ru .
+pdm:usesSparePart a owl:ObjectProperty ;
+    rdfs:domain pdm:WorkOrder ; rdfs:range pdm:SparePart ; rdfs:label "расходует запасную часть"@ru .
+pdm:regulationFor a owl:ObjectProperty ;
+    rdfs:domain pdm:MaintenanceRegulation ; rdfs:range pdm:Equipment ; rdfs:label "регламент для оборудования"@ru .
+
+# =============================================================================
+# 3. СВОЙСТВА ДАННЫХ (атрибуты)
+# =============================================================================
+pdm:udi a owl:DatatypeProperty , owl:FunctionalProperty ;
+    rdfs:domain pdm:Observation ; rdfs:range xsd:integer ; rdfs:label "номер наблюдения (UDI)"@ru .
+pdm:airTemperatureK a owl:DatatypeProperty , owl:FunctionalProperty ;
+    rdfs:domain pdm:Observation ; rdfs:range xsd:decimal ; rdfs:label "температура воздуха, K"@ru .
+pdm:processTemperatureK a owl:DatatypeProperty , owl:FunctionalProperty ;
+    rdfs:domain pdm:Observation ; rdfs:range xsd:decimal ; rdfs:label "температура процесса, K"@ru .
+pdm:rotationalSpeedRpm a owl:DatatypeProperty , owl:FunctionalProperty ;
+    rdfs:domain pdm:Observation ; rdfs:range xsd:integer ; rdfs:label "частота вращения, об/мин"@ru .
+pdm:torqueNm a owl:DatatypeProperty , owl:FunctionalProperty ;
+    rdfs:domain pdm:Observation ; rdfs:range xsd:decimal ; rdfs:label "крутящий момент, Н·м"@ru .
+pdm:toolWearMin a owl:DatatypeProperty , owl:FunctionalProperty ;
+    rdfs:domain pdm:Observation ; rdfs:range xsd:integer ; rdfs:label "износ инструмента, мин"@ru .
+pdm:temperatureDifferenceK a owl:DatatypeProperty , owl:FunctionalProperty ;
+    rdfs:domain pdm:Observation ; rdfs:range xsd:decimal ; rdfs:label "разность температур, K"@ru .
+pdm:powerW a owl:DatatypeProperty , owl:FunctionalProperty ;
+    rdfs:domain pdm:Observation ; rdfs:range xsd:decimal ; rdfs:label "мощность привода, Вт"@ru .
+pdm:wearTorque a owl:DatatypeProperty , owl:FunctionalProperty ;
+    rdfs:domain pdm:Observation ; rdfs:range xsd:decimal ; rdfs:label "износ x момент, мин·Н·м"@ru .
+pdm:positionInCycle a owl:DatatypeProperty , owl:FunctionalProperty ;
+    rdfs:domain pdm:Observation ; rdfs:range xsd:positiveInteger ; rdfs:label "номер изделия в цикле"@ru .
+
+pdm:productId a owl:DatatypeProperty , owl:FunctionalProperty ;
+    rdfs:domain pdm:Product ; rdfs:range xsd:string ; rdfs:label "идентификатор изделия"@ru .
+pdm:classCode a owl:DatatypeProperty , owl:FunctionalProperty ;
+    rdfs:domain pdm:QualityClass ; rdfs:range xsd:string ; rdfs:label "код класса"@ru .
+pdm:osfLimit a owl:DatatypeProperty , owl:FunctionalProperty ;
+    rdfs:domain pdm:QualityClass ; rdfs:range xsd:integer ; rdfs:label "порог перегрузки, мин·Н·м"@ru .
+pdm:wearStepMin a owl:DatatypeProperty , owl:FunctionalProperty ;
+    rdfs:domain pdm:QualityClass ; rdfs:range xsd:integer ; rdfs:label "шаг износа, мин"@ru .
+
+pdm:inventoryNumber a owl:DatatypeProperty , owl:FunctionalProperty ;
+    rdfs:domain pdm:Equipment ; rdfs:range xsd:string ; rdfs:label "инвентарный номер"@ru .
+pdm:nominalPowerW a owl:DatatypeProperty , owl:FunctionalProperty ;
+    rdfs:domain pdm:Equipment ; rdfs:range xsd:decimal ; rdfs:label "номинальная мощность, Вт"@ru .
+pdm:powerMinW a owl:DatatypeProperty , owl:FunctionalProperty ;
+    rdfs:domain pdm:Equipment ; rdfs:range xsd:decimal ; rdfs:label "нижняя граница мощности, Вт"@ru .
+pdm:powerMaxW a owl:DatatypeProperty , owl:FunctionalProperty ;
+    rdfs:domain pdm:Equipment ; rdfs:range xsd:decimal ; rdfs:label "верхняя граница мощности, Вт"@ru .
+
+pdm:cycleNumber a owl:DatatypeProperty , owl:FunctionalProperty ;
+    rdfs:domain pdm:ToolLifeCycle ; rdfs:range xsd:positiveInteger ; rdfs:label "номер цикла"@ru .
+pdm:productsProcessed a owl:DatatypeProperty , owl:FunctionalProperty ;
+    rdfs:domain pdm:ToolLifeCycle ; rdfs:range xsd:positiveInteger ; rdfs:label "изделий за цикл"@ru .
+pdm:wearAtEndMin a owl:DatatypeProperty , owl:FunctionalProperty ;
+    rdfs:domain pdm:ToolLifeCycle ; rdfs:range xsd:integer ; rdfs:label "износ при замене, мин"@ru .
+pdm:endReason a owl:DatatypeProperty , owl:FunctionalProperty ;
+    rdfs:domain pdm:ToolLifeCycle ;
+    rdfs:range [ a rdfs:Datatype ; owl:oneOf ( "PLANNED" "TWF" "IN_SERVICE" ) ] ;
+    rdfs:label "причина завершения цикла"@ru .
+
+pdm:failureCode a owl:DatatypeProperty , owl:FunctionalProperty ;
+    rdfs:domain pdm:FailureType ; rdfs:range xsd:string ; rdfs:label "код отказа"@ru .
+pdm:severityRank a owl:DatatypeProperty , owl:FunctionalProperty ;
+    rdfs:domain pdm:FailureType ; rdfs:range xsd:integer ; rdfs:label "ранг тяжести"@ru .
+
+pdm:ruleCode a owl:DatatypeProperty , owl:FunctionalProperty ;
+    rdfs:domain pdm:ProductionRule ; rdfs:range xsd:string ; rdfs:label "код правила"@ru .
+pdm:conditionText a owl:DatatypeProperty , owl:FunctionalProperty ;
+    rdfs:domain pdm:ProductionRule ; rdfs:range xsd:string ; rdfs:label "условие ЕСЛИ"@ru .
+pdm:certaintyFactor a owl:DatatypeProperty , owl:FunctionalProperty ;
+    rdfs:domain pdm:ProductionRule ;
+    rdfs:range [ a rdfs:Datatype ; owl:onDatatype xsd:decimal ;
+                 owl:withRestrictions ( [ xsd:minInclusive "0.0"^^xsd:decimal ] [ xsd:maxInclusive "1.0"^^xsd:decimal ] ) ] ;
+    rdfs:label "коэффициент уверенности"@ru .
+
+pdm:riskScore a owl:DatatypeProperty , owl:FunctionalProperty ;
+    rdfs:domain pdm:RiskForecast ;
+    rdfs:range [ a rdfs:Datatype ; owl:onDatatype xsd:decimal ;
+                 owl:withRestrictions ( [ xsd:minInclusive "0.0"^^xsd:decimal ] [ xsd:maxInclusive "1.0"^^xsd:decimal ] ) ] ;
+    rdfs:label "оценка риска"@ru .
+pdm:riskLevel a owl:DatatypeProperty , owl:FunctionalProperty ;
+    rdfs:domain pdm:RiskForecast ;
+    rdfs:range [ a rdfs:Datatype ; owl:oneOf ( "low" "medium" "high" ) ] ;
+    rdfs:label "уровень риска"@ru .
+
+pdm:unit a owl:DatatypeProperty , owl:FunctionalProperty ;
+    rdfs:domain pdm:MonitoredParameter ; rdfs:range xsd:string ; rdfs:label "единица измерения"@ru .
+pdm:actionName a owl:DatatypeProperty , owl:FunctionalProperty ;
+    rdfs:domain pdm:MaintenanceAction ; rdfs:range xsd:string ; rdfs:label "наименование работы"@ru .
+pdm:plannedStart a owl:DatatypeProperty , owl:FunctionalProperty ;
+    rdfs:domain pdm:WorkOrder ; rdfs:range xsd:dateTime ; rdfs:label "плановое начало"@ru .
+pdm:workCost a owl:DatatypeProperty , owl:FunctionalProperty ;
+    rdfs:domain pdm:WorkOrder ; rdfs:range xsd:decimal ; rdfs:label "стоимость работ"@ru .
+pdm:teamSize a owl:DatatypeProperty , owl:FunctionalProperty ;
+    rdfs:domain pdm:RepairTeam ; rdfs:range xsd:positiveInteger ; rdfs:label "численность бригады"@ru .
+pdm:stockQuantity a owl:DatatypeProperty , owl:FunctionalProperty ;
+    rdfs:domain pdm:SparePart ; rdfs:range xsd:integer ; rdfs:label "остаток на складе"@ru .
+
+# =============================================================================
+# 4. ИНДИВИДЫ: справочные данные
+# =============================================================================
+pdm:Class_L a pdm:QualityClass , owl:NamedIndividual ; rdfs:label "L - низкий"@ru ;
+    pdm:classCode "L" ; pdm:osfLimit 11000 ; pdm:wearStepMin 2 .
+pdm:Class_M a pdm:QualityClass , owl:NamedIndividual ; rdfs:label "M - средний"@ru ;
+    pdm:classCode "M" ; pdm:osfLimit 12000 ; pdm:wearStepMin 3 .
+pdm:Class_H a pdm:QualityClass , owl:NamedIndividual ; rdfs:label "H - высокий"@ru ;
+    pdm:classCode "H" ; pdm:osfLimit 13000 ; pdm:wearStepMin 5 .
+[] a owl:AllDifferent ; owl:distinctMembers ( pdm:Class_L pdm:Class_M pdm:Class_H ) .
+
+pdm:MILL_01 a pdm:MillingMachine , owl:NamedIndividual ; rdfs:label "Фрезерный станок AI4I-MILL-01"@ru ;
+    pdm:inventoryNumber "AI4I-MILL-01" ; pdm:nominalPowerW 2860.0 ; pdm:powerMinW 3500.0 ; pdm:powerMaxW 9000.0 ;
+    pdm:hasComponent pdm:Spindle_01 , pdm:Drive_01 , pdm:Cooling_01 , pdm:Tool_01 .
+pdm:Spindle_01 a pdm:Spindle , owl:NamedIndividual ; rdfs:label "Шпиндель станка MILL-01"@ru .
+pdm:Drive_01 a pdm:Drive , owl:NamedIndividual ; rdfs:label "Привод станка MILL-01"@ru .
+pdm:Cooling_01 a pdm:CoolingSystem , owl:NamedIndividual ; rdfs:label "Система охлаждения MILL-01"@ru .
+pdm:Tool_01 a pdm:CuttingTool , owl:NamedIndividual ; rdfs:label "Режущий инструмент MILL-01"@ru .
+[] a owl:AllDifferent ; owl:distinctMembers ( pdm:Spindle_01 pdm:Drive_01 pdm:Cooling_01 pdm:Tool_01 ) .
+
+pdm:S_AirTemp a pdm:TemperatureSensor , owl:NamedIndividual ; rdfs:label "Датчик температуры воздуха"@ru ; pdm:installedOn pdm:Cooling_01 .
+pdm:S_ProcTemp a pdm:TemperatureSensor , owl:NamedIndividual ; rdfs:label "Датчик температуры процесса"@ru ; pdm:installedOn pdm:Spindle_01 .
+pdm:S_Speed a pdm:SpeedSensor , owl:NamedIndividual ; rdfs:label "Датчик частоты вращения"@ru ; pdm:installedOn pdm:Spindle_01 .
+pdm:S_Torque a pdm:TorqueSensor , owl:NamedIndividual ; rdfs:label "Датчик крутящего момента"@ru ; pdm:installedOn pdm:Drive_01 .
+pdm:S_Wear a pdm:WearCounter , owl:NamedIndividual ; rdfs:label "Счётчик наработки инструмента"@ru ; pdm:installedOn pdm:Tool_01 .
+
+pdm:P_AirTemp a pdm:MonitoredParameter , owl:NamedIndividual ; rdfs:label "Температура воздуха"@ru ; pdm:unit "K" ; pdm:measuredBy pdm:S_AirTemp .
+pdm:P_ProcTemp a pdm:MonitoredParameter , owl:NamedIndividual ; rdfs:label "Температура процесса"@ru ; pdm:unit "K" ; pdm:measuredBy pdm:S_ProcTemp .
+pdm:P_Speed a pdm:MonitoredParameter , owl:NamedIndividual ; rdfs:label "Частота вращения"@ru ; pdm:unit "об/мин" ; pdm:measuredBy pdm:S_Speed .
+pdm:P_Torque a pdm:MonitoredParameter , owl:NamedIndividual ; rdfs:label "Крутящий момент"@ru ; pdm:unit "Н·м" ; pdm:measuredBy pdm:S_Torque .
+pdm:P_Wear a pdm:MonitoredParameter , owl:NamedIndividual ; rdfs:label "Износ инструмента"@ru ; pdm:unit "мин" ; pdm:measuredBy pdm:S_Wear .
+pdm:P_TempDiff a pdm:MonitoredParameter , owl:NamedIndividual ; rdfs:label "Разность температур"@ru ; pdm:unit "K" ;
+    pdm:derivedFrom pdm:P_AirTemp , pdm:P_ProcTemp .
+pdm:P_Power a pdm:MonitoredParameter , owl:NamedIndividual ; rdfs:label "Мощность привода"@ru ; pdm:unit "Вт" ;
+    pdm:derivedFrom pdm:P_Speed , pdm:P_Torque .
+pdm:P_WearTorque a pdm:MonitoredParameter , owl:NamedIndividual ; rdfs:label "Износ x момент"@ru ; pdm:unit "мин·Н·м" ;
+    pdm:derivedFrom pdm:P_Wear , pdm:P_Torque .
+
+pdm:A_ReplaceTool a pdm:MaintenanceAction , owl:NamedIndividual ; pdm:actionName "Плановая замена инструмента" .
+pdm:A_CheckCooling a pdm:MaintenanceAction , owl:NamedIndividual ; pdm:actionName "Проверка системы охлаждения" .
+pdm:A_DiagnoseDrive a pdm:MaintenanceAction , owl:NamedIndividual ; pdm:actionName "Диагностика привода" .
+pdm:A_ReduceFeed a pdm:MaintenanceAction , owl:NamedIndividual ; pdm:actionName "Снижение подачи, внеочередной осмотр" .
+pdm:A_ManualReview a pdm:MaintenanceAction , owl:NamedIndividual ; pdm:actionName "Ручной разбор мастером участка" .
+
+pdm:TWF a pdm:MechanicalFailureType , owl:NamedIndividual ; rdfs:label "Отказ по износу инструмента"@ru ;
+    pdm:failureCode "TWF" ; pdm:severityRank 1 ; pdm:affectsComponent pdm:Tool_01 ; pdm:recommendsAction pdm:A_ReplaceTool .
+pdm:HDF a pdm:ThermalFailureType , owl:NamedIndividual ; rdfs:label "Нарушение теплоотвода"@ru ;
+    pdm:failureCode "HDF" ; pdm:severityRank 2 ; pdm:affectsComponent pdm:Cooling_01 ; pdm:recommendsAction pdm:A_CheckCooling .
+pdm:OSF a pdm:MechanicalFailureType , owl:NamedIndividual ; rdfs:label "Перегрузка"@ru ;
+    pdm:failureCode "OSF" ; pdm:severityRank 3 ; pdm:affectsComponent pdm:Spindle_01 , pdm:Tool_01 ; pdm:recommendsAction pdm:A_ReduceFeed .
+pdm:PWF a pdm:ElectricalFailureType , owl:NamedIndividual ; rdfs:label "Отказ по мощности привода"@ru ;
+    pdm:failureCode "PWF" ; pdm:severityRank 4 ; pdm:affectsComponent pdm:Drive_01 ; pdm:recommendsAction pdm:A_DiagnoseDrive .
+pdm:RNF a pdm:RandomFailureType , owl:NamedIndividual ; rdfs:label "Случайный отказ"@ru ;
+    pdm:failureCode "RNF" ; pdm:severityRank 0 .
+pdm:UnknownFailure a pdm:FailureType , owl:NamedIndividual ; rdfs:label "Отказ без указания подтипа"@ru ;
+    pdm:failureCode "UNKNOWN" ; pdm:severityRank 5 ; pdm:recommendsAction pdm:A_ManualReview .
+[] a owl:AllDifferent ; owl:distinctMembers ( pdm:TWF pdm:HDF pdm:OSF pdm:PWF pdm:RNF pdm:UnknownFailure ) .
+
+pdm:R_HDF a pdm:ProductionRule , owl:NamedIndividual ; pdm:ruleCode "R-HDF" ;
+    pdm:conditionText "temperatureDifferenceK <= 8.6 AND rotationalSpeedRpm < 1380" ;
+    pdm:certaintyFactor "1.0"^^xsd:decimal ; pdm:detects pdm:HDF ; pdm:usesParameter pdm:P_TempDiff , pdm:P_Speed .
+pdm:R_PWF a pdm:ProductionRule , owl:NamedIndividual ; pdm:ruleCode "R-PWF" ;
+    pdm:conditionText "powerW < powerMinW OR powerW > powerMaxW" ;
+    pdm:certaintyFactor "1.0"^^xsd:decimal ; pdm:detects pdm:PWF ; pdm:usesParameter pdm:P_Power .
+pdm:R_OSF a pdm:ProductionRule , owl:NamedIndividual ; pdm:ruleCode "R-OSF" ;
+    pdm:conditionText "wearTorque > osfLimit(qualityClass)" ;
+    pdm:certaintyFactor "1.0"^^xsd:decimal ; pdm:detects pdm:OSF ; pdm:usesParameter pdm:P_WearTorque .
+pdm:R_TWF a pdm:ProductionRule , owl:NamedIndividual ; pdm:ruleCode "R-TWF" ;
+    pdm:conditionText "200 <= toolWearMin <= 240" ;
+    pdm:certaintyFactor "0.06"^^xsd:decimal ; pdm:detects pdm:TWF ; pdm:usesParameter pdm:P_Wear .
+
+# =============================================================================
+# 5. ИНДИВИДЫ: примеры наблюдений из набора AI4I 2020 (проверка вывода)
+# =============================================================================
+pdm:Cycle_1 a pdm:ToolLifeCycle , owl:NamedIndividual ; pdm:cycleNumber 1 ; pdm:productsProcessed 78 ;
+    pdm:wearAtEndMin 208 ; pdm:endReason "TWF" ; pdm:cycleOnEquipment pdm:MILL_01 .
+pdm:Cycle_2 a pdm:ToolLifeCycle , owl:NamedIndividual ; pdm:cycleNumber 2 ; pdm:productsProcessed 84 ;
+    pdm:wearAtEndMin 218 ; pdm:endReason "PLANNED" ; pdm:cycleOnEquipment pdm:MILL_01 .
+pdm:Cycle_39 a pdm:ToolLifeCycle , owl:NamedIndividual ; pdm:cycleNumber 39 ; pdm:productsProcessed 81 ;
+    pdm:wearAtEndMin 213 ; pdm:endReason "PLANNED" ; pdm:cycleOnEquipment pdm:MILL_01 .
+
+pdm:Product_M14860 a pdm:Product , owl:NamedIndividual ; pdm:productId "M14860" ; pdm:hasQualityClass pdm:Class_M .
+pdm:Product_L47230 a pdm:Product , owl:NamedIndividual ; pdm:productId "L47230" ; pdm:hasQualityClass pdm:Class_L .
+pdm:Product_L47257 a pdm:Product , owl:NamedIndividual ; pdm:productId "L47257" ; pdm:hasQualityClass pdm:Class_L .
+pdm:Product_L47340 a pdm:Product , owl:NamedIndividual ; pdm:productId "L47340" ; pdm:hasQualityClass pdm:Class_L .
+pdm:Product_M18096 a pdm:Product , owl:NamedIndividual ; pdm:productId "M18096" ; pdm:hasQualityClass pdm:Class_M .
+
+pdm:Obs_1 a pdm:Observation , owl:NamedIndividual ; pdm:udi 1 ; pdm:observedOn pdm:MILL_01 ;
+    pdm:processesProduct pdm:Product_M14860 ; pdm:usesToolCycle pdm:Cycle_1 ; pdm:positionInCycle 1 ;
+    pdm:airTemperatureK 298.1 ; pdm:processTemperatureK 308.6 ; pdm:rotationalSpeedRpm 1551 ; pdm:torqueNm 42.8 ;
+    pdm:toolWearMin 0 ; pdm:temperatureDifferenceK 10.5 ; pdm:powerW 6951.6 ; pdm:wearTorque 0.0 .
+pdm:Obs_51 a pdm:Observation , owl:NamedIndividual ; pdm:udi 51 ; pdm:observedOn pdm:MILL_01 ;
+    pdm:processesProduct pdm:Product_L47230 ; pdm:usesToolCycle pdm:Cycle_1 ; pdm:positionInCycle 51 ;
+    pdm:airTemperatureK 298.9 ; pdm:processTemperatureK 309.1 ; pdm:rotationalSpeedRpm 2861 ; pdm:torqueNm 4.6 ;
+    pdm:toolWearMin 143 ; pdm:temperatureDifferenceK 10.2 ; pdm:powerW 1378.2 ; pdm:wearTorque 657.8 ;
+    pdm:hasFailureEvent pdm:FE_51_PWF .
+pdm:Obs_78 a pdm:Observation , owl:NamedIndividual ; pdm:udi 78 ; pdm:observedOn pdm:MILL_01 ;
+    pdm:processesProduct pdm:Product_L47257 ; pdm:usesToolCycle pdm:Cycle_1 ; pdm:positionInCycle 78 ;
+    pdm:airTemperatureK 298.8 ; pdm:processTemperatureK 308.9 ; pdm:rotationalSpeedRpm 1455 ; pdm:torqueNm 41.3 ;
+    pdm:toolWearMin 208 ; pdm:temperatureDifferenceK 10.1 ; pdm:powerW 6292.8 ; pdm:wearTorque 8590.4 ;
+    pdm:hasFailureEvent pdm:FE_78_TWF .
+pdm:Obs_161 a pdm:Observation , owl:NamedIndividual ; pdm:udi 161 ; pdm:observedOn pdm:MILL_01 ;
+    pdm:processesProduct pdm:Product_L47340 ; pdm:usesToolCycle pdm:Cycle_2 ; pdm:positionInCycle 83 ;
+    pdm:airTemperatureK 298.4 ; pdm:processTemperatureK 308.2 ; pdm:rotationalSpeedRpm 1282 ; pdm:torqueNm 60.7 ;
+    pdm:toolWearMin 216 ; pdm:temperatureDifferenceK 9.8 ; pdm:powerW 8149.0 ; pdm:wearTorque 13111.2 ;
+    pdm:hasFailureEvent pdm:FE_161_OSF .
+pdm:Obs_3237 a pdm:Observation , owl:NamedIndividual ; pdm:udi 3237 ; pdm:observedOn pdm:MILL_01 ;
+    pdm:processesProduct pdm:Product_M18096 ; pdm:usesToolCycle pdm:Cycle_39 ; pdm:positionInCycle 44 ;
+    pdm:airTemperatureK 300.8 ; pdm:processTemperatureK 309.4 ; pdm:rotationalSpeedRpm 1342 ; pdm:torqueNm 62.4 ;
+    pdm:toolWearMin 113 ; pdm:temperatureDifferenceK 8.6 ; pdm:powerW 8769.3 ; pdm:wearTorque 7051.2 ;
+    pdm:hasFailureEvent pdm:FE_3237_HDF .
+[] a owl:AllDifferent ; owl:distinctMembers ( pdm:Obs_1 pdm:Obs_51 pdm:Obs_78 pdm:Obs_161 pdm:Obs_3237 ) .
+
+pdm:FE_51_PWF a pdm:FailureEvent , owl:NamedIndividual ; pdm:hasFailureType pdm:PWF .
+pdm:FE_78_TWF a pdm:FailureEvent , owl:NamedIndividual ; pdm:hasFailureType pdm:TWF .
+pdm:FE_161_OSF a pdm:FailureEvent , owl:NamedIndividual ; pdm:hasFailureType pdm:OSF .
+pdm:FE_3237_HDF a pdm:FailureEvent , owl:NamedIndividual ; pdm:hasFailureType pdm:HDF .
+
+# Прогнозы - результат срабатывания правил на наблюдениях
+pdm:RF_51 a pdm:RiskForecast , owl:NamedIndividual ; pdm:generatedBy pdm:R_PWF ; pdm:concernsObservation pdm:Obs_51 ;
+    pdm:predictsFailureType pdm:PWF ; pdm:riskScore "1.0"^^xsd:decimal ; pdm:riskLevel "high" .
+pdm:RF_78 a pdm:RiskForecast , owl:NamedIndividual ; pdm:generatedBy pdm:R_TWF ; pdm:concernsObservation pdm:Obs_78 ;
+    pdm:predictsFailureType pdm:TWF ; pdm:riskScore "0.06"^^xsd:decimal ; pdm:riskLevel "low" .
+pdm:RF_161 a pdm:RiskForecast , owl:NamedIndividual ; pdm:generatedBy pdm:R_OSF ; pdm:concernsObservation pdm:Obs_161 ;
+    pdm:predictsFailureType pdm:OSF ; pdm:riskScore "1.0"^^xsd:decimal ; pdm:riskLevel "high" .
+pdm:RF_3237 a pdm:RiskForecast , owl:NamedIndividual ; pdm:generatedBy pdm:R_HDF ; pdm:concernsObservation pdm:Obs_3237 ;
+    pdm:predictsFailureType pdm:HDF ; pdm:riskScore "1.0"^^xsd:decimal ; pdm:riskLevel "high" .

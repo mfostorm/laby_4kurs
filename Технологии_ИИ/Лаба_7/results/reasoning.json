@@ -1,0 +1,166 @@
+{
+ "stats": {
+  "triples": 1108,
+  "classes": 39,
+  "object_properties": 29,
+  "data_properties": 35,
+  "individuals": 57,
+  "subclass_axioms": 14,
+  "restrictions": 27,
+  "defined_classes": [
+   "ConfirmedForecast",
+   "DeterministicRule",
+   "ElectricalFailureEvent",
+   "FailedObservation",
+   "HighRiskForecast",
+   "MechanicalFailureEvent",
+   "ThermalFailureEvent"
+  ],
+  "enumerated_classes": [
+   "FailureType",
+   "QualityClass"
+  ],
+  "disjoint_groups": 4,
+  "characteristics": {
+   "FunctionalProperty": 49,
+   "InverseFunctionalProperty": 4,
+   "TransitiveProperty": 1,
+   "AsymmetricProperty": 1,
+   "IrreflexiveProperty": 2
+  }
+ },
+ "consistent": true,
+ "inferred_types": {
+  "RF_161": [
+   "ConfirmedForecast",
+   "HighRiskForecast"
+  ],
+  "R_OSF": [
+   "DeterministicRule"
+  ],
+  "Obs_3237": [
+   "FailedObservation"
+  ],
+  "FE_161_OSF": [
+   "MechanicalFailureEvent"
+  ],
+  "RF_78": [
+   "ConfirmedForecast"
+  ],
+  "Obs_78": [
+   "FailedObservation"
+  ],
+  "R_PWF": [
+   "DeterministicRule"
+  ],
+  "Obs_161": [
+   "FailedObservation"
+  ],
+  "FE_3237_HDF": [
+   "ThermalFailureEvent"
+  ],
+  "RF_51": [
+   "ConfirmedForecast",
+   "HighRiskForecast"
+  ],
+  "Obs_51": [
+   "FailedObservation"
+  ],
+  "RF_3237": [
+   "ConfirmedForecast",
+   "HighRiskForecast"
+  ],
+  "R_HDF": [
+   "DeterministicRule"
+  ],
+  "FE_51_PWF": [
+   "ElectricalFailureEvent"
+  ],
+  "FE_78_TWF": [
+   "MechanicalFailureEvent"
+  ]
+ },
+ "inferred_partof": {
+  "S_ProcTemp": [
+   "MILL_01"
+  ],
+  "S_Speed": [
+   "MILL_01"
+  ],
+  "S_Torque": [
+   "MILL_01"
+  ],
+  "S_AirTemp": [
+   "MILL_01"
+  ],
+  "S_Wear": [
+   "MILL_01"
+  ]
+ },
+ "defined_members": {
+  "ConfirmedForecast": [
+   "RF_161",
+   "RF_3237",
+   "RF_51",
+   "RF_78"
+  ],
+  "DeterministicRule": [
+   "R_HDF",
+   "R_OSF",
+   "R_PWF"
+  ],
+  "HighRiskForecast": [
+   "RF_161",
+   "RF_3237",
+   "RF_51"
+  ],
+  "MechanicalFailureEvent": [
+   "FE_161_OSF",
+   "FE_78_TWF"
+  ],
+  "ElectricalFailureEvent": [
+   "FE_51_PWF"
+  ],
+  "ThermalFailureEvent": [
+   "FE_3237_HDF"
+  ],
+  "FailedObservation": [
+   "Obs_161",
+   "Obs_3237",
+   "Obs_51",
+   "Obs_78"
+  ]
+ },
+ "negative": [
+  [
+   "Изделие с двумя классами качества (функциональное свойство)",
+   "pdm:Product_M14860 pdm:hasQualityClass pdm:Class_H .",
+   "обнаружено противоречие"
+  ],
+  [
+   "Узел одновременно шпиндель и привод (непересекающиеся классы)",
+   "pdm:Spindle_01 a pdm:Drive .",
+   "обнаружено противоречие"
+  ],
+  [
+   "Коэффициент уверенности 1,5 (вне диапазона 0..1)",
+   "pdm:R_X a pdm:ProductionRule ; pdm:detects pdm:HDF ; pdm:usesParameter pdm:P_TempDiff ; pdm:certaintyFactor \"1.5\"^^xsd:decimal .",
+   "обнаружено противоречие"
+  ],
+  [
+   "Наблюдение, следующее само за собой (иррефлексивное свойство)",
+   "pdm:Obs_1 pdm:nextObservation pdm:Obs_1 .",
+   "обнаружено противоречие"
+  ],
+  [
+   "Уровень риска \"critical\" (не из перечисления low/medium/high)",
+   "pdm:RF_X a pdm:RiskForecast ; pdm:generatedBy pdm:R_HDF ; pdm:concernsObservation pdm:Obs_1 ; pdm:riskLevel \"critical\" .",
+   "обнаружено противоречие"
+  ],
+  [
+   "Новый класс качества \"X\" (класс закрыт перечислением L, M, H)",
+   "pdm:Class_X a pdm:QualityClass , owl:NamedIndividual ; pdm:classCode \"X\" . [] a owl:AllDifferent ; owl:distinctMembers ( pdm:Class_X pdm:Class_L pdm:Class_M pdm:Class_H ) .",
+   "обнаружено противоречие"
+  ]
+ ]
+}

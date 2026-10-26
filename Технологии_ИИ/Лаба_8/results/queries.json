@@ -1,0 +1,521 @@
+{
+ "graph": {
+  "triples": 211865,
+  "nodes": 21651,
+  "edges": 54643
+ },
+ "q1": {
+  "sparql": "SELECT ?direction ?relation ?neighbour ?type WHERE {\n  { pdm:Obs_161 ?relation ?neighbour . BIND(\"->\" AS ?direction) }\n  UNION\n  { ?neighbour ?relation pdm:Obs_161 . BIND(\"<-\" AS ?direction) }\n  ?relation a owl:ObjectProperty .\n  ?neighbour a ?type . FILTER(?type != owl:NamedIndividual)\n} ORDER BY ?direction ?relation",
+  "rows": [
+   [
+    "->",
+    "hasFailureEvent",
+    "FE_161_OSF",
+    "FailureEvent"
+   ],
+   [
+    "->",
+    "nextObservation",
+    "Obs_162",
+    "Observation"
+   ],
+   [
+    "->",
+    "observedOn",
+    "MILL_01",
+    "MillingMachine"
+   ],
+   [
+    "->",
+    "processesProduct",
+    "Product_L47340",
+    "Product"
+   ],
+   [
+    "->",
+    "usesToolCycle",
+    "Cycle_2",
+    "ToolLifeCycle"
+   ],
+   [
+    "<-",
+    "concernsObservation",
+    "RF_161_OSF",
+    "RiskForecast"
+   ],
+   [
+    "<-",
+    "concernsObservation",
+    "RF_161_TWF",
+    "RiskForecast"
+   ],
+   [
+    "<-",
+    "nextObservation",
+    "Obs_160",
+    "Observation"
+   ],
+   [
+    "<-",
+    "occurredDuring",
+    "FE_161_OSF",
+    "FailureEvent"
+   ]
+  ],
+  "ms": 148.94786000013482
+ },
+ "q2": {
+  "src": "S_ProcTemp",
+  "dst": "FE_3237_HDF",
+  "path": [
+   [
+    "S_ProcTemp",
+    "-installedOn->",
+    "Spindle_01"
+   ],
+   [
+    "Spindle_01",
+    "<-hasComponent-",
+    "MILL_01"
+   ],
+   [
+    "MILL_01",
+    "<-observedOn-",
+    "Obs_3237"
+   ],
+   [
+    "Obs_3237",
+    "-hasFailureEvent->",
+    "FE_3237_HDF"
+   ]
+  ],
+  "path_knowledge": [
+   [
+    "S_ProcTemp",
+    "<-measuredBy-",
+    "P_ProcTemp"
+   ],
+   [
+    "P_ProcTemp",
+    "<-derivedFrom-",
+    "P_TempDiff"
+   ],
+   [
+    "P_TempDiff",
+    "<-usesParameter-",
+    "R_HDF"
+   ],
+   [
+    "R_HDF",
+    "-detects->",
+    "HDF"
+   ],
+   [
+    "HDF",
+    "<-hasFailureType-",
+    "FE_3237_HDF"
+   ]
+  ],
+  "ms": 0.47142600010374736,
+  "sparql": "ASK { pdm:FE_3237_HDF pdm:hasFailureType ?ft .\n      ?rule pdm:detects ?ft ; pdm:usesParameter/pdm:derivedFrom*/pdm:measuredBy pdm:S_ProcTemp . }",
+  "ask": true,
+  "algorithm": "BFS (nx.shortest_path, невзвешенный граф)"
+ },
+ "q3": {
+  "rows": [
+   [
+    "MILL_01",
+    "MillingMachine",
+    10124
+   ],
+   [
+    "Class_L",
+    "QualityClass",
+    6000
+   ],
+   [
+    "Class_M",
+    "QualityClass",
+    2997
+   ],
+   [
+    "Class_H",
+    "QualityClass",
+    1003
+   ],
+   [
+    "TWF",
+    "MechanicalFailureType",
+    839
+   ],
+   [
+    "R_TWF",
+    "ProductionRule",
+    792
+   ],
+   [
+    "HDF",
+    "ThermalFailureType",
+    248
+   ],
+   [
+    "OSF",
+    "MechanicalFailureType",
+    200
+   ],
+   [
+    "PWF",
+    "ElectricalFailureType",
+    193
+   ],
+   [
+    "R_HDF",
+    "ProductionRule",
+    133
+   ]
+  ],
+  "ms": 42.534651000096346
+ },
+ "q4a": {
+  "sparql": "SELECT ?rule (COUNT(DISTINCT ?rf) AS ?fired) (COUNT(DISTINCT ?fe) AS ?confirmed) WHERE {\n  ?rf pdm:generatedBy ?r ; pdm:predictsFailureType ?ft ; pdm:concernsObservation ?obs .\n  ?r pdm:ruleCode ?rule .\n  OPTIONAL { ?obs pdm:hasFailureEvent ?fe . ?fe pdm:hasFailureType ?ft . }\n} GROUP BY ?rule ORDER BY ?rule",
+  "rows": [
+   [
+    "R-HDF",
+    130,
+    115
+   ],
+   [
+    "R-OSF",
+    98,
+    98
+   ],
+   [
+    "R-PWF",
+    95,
+    95
+   ],
+   [
+    "R-TWF",
+    790,
+    43
+   ]
+  ],
+  "ms": 1520.0386980000076
+ },
+ "q4b": {
+  "sparql": "SELECT ?code (COUNT(DISTINCT ?fe) AS ?events) (COUNT(DISTINCT ?rf) AS ?predicted) WHERE {\n  ?fe a pdm:FailureEvent ; pdm:hasFailureType ?ft ; pdm:occurredDuring ?obs .\n  ?ft pdm:failureCode ?code .\n  OPTIONAL { ?rf pdm:concernsObservation ?obs ; pdm:predictsFailureType ?ft . }\n} GROUP BY ?code ORDER BY ?code",
+  "rows": [
+   [
+    "HDF",
+    115,
+    115
+   ],
+   [
+    "OSF",
+    98,
+    98
+   ],
+   [
+    "PWF",
+    95,
+    95
+   ],
+   [
+    "RNF",
+    19,
+    0
+   ],
+   [
+    "TWF",
+    46,
+    43
+   ],
+   [
+    "UNKNOWN",
+    9,
+    0
+   ]
+  ],
+  "ms": 104.03975400004128
+ },
+ "q4c": {
+  "sparql": "SELECT ?mechanism ?component ?action (COUNT(?fe) AS ?failures) WHERE {\n  ?fe pdm:hasFailureType ?ft .\n  ?ft a ?mclass . ?mclass rdfs:subClassOf pdm:FailureType ; rdfs:label ?mechanism .\n  ?ft pdm:affectsComponent ?c ; pdm:recommendsAction ?a .\n  ?c rdfs:label ?component . ?a pdm:actionName ?action .\n  FILTER(lang(?mechanism) = \"ru\" && lang(?component) = \"ru\")\n} GROUP BY ?mechanism ?component ?action ORDER BY DESC(?failures)",
+  "rows": [
+   [
+    "Тепловой тип отказа",
+    "Система охлаждения MILL-01",
+    "Проверка системы охлаждения",
+    115
+   ],
+   [
+    "Механический тип отказа",
+    "Шпиндель станка MILL-01",
+    "Снижение подачи, внеочередной осмотр",
+    98
+   ],
+   [
+    "Механический тип отказа",
+    "Режущий инструмент MILL-01",
+    "Снижение подачи, внеочередной осмотр",
+    98
+   ],
+   [
+    "Электрический тип отказа",
+    "Привод станка MILL-01",
+    "Диагностика привода",
+    95
+   ],
+   [
+    "Механический тип отказа",
+    "Режущий инструмент MILL-01",
+    "Плановая замена инструмента",
+    46
+   ]
+  ],
+  "ms": 111.89849200013668
+ },
+ "q4d": {
+  "sparql": "SELECT ?cycle ?failPos (MIN(?pos) AS ?firstAlertPos) WHERE {\n  ?fe pdm:hasFailureType pdm:TWF ; pdm:occurredDuring ?fobs .\n  ?fobs pdm:usesToolCycle ?c ; pdm:positionInCycle ?failPos .\n  ?c pdm:cycleNumber ?cycle .\n  ?rf pdm:generatedBy pdm:R_TWF ; pdm:concernsObservation ?obs .\n  ?obs pdm:usesToolCycle ?c ; pdm:positionInCycle ?pos .\n} GROUP BY ?cycle ?failPos ORDER BY ?cycle",
+  "rows": [
+   [
+    1,
+    78,
+    74
+   ],
+   [
+    13,
+    81,
+    79
+   ],
+   [
+    18,
+    88,
+    80
+   ],
+   [
+    20,
+    87,
+    78
+   ],
+   [
+    21,
+    81,
+    78
+   ],
+   [
+    26,
+    84,
+    74
+   ],
+   [
+    27,
+    78,
+    77
+   ],
+   [
+    32,
+    82,
+    76
+   ],
+   [
+    34,
+    101,
+    83
+   ],
+   [
+    35,
+    77,
+    76
+   ],
+   [
+    42,
+    79,
+    75
+   ],
+   [
+    43,
+    82,
+    80
+   ],
+   [
+    44,
+    84,
+    81
+   ],
+   [
+    46,
+    88,
+    79
+   ],
+   [
+    48,
+    90,
+    78
+   ],
+   [
+    50,
+    86,
+    79
+   ],
+   [
+    52,
+    88,
+    75
+   ],
+   [
+    53,
+    84,
+    79
+   ],
+   [
+    55,
+    94,
+    80
+   ],
+   [
+    57,
+    81,
+    76
+   ],
+   [
+    61,
+    79,
+    78
+   ],
+   [
+    63,
+    88,
+    84
+   ],
+   [
+    64,
+    92,
+    72
+   ],
+   [
+    70,
+    83,
+    81
+   ],
+   [
+    71,
+    90,
+    77
+   ],
+   [
+    73,
+    89,
+    81
+   ],
+   [
+    74,
+    84,
+    81
+   ],
+   [
+    75,
+    84,
+    80
+   ],
+   [
+    76,
+    79,
+    77
+   ],
+   [
+    80,
+    82,
+    79
+   ],
+   [
+    84,
+    83,
+    75
+   ],
+   [
+    88,
+    88,
+    82
+   ],
+   [
+    89,
+    84,
+    78
+   ],
+   [
+    91,
+    94,
+    81
+   ],
+   [
+    93,
+    88,
+    80
+   ],
+   [
+    96,
+    83,
+    81
+   ],
+   [
+    97,
+    88,
+    78
+   ],
+   [
+    99,
+    74,
+    73
+   ],
+   [
+    102,
+    88,
+    81
+   ],
+   [
+    103,
+    81,
+    78
+   ],
+   [
+    105,
+    75,
+    74
+   ],
+   [
+    107,
+    89,
+    83
+   ],
+   [
+    109,
+    77,
+    77
+   ],
+   [
+    114,
+    80,
+    79
+   ],
+   [
+    116,
+    87,
+    81
+   ]
+  ],
+  "ms": 1884.6660089998295,
+  "cycles": 45,
+  "lead_mean": 6.088888888888889,
+  "lead_min": 0,
+  "lead_max": 20,
+  "zero_lead": 1
+ },
+ "checks": {
+  "наблюдение без изделия": 0,
+  "наблюдение с >1 циклом": 0,
+  "изделие с >1 классом": 0,
+  "событие без типа": 0,
+  "прогноз без правила": 0,
+  "уровень риска вне перечисления": 0
+ }
+}
