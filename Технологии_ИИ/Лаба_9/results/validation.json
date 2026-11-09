@@ -1,0 +1,137 @@
+{
+  "rules": 24,
+  "features": 19,
+  "groups": {
+    "Диагностика": 5,
+    "Профилактика": 3,
+    "Оценка риска": 8,
+    "Рекомендации": 8
+  },
+  "identical_conflicts": [],
+  "cases": [
+    {
+      "name": "Нормальный режим",
+      "matched": [],
+      "passed": true
+    },
+    {
+      "name": "Низкая мощность",
+      "matched": [
+        "R001"
+      ],
+      "passed": true
+    },
+    {
+      "name": "Высокая мощность",
+      "matched": [
+        "R002"
+      ],
+      "passed": true
+    },
+    {
+      "name": "Перегрузка L",
+      "matched": [
+        "R003"
+      ],
+      "passed": true
+    },
+    {
+      "name": "Теплоотвод",
+      "matched": [
+        "R004"
+      ],
+      "passed": true
+    },
+    {
+      "name": "Только зона износа",
+      "matched": [
+        "R005",
+        "R008"
+      ],
+      "passed": true
+    },
+    {
+      "name": "Приоритет мощности над перегрузкой",
+      "matched": [
+        "R002",
+        "R003"
+      ],
+      "passed": true
+    },
+    {
+      "name": "Ровно 8.6 K",
+      "matched": [],
+      "passed": true
+    },
+    {
+      "name": "Ровно 1380 об/мин",
+      "matched": [],
+      "passed": true
+    },
+    {
+      "name": "Ровно 3500 Вт",
+      "matched": [
+        "R006"
+      ],
+      "passed": true
+    },
+    {
+      "name": "Ровно 9000 Вт",
+      "matched": [
+        "R006"
+      ],
+      "passed": true
+    },
+    {
+      "name": "Ровно порог OSF L",
+      "matched": [
+        "R007"
+      ],
+      "passed": true
+    },
+    {
+      "name": "Износ 180 мин",
+      "matched": [
+        "R008"
+      ],
+      "passed": true
+    },
+    {
+      "name": "Износ 240 мин включительно",
+      "matched": [
+        "R005",
+        "R008"
+      ],
+      "passed": true
+    },
+    {
+      "name": "Износ 241 мин",
+      "matched": [
+        "R008"
+      ],
+      "passed": true
+    },
+    {
+      "name": "Перегрузка M",
+      "matched": [
+        "R003"
+      ],
+      "passed": true
+    },
+    {
+      "name": "Ровно порог OSF H",
+      "matched": [
+        "R007"
+      ],
+      "passed": true
+    },
+    {
+      "name": "Равные приоритеты: более ранний ID",
+      "matched": [
+        "R006",
+        "R007"
+      ],
+      "passed": true
+    }
+  ]
+}

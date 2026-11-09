@@ -1,0 +1,3599 @@
+<?xml version='1.0' encoding='utf-8'?>
+<graphml xmlns="http://graphml.graphdrawing.org/xmlns" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://graphml.graphdrawing.org/xmlns http://graphml.graphdrawing.org/xmlns/1.0/graphml.xsd"><key id="d7" for="edge" attr.name="count" attr.type="long"/>
+<key id="d6" for="edge" attr.name="edge_type" attr.type="string"/>
+<key id="d5" for="node" attr.name="description" attr.type="string"/>
+<key id="d4" for="node" attr.name="osf_limit" attr.type="long"/>
+<key id="d3" for="node" attr.name="end_reason" attr.type="string"/>
+<key id="d2" for="node" attr.name="products" attr.type="long"/>
+<key id="d1" for="node" attr.name="name" attr.type="string"/>
+<key id="d0" for="node" attr.name="node_type" attr.type="string"/>
+<graph edgedefault="directed"><node id="E1">
+  <data key="d0">Станок</data>
+  <data key="d1">AI4I-MILL-01</data>
+</node>
+<node id="C1">
+  <data key="d0">Цикл</data>
+  <data key="d1">Цикл 1</data>
+  <data key="d2">78</data>
+  <data key="d3">TWF</data>
+</node>
+<node id="C2">
+  <data key="d0">Цикл</data>
+  <data key="d1">Цикл 2</data>
+  <data key="d2">84</data>
+  <data key="d3">PLANNED</data>
+</node>
+<node id="C3">
+  <data key="d0">Цикл</data>
+  <data key="d1">Цикл 3</data>
+  <data key="d2">88</data>
+  <data key="d3">PLANNED</data>
+</node>
+<node id="C4">
+  <data key="d0">Цикл</data>
+  <data key="d1">Цикл 4</data>
+  <data key="d2">82</data>
+  <data key="d3">PLANNED</data>
+</node>
+<node id="C5">
+  <data key="d0">Цикл</data>
+  <data key="d1">Цикл 5</data>
+  <data key="d2">86</data>
+  <data key="d3">PLANNED</data>
+</node>
+<node id="C6">
+  <data key="d0">Цикл</data>
+  <data key="d1">Цикл 6</data>
+  <data key="d2">85</data>
+  <data key="d3">PLANNED</data>
+</node>
+<node id="C7">
+  <data key="d0">Цикл</data>
+  <data key="d1">Цикл 7</data>
+  <data key="d2">90</data>
+  <data key="d3">PLANNED</data>
+</node>
+<node id="C8">
+  <data key="d0">Цикл</data>
+  <data key="d1">Цикл 8</data>
+  <data key="d2">81</data>
+  <data key="d3">PLANNED</data>
+</node>
+<node id="C9">
+  <data key="d0">Цикл</data>
+  <data key="d1">Цикл 9</data>
+  <data key="d2">88</data>
+  <data key="d3">PLANNED</data>
+</node>
+<node id="C10">
+  <data key="d0">Цикл</data>
+  <data key="d1">Цикл 10</data>
+  <data key="d2">87</data>
+  <data key="d3">PLANNED</data>
+</node>
+<node id="C11">
+  <data key="d0">Цикл</data>
+  <data key="d1">Цикл 11</data>
+  <data key="d2">78</data>
+  <data key="d3">PLANNED</data>
+</node>
+<node id="C12">
+  <data key="d0">Цикл</data>
+  <data key="d1">Цикл 12</data>
+  <data key="d2">80</data>
+  <data key="d3">PLANNED</data>
+</node>
+<node id="C13">
+  <data key="d0">Цикл</data>
+  <data key="d1">Цикл 13</data>
+  <data key="d2">81</data>
+  <data key="d3">TWF</data>
+</node>
+<node id="C14">
+  <data key="d0">Цикл</data>
+  <data key="d1">Цикл 14</data>
+  <data key="d2">86</data>
+  <data key="d3">PLANNED</data>
+</node>
+<node id="C15">
+  <data key="d0">Цикл</data>
+  <data key="d1">Цикл 15</data>
+  <data key="d2">79</data>
+  <data key="d3">PLANNED</data>
+</node>
+<node id="C16">
+  <data key="d0">Цикл</data>
+  <data key="d1">Цикл 16</data>
+  <data key="d2">84</data>
+  <data key="d3">PLANNED</data>
+</node>
+<node id="C17">
+  <data key="d0">Цикл</data>
+  <data key="d1">Цикл 17</data>
+  <data key="d2">85</data>
+  <data key="d3">PLANNED</data>
+</node>
+<node id="C18">
+  <data key="d0">Цикл</data>
+  <data key="d1">Цикл 18</data>
+  <data key="d2">88</data>
+  <data key="d3">TWF</data>
+</node>
+<node id="C19">
+  <data key="d0">Цикл</data>
+  <data key="d1">Цикл 19</data>
+  <data key="d2">86</data>
+  <data key="d3">PLANNED</data>
+</node>
+<node id="C20">
+  <data key="d0">Цикл</data>
+  <data key="d1">Цикл 20</data>
+  <data key="d2">87</data>
+  <data key="d3">TWF</data>
+</node>
+<node id="C21">
+  <data key="d0">Цикл</data>
+  <data key="d1">Цикл 21</data>
+  <data key="d2">81</data>
+  <data key="d3">TWF</data>
+</node>
+<node id="C22">
+  <data key="d0">Цикл</data>
+  <data key="d1">Цикл 22</data>
+  <data key="d2">75</data>
+  <data key="d3">PLANNED</data>
+</node>
+<node id="C23">
+  <data key="d0">Цикл</data>
+  <data key="d1">Цикл 23</data>
+  <data key="d2">79</data>
+  <data key="d3">PLANNED</data>
+</node>
+<node id="C24">
+  <data key="d0">Цикл</data>
+  <data key="d1">Цикл 24</data>
+  <data key="d2">79</data>
+  <data key="d3">TWF</data>
+</node>
+<node id="C25">
+  <data key="d0">Цикл</data>
+  <data key="d1">Цикл 25</data>
+  <data key="d2">86</data>
+  <data key="d3">PLANNED</data>
+</node>
+<node id="C26">
+  <data key="d0">Цикл</data>
+  <data key="d1">Цикл 26</data>
+  <data key="d2">84</data>
+  <data key="d3">TWF</data>
+</node>
+<node id="C27">
+  <data key="d0">Цикл</data>
+  <data key="d1">Цикл 27</data>
+  <data key="d2">78</data>
+  <data key="d3">TWF</data>
+</node>
+<node id="C28">
+  <data key="d0">Цикл</data>
+  <data key="d1">Цикл 28</data>
+  <data key="d2">90</data>
+  <data key="d3">PLANNED</data>
+</node>
+<node id="C29">
+  <data key="d0">Цикл</data>
+  <data key="d1">Цикл 29</data>
+  <data key="d2">79</data>
+  <data key="d3">PLANNED</data>
+</node>
+<node id="C30">
+  <data key="d0">Цикл</data>
+  <data key="d1">Цикл 30</data>
+  <data key="d2">89</data>
+  <data key="d3">PLANNED</data>
+</node>
+<node id="C31">
+  <data key="d0">Цикл</data>
+  <data key="d1">Цикл 31</data>
+  <data key="d2">87</data>
+  <data key="d3">PLANNED</data>
+</node>
+<node id="C32">
+  <data key="d0">Цикл</data>
+  <data key="d1">Цикл 32</data>
+  <data key="d2">82</data>
+  <data key="d3">TWF</data>
+</node>
+<node id="C33">
+  <data key="d0">Цикл</data>
+  <data key="d1">Цикл 33</data>
+  <data key="d2">92</data>
+  <data key="d3">PLANNED</data>
+</node>
+<node id="C34">
+  <data key="d0">Цикл</data>
+  <data key="d1">Цикл 34</data>
+  <data key="d2">101</data>
+  <data key="d3">TWF</data>
+</node>
+<node id="C35">
+  <data key="d0">Цикл</data>
+  <data key="d1">Цикл 35</data>
+  <data key="d2">77</data>
+  <data key="d3">TWF</data>
+</node>
+<node id="C36">
+  <data key="d0">Цикл</data>
+  <data key="d1">Цикл 36</data>
+  <data key="d2">85</data>
+  <data key="d3">PLANNED</data>
+</node>
+<node id="C37">
+  <data key="d0">Цикл</data>
+  <data key="d1">Цикл 37</data>
+  <data key="d2">83</data>
+  <data key="d3">PLANNED</data>
+</node>
+<node id="C38">
+  <data key="d0">Цикл</data>
+  <data key="d1">Цикл 38</data>
+  <data key="d2">83</data>
+  <data key="d3">PLANNED</data>
+</node>
+<node id="C39">
+  <data key="d0">Цикл</data>
+  <data key="d1">Цикл 39</data>
+  <data key="d2">81</data>
+  <data key="d3">PLANNED</data>
+</node>
+<node id="C40">
+  <data key="d0">Цикл</data>
+  <data key="d1">Цикл 40</data>
+  <data key="d2">90</data>
+  <data key="d3">PLANNED</data>
+</node>
+<node id="C41">
+  <data key="d0">Цикл</data>
+  <data key="d1">Цикл 41</data>
+  <data key="d2">87</data>
+  <data key="d3">PLANNED</data>
+</node>
+<node id="C42">
+  <data key="d0">Цикл</data>
+  <data key="d1">Цикл 42</data>
+  <data key="d2">79</data>
+  <data key="d3">TWF</data>
+</node>
+<node id="C43">
+  <data key="d0">Цикл</data>
+  <data key="d1">Цикл 43</data>
+  <data key="d2">82</data>
+  <data key="d3">TWF</data>
+</node>
+<node id="C44">
+  <data key="d0">Цикл</data>
+  <data key="d1">Цикл 44</data>
+  <data key="d2">84</data>
+  <data key="d3">TWF</data>
+</node>
+<node id="C45">
+  <data key="d0">Цикл</data>
+  <data key="d1">Цикл 45</data>
+  <data key="d2">82</data>
+  <data key="d3">PLANNED</data>
+</node>
+<node id="C46">
+  <data key="d0">Цикл</data>
+  <data key="d1">Цикл 46</data>
+  <data key="d2">88</data>
+  <data key="d3">TWF</data>
+</node>
+<node id="C47">
+  <data key="d0">Цикл</data>
+  <data key="d1">Цикл 47</data>
+  <data key="d2">79</data>
+  <data key="d3">PLANNED</data>
+</node>
+<node id="C48">
+  <data key="d0">Цикл</data>
+  <data key="d1">Цикл 48</data>
+  <data key="d2">90</data>
+  <data key="d3">TWF</data>
+</node>
+<node id="C49">
+  <data key="d0">Цикл</data>
+  <data key="d1">Цикл 49</data>
+  <data key="d2">87</data>
+  <data key="d3">PLANNED</data>
+</node>
+<node id="C50">
+  <data key="d0">Цикл</data>
+  <data key="d1">Цикл 50</data>
+  <data key="d2">86</data>
+  <data key="d3">TWF</data>
+</node>
+<node id="C51">
+  <data key="d0">Цикл</data>
+  <data key="d1">Цикл 51</data>
+  <data key="d2">90</data>
+  <data key="d3">PLANNED</data>
+</node>
+<node id="C52">
+  <data key="d0">Цикл</data>
+  <data key="d1">Цикл 52</data>
+  <data key="d2">88</data>
+  <data key="d3">TWF</data>
+</node>
+<node id="C53">
+  <data key="d0">Цикл</data>
+  <data key="d1">Цикл 53</data>
+  <data key="d2">84</data>
+  <data key="d3">TWF</data>
+</node>
+<node id="C54">
+  <data key="d0">Цикл</data>
+  <data key="d1">Цикл 54</data>
+  <data key="d2">83</data>
+  <data key="d3">PLANNED</data>
+</node>
+<node id="C55">
+  <data key="d0">Цикл</data>
+  <data key="d1">Цикл 55</data>
+  <data key="d2">94</data>
+  <data key="d3">TWF</data>
+</node>
+<node id="C56">
+  <data key="d0">Цикл</data>
+  <data key="d1">Цикл 56</data>
+  <data key="d2">89</data>
+  <data key="d3">PLANNED</data>
+</node>
+<node id="C57">
+  <data key="d0">Цикл</data>
+  <data key="d1">Цикл 57</data>
+  <data key="d2">81</data>
+  <data key="d3">TWF</data>
+</node>
+<node id="C58">
+  <data key="d0">Цикл</data>
+  <data key="d1">Цикл 58</data>
+  <data key="d2">86</data>
+  <data key="d3">PLANNED</data>
+</node>
+<node id="C59">
+  <data key="d0">Цикл</data>
+  <data key="d1">Цикл 59</data>
+  <data key="d2">83</data>
+  <data key="d3">PLANNED</data>
+</node>
+<node id="C60">
+  <data key="d0">Цикл</data>
+  <data key="d1">Цикл 60</data>
+  <data key="d2">77</data>
+  <data key="d3">PLANNED</data>
+</node>
+<node id="C61">
+  <data key="d0">Цикл</data>
+  <data key="d1">Цикл 61</data>
+  <data key="d2">79</data>
+  <data key="d3">TWF</data>
+</node>
+<node id="C62">
+  <data key="d0">Цикл</data>
+  <data key="d1">Цикл 62</data>
+  <data key="d2">80</data>
+  <data key="d3">PLANNED</data>
+</node>
+<node id="C63">
+  <data key="d0">Цикл</data>
+  <data key="d1">Цикл 63</data>
+  <data key="d2">88</data>
+  <data key="d3">TWF</data>
+</node>
+<node id="C64">
+  <data key="d0">Цикл</data>
+  <data key="d1">Цикл 64</data>
+  <data key="d2">92</data>
+  <data key="d3">TWF</data>
+</node>
+<node id="C65">
+  <data key="d0">Цикл</data>
+  <data key="d1">Цикл 65</data>
+  <data key="d2">88</data>
+  <data key="d3">PLANNED</data>
+</node>
+<node id="C66">
+  <data key="d0">Цикл</data>
+  <data key="d1">Цикл 66</data>
+  <data key="d2">77</data>
+  <data key="d3">PLANNED</data>
+</node>
+<node id="C67">
+  <data key="d0">Цикл</data>
+  <data key="d1">Цикл 67</data>
+  <data key="d2">87</data>
+  <data key="d3">PLANNED</data>
+</node>
+<node id="C68">
+  <data key="d0">Цикл</data>
+  <data key="d1">Цикл 68</data>
+  <data key="d2">84</data>
+  <data key="d3">PLANNED</data>
+</node>
+<node id="C69">
+  <data key="d0">Цикл</data>
+  <data key="d1">Цикл 69</data>
+  <data key="d2">89</data>
+  <data key="d3">PLANNED</data>
+</node>
+<node id="C70">
+  <data key="d0">Цикл</data>
+  <data key="d1">Цикл 70</data>
+  <data key="d2">83</data>
+  <data key="d3">TWF</data>
+</node>
+<node id="C71">
+  <data key="d0">Цикл</data>
+  <data key="d1">Цикл 71</data>
+  <data key="d2">90</data>
+  <data key="d3">TWF</data>
+</node>
+<node id="C72">
+  <data key="d0">Цикл</data>
+  <data key="d1">Цикл 72</data>
+  <data key="d2">84</data>
+  <data key="d3">PLANNED</data>
+</node>
+<node id="C73">
+  <data key="d0">Цикл</data>
+  <data key="d1">Цикл 73</data>
+  <data key="d2">89</data>
+  <data key="d3">TWF</data>
+</node>
+<node id="C74">
+  <data key="d0">Цикл</data>
+  <data key="d1">Цикл 74</data>
+  <data key="d2">84</data>
+  <data key="d3">TWF</data>
+</node>
+<node id="C75">
+  <data key="d0">Цикл</data>
+  <data key="d1">Цикл 75</data>
+  <data key="d2">84</data>
+  <data key="d3">TWF</data>
+</node>
+<node id="C76">
+  <data key="d0">Цикл</data>
+  <data key="d1">Цикл 76</data>
+  <data key="d2">79</data>
+  <data key="d3">TWF</data>
+</node>
+<node id="C77">
+  <data key="d0">Цикл</data>
+  <data key="d1">Цикл 77</data>
+  <data key="d2">87</data>
+  <data key="d3">PLANNED</data>
+</node>
+<node id="C78">
+  <data key="d0">Цикл</data>
+  <data key="d1">Цикл 78</data>
+  <data key="d2">82</data>
+  <data key="d3">PLANNED</data>
+</node>
+<node id="C79">
+  <data key="d0">Цикл</data>
+  <data key="d1">Цикл 79</data>
+  <data key="d2">89</data>
+  <data key="d3">PLANNED</data>
+</node>
+<node id="C80">
+  <data key="d0">Цикл</data>
+  <data key="d1">Цикл 80</data>
+  <data key="d2">82</data>
+  <data key="d3">TWF</data>
+</node>
+<node id="C81">
+  <data key="d0">Цикл</data>
+  <data key="d1">Цикл 81</data>
+  <data key="d2">85</data>
+  <data key="d3">PLANNED</data>
+</node>
+<node id="C82">
+  <data key="d0">Цикл</data>
+  <data key="d1">Цикл 82</data>
+  <data key="d2">81</data>
+  <data key="d3">PLANNED</data>
+</node>
+<node id="C83">
+  <data key="d0">Цикл</data>
+  <data key="d1">Цикл 83</data>
+  <data key="d2">79</data>
+  <data key="d3">PLANNED</data>
+</node>
+<node id="C84">
+  <data key="d0">Цикл</data>
+  <data key="d1">Цикл 84</data>
+  <data key="d2">83</data>
+  <data key="d3">TWF</data>
+</node>
+<node id="C85">
+  <data key="d0">Цикл</data>
+  <data key="d1">Цикл 85</data>
+  <data key="d2">80</data>
+  <data key="d3">PLANNED</data>
+</node>
+<node id="C86">
+  <data key="d0">Цикл</data>
+  <data key="d1">Цикл 86</data>
+  <data key="d2">88</data>
+  <data key="d3">PLANNED</data>
+</node>
+<node id="C87">
+  <data key="d0">Цикл</data>
+  <data key="d1">Цикл 87</data>
+  <data key="d2">83</data>
+  <data key="d3">PLANNED</data>
+</node>
+<node id="C88">
+  <data key="d0">Цикл</data>
+  <data key="d1">Цикл 88</data>
+  <data key="d2">88</data>
+  <data key="d3">TWF</data>
+</node>
+<node id="C89">
+  <data key="d0">Цикл</data>
+  <data key="d1">Цикл 89</data>
+  <data key="d2">84</data>
+  <data key="d3">TWF</data>
+</node>
+<node id="C90">
+  <data key="d0">Цикл</data>
+  <data key="d1">Цикл 90</data>
+  <data key="d2">83</data>
+  <data key="d3">PLANNED</data>
+</node>
+<node id="C91">
+  <data key="d0">Цикл</data>
+  <data key="d1">Цикл 91</data>
+  <data key="d2">94</data>
+  <data key="d3">TWF</data>
+</node>
+<node id="C92">
+  <data key="d0">Цикл</data>
+  <data key="d1">Цикл 92</data>
+  <data key="d2">74</data>
+  <data key="d3">PLANNED</data>
+</node>
+<node id="C93">
+  <data key="d0">Цикл</data>
+  <data key="d1">Цикл 93</data>
+  <data key="d2">88</data>
+  <data key="d3">TWF</data>
+</node>
+<node id="C94">
+  <data key="d0">Цикл</data>
+  <data key="d1">Цикл 94</data>
+  <data key="d2">90</data>
+  <data key="d3">PLANNED</data>
+</node>
+<node id="C95">
+  <data key="d0">Цикл</data>
+  <data key="d1">Цикл 95</data>
+  <data key="d2">89</data>
+  <data key="d3">PLANNED</data>
+</node>
+<node id="C96">
+  <data key="d0">Цикл</data>
+  <data key="d1">Цикл 96</data>
+  <data key="d2">83</data>
+  <data key="d3">TWF</data>
+</node>
+<node id="C97">
+  <data key="d0">Цикл</data>
+  <data key="d1">Цикл 97</data>
+  <data key="d2">88</data>
+  <data key="d3">TWF</data>
+</node>
+<node id="C98">
+  <data key="d0">Цикл</data>
+  <data key="d1">Цикл 98</data>
+  <data key="d2">84</data>
+  <data key="d3">PLANNED</data>
+</node>
+<node id="C99">
+  <data key="d0">Цикл</data>
+  <data key="d1">Цикл 99</data>
+  <data key="d2">74</data>
+  <data key="d3">TWF</data>
+</node>
+<node id="C100">
+  <data key="d0">Цикл</data>
+  <data key="d1">Цикл 100</data>
+  <data key="d2">82</data>
+  <data key="d3">PLANNED</data>
+</node>
+<node id="C101">
+  <data key="d0">Цикл</data>
+  <data key="d1">Цикл 101</data>
+  <data key="d2">82</data>
+  <data key="d3">PLANNED</data>
+</node>
+<node id="C102">
+  <data key="d0">Цикл</data>
+  <data key="d1">Цикл 102</data>
+  <data key="d2">88</data>
+  <data key="d3">TWF</data>
+</node>
+<node id="C103">
+  <data key="d0">Цикл</data>
+  <data key="d1">Цикл 103</data>
+  <data key="d2">81</data>
+  <data key="d3">TWF</data>
+</node>
+<node id="C104">
+  <data key="d0">Цикл</data>
+  <data key="d1">Цикл 104</data>
+  <data key="d2">81</data>
+  <data key="d3">PLANNED</data>
+</node>
+<node id="C105">
+  <data key="d0">Цикл</data>
+  <data key="d1">Цикл 105</data>
+  <data key="d2">75</data>
+  <data key="d3">TWF</data>
+</node>
+<node id="C106">
+  <data key="d0">Цикл</data>
+  <data key="d1">Цикл 106</data>
+  <data key="d2">83</data>
+  <data key="d3">PLANNED</data>
+</node>
+<node id="C107">
+  <data key="d0">Цикл</data>
+  <data key="d1">Цикл 107</data>
+  <data key="d2">89</data>
+  <data key="d3">TWF</data>
+</node>
+<node id="C108">
+  <data key="d0">Цикл</data>
+  <data key="d1">Цикл 108</data>
+  <data key="d2">79</data>
+  <data key="d3">PLANNED</data>
+</node>
+<node id="C109">
+  <data key="d0">Цикл</data>
+  <data key="d1">Цикл 109</data>
+  <data key="d2">77</data>
+  <data key="d3">TWF</data>
+</node>
+<node id="C110">
+  <data key="d0">Цикл</data>
+  <data key="d1">Цикл 110</data>
+  <data key="d2">83</data>
+  <data key="d3">PLANNED</data>
+</node>
+<node id="C111">
+  <data key="d0">Цикл</data>
+  <data key="d1">Цикл 111</data>
+  <data key="d2">82</data>
+  <data key="d3">PLANNED</data>
+</node>
+<node id="C112">
+  <data key="d0">Цикл</data>
+  <data key="d1">Цикл 112</data>
+  <data key="d2">75</data>
+  <data key="d3">PLANNED</data>
+</node>
+<node id="C113">
+  <data key="d0">Цикл</data>
+  <data key="d1">Цикл 113</data>
+  <data key="d2">82</data>
+  <data key="d3">PLANNED</data>
+</node>
+<node id="C114">
+  <data key="d0">Цикл</data>
+  <data key="d1">Цикл 114</data>
+  <data key="d2">80</data>
+  <data key="d3">TWF</data>
+</node>
+<node id="C115">
+  <data key="d0">Цикл</data>
+  <data key="d1">Цикл 115</data>
+  <data key="d2">95</data>
+  <data key="d3">PLANNED</data>
+</node>
+<node id="C116">
+  <data key="d0">Цикл</data>
+  <data key="d1">Цикл 116</data>
+  <data key="d2">87</data>
+  <data key="d3">TWF</data>
+</node>
+<node id="C117">
+  <data key="d0">Цикл</data>
+  <data key="d1">Цикл 117</data>
+  <data key="d2">75</data>
+  <data key="d3">PLANNED</data>
+</node>
+<node id="C118">
+  <data key="d0">Цикл</data>
+  <data key="d1">Цикл 118</data>
+  <data key="d2">74</data>
+  <data key="d3">PLANNED</data>
+</node>
+<node id="C119">
+  <data key="d0">Цикл</data>
+  <data key="d1">Цикл 119</data>
+  <data key="d2">81</data>
+  <data key="d3">PLANNED</data>
+</node>
+<node id="C120">
+  <data key="d0">Цикл</data>
+  <data key="d1">Цикл 120</data>
+  <data key="d2">11</data>
+  <data key="d3">IN_SERVICE</data>
+</node>
+<node id="Q1">
+  <data key="d0">Класс</data>
+  <data key="d1">L</data>
+  <data key="d4">11000</data>
+</node>
+<node id="Q2">
+  <data key="d0">Класс</data>
+  <data key="d1">M</data>
+  <data key="d4">12000</data>
+</node>
+<node id="Q3">
+  <data key="d0">Класс</data>
+  <data key="d1">H</data>
+  <data key="d4">13000</data>
+</node>
+<node id="F1">
+  <data key="d0">Отказ</data>
+  <data key="d1">TWF</data>
+  <data key="d5">Отказ по износу инструмента</data>
+</node>
+<node id="A1">
+  <data key="d0">Работа</data>
+  <data key="d1">Плановая замена инструмента</data>
+</node>
+<node id="F2">
+  <data key="d0">Отказ</data>
+  <data key="d1">HDF</data>
+  <data key="d5">Нарушение теплоотвода</data>
+</node>
+<node id="A2">
+  <data key="d0">Работа</data>
+  <data key="d1">Проверка системы охлаждения</data>
+</node>
+<node id="F3">
+  <data key="d0">Отказ</data>
+  <data key="d1">OSF</data>
+  <data key="d5">Перегрузка</data>
+</node>
+<node id="A3">
+  <data key="d0">Работа</data>
+  <data key="d1">Снижение подачи, внеочередной осмотр</data>
+</node>
+<node id="F4">
+  <data key="d0">Отказ</data>
+  <data key="d1">PWF</data>
+  <data key="d5">Отказ по мощности привода</data>
+</node>
+<node id="A4">
+  <data key="d0">Работа</data>
+  <data key="d1">Диагностика привода</data>
+</node>
+<node id="F5">
+  <data key="d0">Отказ</data>
+  <data key="d1">RNF</data>
+  <data key="d5">Случайный отказ (справочно)</data>
+</node>
+<node id="F9">
+  <data key="d0">Отказ</data>
+  <data key="d1">UNKNOWN</data>
+  <data key="d5">Отказ без указания подтипа</data>
+</node>
+<node id="A5">
+  <data key="d0">Работа</data>
+  <data key="d1">Ручной разбор мастером участка</data>
+</node>
+<edge source="E1" target="C1">
+  <data key="d6">HAS-CYCLE</data>
+  <data key="d7">78</data>
+</edge>
+<edge source="E1" target="C2">
+  <data key="d6">HAS-CYCLE</data>
+  <data key="d7">84</data>
+</edge>
+<edge source="E1" target="C3">
+  <data key="d6">HAS-CYCLE</data>
+  <data key="d7">88</data>
+</edge>
+<edge source="E1" target="C4">
+  <data key="d6">HAS-CYCLE</data>
+  <data key="d7">82</data>
+</edge>
+<edge source="E1" target="C5">
+  <data key="d6">HAS-CYCLE</data>
+  <data key="d7">86</data>
+</edge>
+<edge source="E1" target="C6">
+  <data key="d6">HAS-CYCLE</data>
+  <data key="d7">85</data>
+</edge>
+<edge source="E1" target="C7">
+  <data key="d6">HAS-CYCLE</data>
+  <data key="d7">90</data>
+</edge>
+<edge source="E1" target="C8">
+  <data key="d6">HAS-CYCLE</data>
+  <data key="d7">81</data>
+</edge>
+<edge source="E1" target="C9">
+  <data key="d6">HAS-CYCLE</data>
+  <data key="d7">88</data>
+</edge>
+<edge source="E1" target="C10">
+  <data key="d6">HAS-CYCLE</data>
+  <data key="d7">87</data>
+</edge>
+<edge source="E1" target="C11">
+  <data key="d6">HAS-CYCLE</data>
+  <data key="d7">78</data>
+</edge>
+<edge source="E1" target="C12">
+  <data key="d6">HAS-CYCLE</data>
+  <data key="d7">80</data>
+</edge>
+<edge source="E1" target="C13">
+  <data key="d6">HAS-CYCLE</data>
+  <data key="d7">81</data>
+</edge>
+<edge source="E1" target="C14">
+  <data key="d6">HAS-CYCLE</data>
+  <data key="d7">86</data>
+</edge>
+<edge source="E1" target="C15">
+  <data key="d6">HAS-CYCLE</data>
+  <data key="d7">79</data>
+</edge>
+<edge source="E1" target="C16">
+  <data key="d6">HAS-CYCLE</data>
+  <data key="d7">84</data>
+</edge>
+<edge source="E1" target="C17">
+  <data key="d6">HAS-CYCLE</data>
+  <data key="d7">85</data>
+</edge>
+<edge source="E1" target="C18">
+  <data key="d6">HAS-CYCLE</data>
+  <data key="d7">88</data>
+</edge>
+<edge source="E1" target="C19">
+  <data key="d6">HAS-CYCLE</data>
+  <data key="d7">86</data>
+</edge>
+<edge source="E1" target="C20">
+  <data key="d6">HAS-CYCLE</data>
+  <data key="d7">87</data>
+</edge>
+<edge source="E1" target="C21">
+  <data key="d6">HAS-CYCLE</data>
+  <data key="d7">81</data>
+</edge>
+<edge source="E1" target="C22">
+  <data key="d6">HAS-CYCLE</data>
+  <data key="d7">75</data>
+</edge>
+<edge source="E1" target="C23">
+  <data key="d6">HAS-CYCLE</data>
+  <data key="d7">79</data>
+</edge>
+<edge source="E1" target="C24">
+  <data key="d6">HAS-CYCLE</data>
+  <data key="d7">79</data>
+</edge>
+<edge source="E1" target="C25">
+  <data key="d6">HAS-CYCLE</data>
+  <data key="d7">86</data>
+</edge>
+<edge source="E1" target="C26">
+  <data key="d6">HAS-CYCLE</data>
+  <data key="d7">84</data>
+</edge>
+<edge source="E1" target="C27">
+  <data key="d6">HAS-CYCLE</data>
+  <data key="d7">78</data>
+</edge>
+<edge source="E1" target="C28">
+  <data key="d6">HAS-CYCLE</data>
+  <data key="d7">90</data>
+</edge>
+<edge source="E1" target="C29">
+  <data key="d6">HAS-CYCLE</data>
+  <data key="d7">79</data>
+</edge>
+<edge source="E1" target="C30">
+  <data key="d6">HAS-CYCLE</data>
+  <data key="d7">89</data>
+</edge>
+<edge source="E1" target="C31">
+  <data key="d6">HAS-CYCLE</data>
+  <data key="d7">87</data>
+</edge>
+<edge source="E1" target="C32">
+  <data key="d6">HAS-CYCLE</data>
+  <data key="d7">82</data>
+</edge>
+<edge source="E1" target="C33">
+  <data key="d6">HAS-CYCLE</data>
+  <data key="d7">92</data>
+</edge>
+<edge source="E1" target="C34">
+  <data key="d6">HAS-CYCLE</data>
+  <data key="d7">101</data>
+</edge>
+<edge source="E1" target="C35">
+  <data key="d6">HAS-CYCLE</data>
+  <data key="d7">77</data>
+</edge>
+<edge source="E1" target="C36">
+  <data key="d6">HAS-CYCLE</data>
+  <data key="d7">85</data>
+</edge>
+<edge source="E1" target="C37">
+  <data key="d6">HAS-CYCLE</data>
+  <data key="d7">83</data>
+</edge>
+<edge source="E1" target="C38">
+  <data key="d6">HAS-CYCLE</data>
+  <data key="d7">83</data>
+</edge>
+<edge source="E1" target="C39">
+  <data key="d6">HAS-CYCLE</data>
+  <data key="d7">81</data>
+</edge>
+<edge source="E1" target="C40">
+  <data key="d6">HAS-CYCLE</data>
+  <data key="d7">90</data>
+</edge>
+<edge source="E1" target="C41">
+  <data key="d6">HAS-CYCLE</data>
+  <data key="d7">87</data>
+</edge>
+<edge source="E1" target="C42">
+  <data key="d6">HAS-CYCLE</data>
+  <data key="d7">79</data>
+</edge>
+<edge source="E1" target="C43">
+  <data key="d6">HAS-CYCLE</data>
+  <data key="d7">82</data>
+</edge>
+<edge source="E1" target="C44">
+  <data key="d6">HAS-CYCLE</data>
+  <data key="d7">84</data>
+</edge>
+<edge source="E1" target="C45">
+  <data key="d6">HAS-CYCLE</data>
+  <data key="d7">82</data>
+</edge>
+<edge source="E1" target="C46">
+  <data key="d6">HAS-CYCLE</data>
+  <data key="d7">88</data>
+</edge>
+<edge source="E1" target="C47">
+  <data key="d6">HAS-CYCLE</data>
+  <data key="d7">79</data>
+</edge>
+<edge source="E1" target="C48">
+  <data key="d6">HAS-CYCLE</data>
+  <data key="d7">90</data>
+</edge>
+<edge source="E1" target="C49">
+  <data key="d6">HAS-CYCLE</data>
+  <data key="d7">87</data>
+</edge>
+<edge source="E1" target="C50">
+  <data key="d6">HAS-CYCLE</data>
+  <data key="d7">86</data>
+</edge>
+<edge source="E1" target="C51">
+  <data key="d6">HAS-CYCLE</data>
+  <data key="d7">90</data>
+</edge>
+<edge source="E1" target="C52">
+  <data key="d6">HAS-CYCLE</data>
+  <data key="d7">88</data>
+</edge>
+<edge source="E1" target="C53">
+  <data key="d6">HAS-CYCLE</data>
+  <data key="d7">84</data>
+</edge>
+<edge source="E1" target="C54">
+  <data key="d6">HAS-CYCLE</data>
+  <data key="d7">83</data>
+</edge>
+<edge source="E1" target="C55">
+  <data key="d6">HAS-CYCLE</data>
+  <data key="d7">94</data>
+</edge>
+<edge source="E1" target="C56">
+  <data key="d6">HAS-CYCLE</data>
+  <data key="d7">89</data>
+</edge>
+<edge source="E1" target="C57">
+  <data key="d6">HAS-CYCLE</data>
+  <data key="d7">81</data>
+</edge>
+<edge source="E1" target="C58">
+  <data key="d6">HAS-CYCLE</data>
+  <data key="d7">86</data>
+</edge>
+<edge source="E1" target="C59">
+  <data key="d6">HAS-CYCLE</data>
+  <data key="d7">83</data>
+</edge>
+<edge source="E1" target="C60">
+  <data key="d6">HAS-CYCLE</data>
+  <data key="d7">77</data>
+</edge>
+<edge source="E1" target="C61">
+  <data key="d6">HAS-CYCLE</data>
+  <data key="d7">79</data>
+</edge>
+<edge source="E1" target="C62">
+  <data key="d6">HAS-CYCLE</data>
+  <data key="d7">80</data>
+</edge>
+<edge source="E1" target="C63">
+  <data key="d6">HAS-CYCLE</data>
+  <data key="d7">88</data>
+</edge>
+<edge source="E1" target="C64">
+  <data key="d6">HAS-CYCLE</data>
+  <data key="d7">92</data>
+</edge>
+<edge source="E1" target="C65">
+  <data key="d6">HAS-CYCLE</data>
+  <data key="d7">88</data>
+</edge>
+<edge source="E1" target="C66">
+  <data key="d6">HAS-CYCLE</data>
+  <data key="d7">77</data>
+</edge>
+<edge source="E1" target="C67">
+  <data key="d6">HAS-CYCLE</data>
+  <data key="d7">87</data>
+</edge>
+<edge source="E1" target="C68">
+  <data key="d6">HAS-CYCLE</data>
+  <data key="d7">84</data>
+</edge>
+<edge source="E1" target="C69">
+  <data key="d6">HAS-CYCLE</data>
+  <data key="d7">89</data>
+</edge>
+<edge source="E1" target="C70">
+  <data key="d6">HAS-CYCLE</data>
+  <data key="d7">83</data>
+</edge>
+<edge source="E1" target="C71">
+  <data key="d6">HAS-CYCLE</data>
+  <data key="d7">90</data>
+</edge>
+<edge source="E1" target="C72">
+  <data key="d6">HAS-CYCLE</data>
+  <data key="d7">84</data>
+</edge>
+<edge source="E1" target="C73">
+  <data key="d6">HAS-CYCLE</data>
+  <data key="d7">89</data>
+</edge>
+<edge source="E1" target="C74">
+  <data key="d6">HAS-CYCLE</data>
+  <data key="d7">84</data>
+</edge>
+<edge source="E1" target="C75">
+  <data key="d6">HAS-CYCLE</data>
+  <data key="d7">84</data>
+</edge>
+<edge source="E1" target="C76">
+  <data key="d6">HAS-CYCLE</data>
+  <data key="d7">79</data>
+</edge>
+<edge source="E1" target="C77">
+  <data key="d6">HAS-CYCLE</data>
+  <data key="d7">87</data>
+</edge>
+<edge source="E1" target="C78">
+  <data key="d6">HAS-CYCLE</data>
+  <data key="d7">82</data>
+</edge>
+<edge source="E1" target="C79">
+  <data key="d6">HAS-CYCLE</data>
+  <data key="d7">89</data>
+</edge>
+<edge source="E1" target="C80">
+  <data key="d6">HAS-CYCLE</data>
+  <data key="d7">82</data>
+</edge>
+<edge source="E1" target="C81">
+  <data key="d6">HAS-CYCLE</data>
+  <data key="d7">85</data>
+</edge>
+<edge source="E1" target="C82">
+  <data key="d6">HAS-CYCLE</data>
+  <data key="d7">81</data>
+</edge>
+<edge source="E1" target="C83">
+  <data key="d6">HAS-CYCLE</data>
+  <data key="d7">79</data>
+</edge>
+<edge source="E1" target="C84">
+  <data key="d6">HAS-CYCLE</data>
+  <data key="d7">83</data>
+</edge>
+<edge source="E1" target="C85">
+  <data key="d6">HAS-CYCLE</data>
+  <data key="d7">80</data>
+</edge>
+<edge source="E1" target="C86">
+  <data key="d6">HAS-CYCLE</data>
+  <data key="d7">88</data>
+</edge>
+<edge source="E1" target="C87">
+  <data key="d6">HAS-CYCLE</data>
+  <data key="d7">83</data>
+</edge>
+<edge source="E1" target="C88">
+  <data key="d6">HAS-CYCLE</data>
+  <data key="d7">88</data>
+</edge>
+<edge source="E1" target="C89">
+  <data key="d6">HAS-CYCLE</data>
+  <data key="d7">84</data>
+</edge>
+<edge source="E1" target="C90">
+  <data key="d6">HAS-CYCLE</data>
+  <data key="d7">83</data>
+</edge>
+<edge source="E1" target="C91">
+  <data key="d6">HAS-CYCLE</data>
+  <data key="d7">94</data>
+</edge>
+<edge source="E1" target="C92">
+  <data key="d6">HAS-CYCLE</data>
+  <data key="d7">74</data>
+</edge>
+<edge source="E1" target="C93">
+  <data key="d6">HAS-CYCLE</data>
+  <data key="d7">88</data>
+</edge>
+<edge source="E1" target="C94">
+  <data key="d6">HAS-CYCLE</data>
+  <data key="d7">90</data>
+</edge>
+<edge source="E1" target="C95">
+  <data key="d6">HAS-CYCLE</data>
+  <data key="d7">89</data>
+</edge>
+<edge source="E1" target="C96">
+  <data key="d6">HAS-CYCLE</data>
+  <data key="d7">83</data>
+</edge>
+<edge source="E1" target="C97">
+  <data key="d6">HAS-CYCLE</data>
+  <data key="d7">88</data>
+</edge>
+<edge source="E1" target="C98">
+  <data key="d6">HAS-CYCLE</data>
+  <data key="d7">84</data>
+</edge>
+<edge source="E1" target="C99">
+  <data key="d6">HAS-CYCLE</data>
+  <data key="d7">74</data>
+</edge>
+<edge source="E1" target="C100">
+  <data key="d6">HAS-CYCLE</data>
+  <data key="d7">82</data>
+</edge>
+<edge source="E1" target="C101">
+  <data key="d6">HAS-CYCLE</data>
+  <data key="d7">82</data>
+</edge>
+<edge source="E1" target="C102">
+  <data key="d6">HAS-CYCLE</data>
+  <data key="d7">88</data>
+</edge>
+<edge source="E1" target="C103">
+  <data key="d6">HAS-CYCLE</data>
+  <data key="d7">81</data>
+</edge>
+<edge source="E1" target="C104">
+  <data key="d6">HAS-CYCLE</data>
+  <data key="d7">81</data>
+</edge>
+<edge source="E1" target="C105">
+  <data key="d6">HAS-CYCLE</data>
+  <data key="d7">75</data>
+</edge>
+<edge source="E1" target="C106">
+  <data key="d6">HAS-CYCLE</data>
+  <data key="d7">83</data>
+</edge>
+<edge source="E1" target="C107">
+  <data key="d6">HAS-CYCLE</data>
+  <data key="d7">89</data>
+</edge>
+<edge source="E1" target="C108">
+  <data key="d6">HAS-CYCLE</data>
+  <data key="d7">79</data>
+</edge>
+<edge source="E1" target="C109">
+  <data key="d6">HAS-CYCLE</data>
+  <data key="d7">77</data>
+</edge>
+<edge source="E1" target="C110">
+  <data key="d6">HAS-CYCLE</data>
+  <data key="d7">83</data>
+</edge>
+<edge source="E1" target="C111">
+  <data key="d6">HAS-CYCLE</data>
+  <data key="d7">82</data>
+</edge>
+<edge source="E1" target="C112">
+  <data key="d6">HAS-CYCLE</data>
+  <data key="d7">75</data>
+</edge>
+<edge source="E1" target="C113">
+  <data key="d6">HAS-CYCLE</data>
+  <data key="d7">82</data>
+</edge>
+<edge source="E1" target="C114">
+  <data key="d6">HAS-CYCLE</data>
+  <data key="d7">80</data>
+</edge>
+<edge source="E1" target="C115">
+  <data key="d6">HAS-CYCLE</data>
+  <data key="d7">95</data>
+</edge>
+<edge source="E1" target="C116">
+  <data key="d6">HAS-CYCLE</data>
+  <data key="d7">87</data>
+</edge>
+<edge source="E1" target="C117">
+  <data key="d6">HAS-CYCLE</data>
+  <data key="d7">75</data>
+</edge>
+<edge source="E1" target="C118">
+  <data key="d6">HAS-CYCLE</data>
+  <data key="d7">74</data>
+</edge>
+<edge source="E1" target="C119">
+  <data key="d6">HAS-CYCLE</data>
+  <data key="d7">81</data>
+</edge>
+<edge source="E1" target="C120">
+  <data key="d6">HAS-CYCLE</data>
+  <data key="d7">11</data>
+</edge>
+<edge source="C1" target="Q1">
+  <data key="d6">PROCESSES</data>
+  <data key="d7">44</data>
+</edge>
+<edge source="C1" target="Q2">
+  <data key="d6">PROCESSES</data>
+  <data key="d7">24</data>
+</edge>
+<edge source="C1" target="Q3">
+  <data key="d6">PROCESSES</data>
+  <data key="d7">10</data>
+</edge>
+<edge source="C1" target="F1">
+  <data key="d6">HAS-FAILURE</data>
+  <data key="d7">1</data>
+</edge>
+<edge source="C1" target="F3">
+  <data key="d6">HAS-FAILURE</data>
+  <data key="d7">1</data>
+</edge>
+<edge source="C1" target="F4">
+  <data key="d6">HAS-FAILURE</data>
+  <data key="d7">2</data>
+</edge>
+<edge source="C2" target="Q1">
+  <data key="d6">PROCESSES</data>
+  <data key="d7">52</data>
+</edge>
+<edge source="C2" target="Q2">
+  <data key="d6">PROCESSES</data>
+  <data key="d7">22</data>
+</edge>
+<edge source="C2" target="Q3">
+  <data key="d6">PROCESSES</data>
+  <data key="d7">10</data>
+</edge>
+<edge source="C2" target="F3">
+  <data key="d6">HAS-FAILURE</data>
+  <data key="d7">2</data>
+</edge>
+<edge source="C3" target="Q1">
+  <data key="d6">PROCESSES</data>
+  <data key="d7">60</data>
+</edge>
+<edge source="C3" target="Q2">
+  <data key="d6">PROCESSES</data>
+  <data key="d7">20</data>
+</edge>
+<edge source="C3" target="Q3">
+  <data key="d6">PROCESSES</data>
+  <data key="d7">8</data>
+</edge>
+<edge source="C3" target="F3">
+  <data key="d6">HAS-FAILURE</data>
+  <data key="d7">3</data>
+</edge>
+<edge source="C3" target="F4">
+  <data key="d6">HAS-FAILURE</data>
+  <data key="d7">3</data>
+</edge>
+<edge source="C4" target="Q1">
+  <data key="d6">PROCESSES</data>
+  <data key="d7">49</data>
+</edge>
+<edge source="C4" target="Q2">
+  <data key="d6">PROCESSES</data>
+  <data key="d7">21</data>
+</edge>
+<edge source="C4" target="Q3">
+  <data key="d6">PROCESSES</data>
+  <data key="d7">12</data>
+</edge>
+<edge source="C4" target="F3">
+  <data key="d6">HAS-FAILURE</data>
+  <data key="d7">1</data>
+</edge>
+<edge source="C4" target="F4">
+  <data key="d6">HAS-FAILURE</data>
+  <data key="d7">1</data>
+</edge>
+<edge source="C5" target="Q1">
+  <data key="d6">PROCESSES</data>
+  <data key="d7">53</data>
+</edge>
+<edge source="C5" target="Q2">
+  <data key="d6">PROCESSES</data>
+  <data key="d7">28</data>
+</edge>
+<edge source="C5" target="Q3">
+  <data key="d6">PROCESSES</data>
+  <data key="d7">5</data>
+</edge>
+<edge source="C5" target="F4">
+  <data key="d6">HAS-FAILURE</data>
+  <data key="d7">1</data>
+</edge>
+<edge source="C6" target="Q1">
+  <data key="d6">PROCESSES</data>
+  <data key="d7">50</data>
+</edge>
+<edge source="C6" target="Q2">
+  <data key="d6">PROCESSES</data>
+  <data key="d7">26</data>
+</edge>
+<edge source="C6" target="Q3">
+  <data key="d6">PROCESSES</data>
+  <data key="d7">9</data>
+</edge>
+<edge source="C6" target="F4">
+  <data key="d6">HAS-FAILURE</data>
+  <data key="d7">2</data>
+</edge>
+<edge source="C7" target="Q1">
+  <data key="d6">PROCESSES</data>
+  <data key="d7">51</data>
+</edge>
+<edge source="C7" target="Q2">
+  <data key="d6">PROCESSES</data>
+  <data key="d7">26</data>
+</edge>
+<edge source="C7" target="Q3">
+  <data key="d6">PROCESSES</data>
+  <data key="d7">13</data>
+</edge>
+<edge source="C7" target="F3">
+  <data key="d6">HAS-FAILURE</data>
+  <data key="d7">1</data>
+</edge>
+<edge source="C8" target="Q1">
+  <data key="d6">PROCESSES</data>
+  <data key="d7">52</data>
+</edge>
+<edge source="C8" target="Q2">
+  <data key="d6">PROCESSES</data>
+  <data key="d7">19</data>
+</edge>
+<edge source="C8" target="Q3">
+  <data key="d6">PROCESSES</data>
+  <data key="d7">10</data>
+</edge>
+<edge source="C8" target="F4">
+  <data key="d6">HAS-FAILURE</data>
+  <data key="d7">1</data>
+</edge>
+<edge source="C9" target="Q1">
+  <data key="d6">PROCESSES</data>
+  <data key="d7">50</data>
+</edge>
+<edge source="C9" target="Q2">
+  <data key="d6">PROCESSES</data>
+  <data key="d7">25</data>
+</edge>
+<edge source="C9" target="Q3">
+  <data key="d6">PROCESSES</data>
+  <data key="d7">13</data>
+</edge>
+<edge source="C9" target="F3">
+  <data key="d6">HAS-FAILURE</data>
+  <data key="d7">1</data>
+</edge>
+<edge source="C10" target="Q1">
+  <data key="d6">PROCESSES</data>
+  <data key="d7">58</data>
+</edge>
+<edge source="C10" target="Q2">
+  <data key="d6">PROCESSES</data>
+  <data key="d7">22</data>
+</edge>
+<edge source="C10" target="Q3">
+  <data key="d6">PROCESSES</data>
+  <data key="d7">7</data>
+</edge>
+<edge source="C10" target="F4">
+  <data key="d6">HAS-FAILURE</data>
+  <data key="d7">1</data>
+</edge>
+<edge source="C11" target="Q1">
+  <data key="d6">PROCESSES</data>
+  <data key="d7">39</data>
+</edge>
+<edge source="C11" target="Q2">
+  <data key="d6">PROCESSES</data>
+  <data key="d7">28</data>
+</edge>
+<edge source="C11" target="Q3">
+  <data key="d6">PROCESSES</data>
+  <data key="d7">11</data>
+</edge>
+<edge source="C11" target="F3">
+  <data key="d6">HAS-FAILURE</data>
+  <data key="d7">1</data>
+</edge>
+<edge source="C11" target="F4">
+  <data key="d6">HAS-FAILURE</data>
+  <data key="d7">2</data>
+</edge>
+<edge source="C12" target="Q1">
+  <data key="d6">PROCESSES</data>
+  <data key="d7">49</data>
+</edge>
+<edge source="C12" target="Q2">
+  <data key="d6">PROCESSES</data>
+  <data key="d7">24</data>
+</edge>
+<edge source="C12" target="Q3">
+  <data key="d6">PROCESSES</data>
+  <data key="d7">7</data>
+</edge>
+<edge source="C13" target="Q1">
+  <data key="d6">PROCESSES</data>
+  <data key="d7">50</data>
+</edge>
+<edge source="C13" target="Q2">
+  <data key="d6">PROCESSES</data>
+  <data key="d7">22</data>
+</edge>
+<edge source="C13" target="Q3">
+  <data key="d6">PROCESSES</data>
+  <data key="d7">9</data>
+</edge>
+<edge source="C13" target="F1">
+  <data key="d6">HAS-FAILURE</data>
+  <data key="d7">1</data>
+</edge>
+<edge source="C13" target="F3">
+  <data key="d6">HAS-FAILURE</data>
+  <data key="d7">1</data>
+</edge>
+<edge source="C13" target="F4">
+  <data key="d6">HAS-FAILURE</data>
+  <data key="d7">1</data>
+</edge>
+<edge source="C14" target="Q1">
+  <data key="d6">PROCESSES</data>
+  <data key="d7">50</data>
+</edge>
+<edge source="C14" target="Q2">
+  <data key="d6">PROCESSES</data>
+  <data key="d7">23</data>
+</edge>
+<edge source="C14" target="Q3">
+  <data key="d6">PROCESSES</data>
+  <data key="d7">13</data>
+</edge>
+<edge source="C14" target="F3">
+  <data key="d6">HAS-FAILURE</data>
+  <data key="d7">3</data>
+</edge>
+<edge source="C14" target="F4">
+  <data key="d6">HAS-FAILURE</data>
+  <data key="d7">4</data>
+</edge>
+<edge source="C15" target="Q1">
+  <data key="d6">PROCESSES</data>
+  <data key="d7">36</data>
+</edge>
+<edge source="C15" target="Q2">
+  <data key="d6">PROCESSES</data>
+  <data key="d7">31</data>
+</edge>
+<edge source="C15" target="Q3">
+  <data key="d6">PROCESSES</data>
+  <data key="d7">12</data>
+</edge>
+<edge source="C15" target="F5">
+  <data key="d6">HAS-FAILURE</data>
+  <data key="d7">1</data>
+</edge>
+<edge source="C16" target="Q1">
+  <data key="d6">PROCESSES</data>
+  <data key="d7">48</data>
+</edge>
+<edge source="C16" target="Q2">
+  <data key="d6">PROCESSES</data>
+  <data key="d7">22</data>
+</edge>
+<edge source="C16" target="Q3">
+  <data key="d6">PROCESSES</data>
+  <data key="d7">14</data>
+</edge>
+<edge source="C16" target="F3">
+  <data key="d6">HAS-FAILURE</data>
+  <data key="d7">3</data>
+</edge>
+<edge source="C16" target="F4">
+  <data key="d6">HAS-FAILURE</data>
+  <data key="d7">2</data>
+</edge>
+<edge source="C16" target="F5">
+  <data key="d6">HAS-FAILURE</data>
+  <data key="d7">1</data>
+</edge>
+<edge source="C17" target="Q1">
+  <data key="d6">PROCESSES</data>
+  <data key="d7">50</data>
+</edge>
+<edge source="C17" target="Q2">
+  <data key="d6">PROCESSES</data>
+  <data key="d7">28</data>
+</edge>
+<edge source="C17" target="Q3">
+  <data key="d6">PROCESSES</data>
+  <data key="d7">7</data>
+</edge>
+<edge source="C17" target="F3">
+  <data key="d6">HAS-FAILURE</data>
+  <data key="d7">1</data>
+</edge>
+<edge source="C17" target="F4">
+  <data key="d6">HAS-FAILURE</data>
+  <data key="d7">1</data>
+</edge>
+<edge source="C18" target="Q1">
+  <data key="d6">PROCESSES</data>
+  <data key="d7">52</data>
+</edge>
+<edge source="C18" target="Q2">
+  <data key="d6">PROCESSES</data>
+  <data key="d7">31</data>
+</edge>
+<edge source="C18" target="Q3">
+  <data key="d6">PROCESSES</data>
+  <data key="d7">5</data>
+</edge>
+<edge source="C18" target="F1">
+  <data key="d6">HAS-FAILURE</data>
+  <data key="d7">1</data>
+</edge>
+<edge source="C18" target="F3">
+  <data key="d6">HAS-FAILURE</data>
+  <data key="d7">1</data>
+</edge>
+<edge source="C18" target="F4">
+  <data key="d6">HAS-FAILURE</data>
+  <data key="d7">2</data>
+</edge>
+<edge source="C18" target="F9">
+  <data key="d6">HAS-FAILURE</data>
+  <data key="d7">1</data>
+</edge>
+<edge source="C19" target="Q1">
+  <data key="d6">PROCESSES</data>
+  <data key="d7">52</data>
+</edge>
+<edge source="C19" target="Q2">
+  <data key="d6">PROCESSES</data>
+  <data key="d7">27</data>
+</edge>
+<edge source="C19" target="Q3">
+  <data key="d6">PROCESSES</data>
+  <data key="d7">7</data>
+</edge>
+<edge source="C19" target="F3">
+  <data key="d6">HAS-FAILURE</data>
+  <data key="d7">2</data>
+</edge>
+<edge source="C20" target="Q1">
+  <data key="d6">PROCESSES</data>
+  <data key="d7">55</data>
+</edge>
+<edge source="C20" target="Q2">
+  <data key="d6">PROCESSES</data>
+  <data key="d7">20</data>
+</edge>
+<edge source="C20" target="Q3">
+  <data key="d6">PROCESSES</data>
+  <data key="d7">12</data>
+</edge>
+<edge source="C20" target="F1">
+  <data key="d6">HAS-FAILURE</data>
+  <data key="d7">1</data>
+</edge>
+<edge source="C21" target="Q1">
+  <data key="d6">PROCESSES</data>
+  <data key="d7">48</data>
+</edge>
+<edge source="C21" target="Q2">
+  <data key="d6">PROCESSES</data>
+  <data key="d7">25</data>
+</edge>
+<edge source="C21" target="Q3">
+  <data key="d6">PROCESSES</data>
+  <data key="d7">8</data>
+</edge>
+<edge source="C21" target="F1">
+  <data key="d6">HAS-FAILURE</data>
+  <data key="d7">1</data>
+</edge>
+<edge source="C21" target="F5">
+  <data key="d6">HAS-FAILURE</data>
+  <data key="d7">1</data>
+</edge>
+<edge source="C22" target="Q1">
+  <data key="d6">PROCESSES</data>
+  <data key="d7">43</data>
+</edge>
+<edge source="C22" target="Q2">
+  <data key="d6">PROCESSES</data>
+  <data key="d7">22</data>
+</edge>
+<edge source="C22" target="Q3">
+  <data key="d6">PROCESSES</data>
+  <data key="d7">10</data>
+</edge>
+<edge source="C22" target="F3">
+  <data key="d6">HAS-FAILURE</data>
+  <data key="d7">1</data>
+</edge>
+<edge source="C22" target="F4">
+  <data key="d6">HAS-FAILURE</data>
+  <data key="d7">3</data>
+</edge>
+<edge source="C23" target="Q1">
+  <data key="d6">PROCESSES</data>
+  <data key="d7">44</data>
+</edge>
+<edge source="C23" target="Q2">
+  <data key="d6">PROCESSES</data>
+  <data key="d7">27</data>
+</edge>
+<edge source="C23" target="Q3">
+  <data key="d6">PROCESSES</data>
+  <data key="d7">8</data>
+</edge>
+<edge source="C24" target="Q1">
+  <data key="d6">PROCESSES</data>
+  <data key="d7">48</data>
+</edge>
+<edge source="C24" target="Q2">
+  <data key="d6">PROCESSES</data>
+  <data key="d7">25</data>
+</edge>
+<edge source="C24" target="Q3">
+  <data key="d6">PROCESSES</data>
+  <data key="d7">6</data>
+</edge>
+<edge source="C24" target="F1">
+  <data key="d6">HAS-FAILURE</data>
+  <data key="d7">1</data>
+</edge>
+<edge source="C25" target="Q1">
+  <data key="d6">PROCESSES</data>
+  <data key="d7">55</data>
+</edge>
+<edge source="C25" target="Q2">
+  <data key="d6">PROCESSES</data>
+  <data key="d7">24</data>
+</edge>
+<edge source="C25" target="Q3">
+  <data key="d6">PROCESSES</data>
+  <data key="d7">7</data>
+</edge>
+<edge source="C25" target="F3">
+  <data key="d6">HAS-FAILURE</data>
+  <data key="d7">1</data>
+</edge>
+<edge source="C25" target="F4">
+  <data key="d6">HAS-FAILURE</data>
+  <data key="d7">1</data>
+</edge>
+<edge source="C25" target="F5">
+  <data key="d6">HAS-FAILURE</data>
+  <data key="d7">1</data>
+</edge>
+<edge source="C26" target="Q1">
+  <data key="d6">PROCESSES</data>
+  <data key="d7">50</data>
+</edge>
+<edge source="C26" target="Q2">
+  <data key="d6">PROCESSES</data>
+  <data key="d7">21</data>
+</edge>
+<edge source="C26" target="Q3">
+  <data key="d6">PROCESSES</data>
+  <data key="d7">13</data>
+</edge>
+<edge source="C26" target="F1">
+  <data key="d6">HAS-FAILURE</data>
+  <data key="d7">1</data>
+</edge>
+<edge source="C26" target="F4">
+  <data key="d6">HAS-FAILURE</data>
+  <data key="d7">1</data>
+</edge>
+<edge source="C27" target="Q1">
+  <data key="d6">PROCESSES</data>
+  <data key="d7">44</data>
+</edge>
+<edge source="C27" target="Q2">
+  <data key="d6">PROCESSES</data>
+  <data key="d7">26</data>
+</edge>
+<edge source="C27" target="Q3">
+  <data key="d6">PROCESSES</data>
+  <data key="d7">8</data>
+</edge>
+<edge source="C27" target="F1">
+  <data key="d6">HAS-FAILURE</data>
+  <data key="d7">1</data>
+</edge>
+<edge source="C27" target="F4">
+  <data key="d6">HAS-FAILURE</data>
+  <data key="d7">1</data>
+</edge>
+<edge source="C28" target="Q1">
+  <data key="d6">PROCESSES</data>
+  <data key="d7">58</data>
+</edge>
+<edge source="C28" target="Q2">
+  <data key="d6">PROCESSES</data>
+  <data key="d7">25</data>
+</edge>
+<edge source="C28" target="Q3">
+  <data key="d6">PROCESSES</data>
+  <data key="d7">7</data>
+</edge>
+<edge source="C28" target="F3">
+  <data key="d6">HAS-FAILURE</data>
+  <data key="d7">2</data>
+</edge>
+<edge source="C28" target="F4">
+  <data key="d6">HAS-FAILURE</data>
+  <data key="d7">1</data>
+</edge>
+<edge source="C29" target="Q1">
+  <data key="d6">PROCESSES</data>
+  <data key="d7">49</data>
+</edge>
+<edge source="C29" target="Q2">
+  <data key="d6">PROCESSES</data>
+  <data key="d7">24</data>
+</edge>
+<edge source="C29" target="Q3">
+  <data key="d6">PROCESSES</data>
+  <data key="d7">6</data>
+</edge>
+<edge source="C30" target="Q1">
+  <data key="d6">PROCESSES</data>
+  <data key="d7">55</data>
+</edge>
+<edge source="C30" target="Q2">
+  <data key="d6">PROCESSES</data>
+  <data key="d7">25</data>
+</edge>
+<edge source="C30" target="Q3">
+  <data key="d6">PROCESSES</data>
+  <data key="d7">9</data>
+</edge>
+<edge source="C30" target="F3">
+  <data key="d6">HAS-FAILURE</data>
+  <data key="d7">2</data>
+</edge>
+<edge source="C30" target="F4">
+  <data key="d6">HAS-FAILURE</data>
+  <data key="d7">2</data>
+</edge>
+<edge source="C31" target="Q1">
+  <data key="d6">PROCESSES</data>
+  <data key="d7">63</data>
+</edge>
+<edge source="C31" target="Q2">
+  <data key="d6">PROCESSES</data>
+  <data key="d7">18</data>
+</edge>
+<edge source="C31" target="Q3">
+  <data key="d6">PROCESSES</data>
+  <data key="d7">6</data>
+</edge>
+<edge source="C31" target="F3">
+  <data key="d6">HAS-FAILURE</data>
+  <data key="d7">1</data>
+</edge>
+<edge source="C31" target="F5">
+  <data key="d6">HAS-FAILURE</data>
+  <data key="d7">1</data>
+</edge>
+<edge source="C32" target="Q1">
+  <data key="d6">PROCESSES</data>
+  <data key="d7">46</data>
+</edge>
+<edge source="C32" target="Q2">
+  <data key="d6">PROCESSES</data>
+  <data key="d7">24</data>
+</edge>
+<edge source="C32" target="Q3">
+  <data key="d6">PROCESSES</data>
+  <data key="d7">12</data>
+</edge>
+<edge source="C32" target="F1">
+  <data key="d6">HAS-FAILURE</data>
+  <data key="d7">1</data>
+</edge>
+<edge source="C32" target="F4">
+  <data key="d6">HAS-FAILURE</data>
+  <data key="d7">1</data>
+</edge>
+<edge source="C33" target="Q1">
+  <data key="d6">PROCESSES</data>
+  <data key="d7">66</data>
+</edge>
+<edge source="C33" target="Q2">
+  <data key="d6">PROCESSES</data>
+  <data key="d7">22</data>
+</edge>
+<edge source="C33" target="Q3">
+  <data key="d6">PROCESSES</data>
+  <data key="d7">4</data>
+</edge>
+<edge source="C33" target="F3">
+  <data key="d6">HAS-FAILURE</data>
+  <data key="d7">1</data>
+</edge>
+<edge source="C33" target="F9">
+  <data key="d6">HAS-FAILURE</data>
+  <data key="d7">1</data>
+</edge>
+<edge source="C34" target="Q1">
+  <data key="d6">PROCESSES</data>
+  <data key="d7">64</data>
+</edge>
+<edge source="C34" target="Q2">
+  <data key="d6">PROCESSES</data>
+  <data key="d7">31</data>
+</edge>
+<edge source="C34" target="Q3">
+  <data key="d6">PROCESSES</data>
+  <data key="d7">6</data>
+</edge>
+<edge source="C34" target="F1">
+  <data key="d6">HAS-FAILURE</data>
+  <data key="d7">1</data>
+</edge>
+<edge source="C34" target="F3">
+  <data key="d6">HAS-FAILURE</data>
+  <data key="d7">1</data>
+</edge>
+<edge source="C35" target="Q1">
+  <data key="d6">PROCESSES</data>
+  <data key="d7">39</data>
+</edge>
+<edge source="C35" target="Q2">
+  <data key="d6">PROCESSES</data>
+  <data key="d7">31</data>
+</edge>
+<edge source="C35" target="Q3">
+  <data key="d6">PROCESSES</data>
+  <data key="d7">7</data>
+</edge>
+<edge source="C35" target="F1">
+  <data key="d6">HAS-FAILURE</data>
+  <data key="d7">1</data>
+</edge>
+<edge source="C35" target="F4">
+  <data key="d6">HAS-FAILURE</data>
+  <data key="d7">1</data>
+</edge>
+<edge source="C36" target="Q1">
+  <data key="d6">PROCESSES</data>
+  <data key="d7">47</data>
+</edge>
+<edge source="C36" target="Q2">
+  <data key="d6">PROCESSES</data>
+  <data key="d7">30</data>
+</edge>
+<edge source="C36" target="Q3">
+  <data key="d6">PROCESSES</data>
+  <data key="d7">8</data>
+</edge>
+<edge source="C36" target="F3">
+  <data key="d6">HAS-FAILURE</data>
+  <data key="d7">1</data>
+</edge>
+<edge source="C36" target="F4">
+  <data key="d6">HAS-FAILURE</data>
+  <data key="d7">1</data>
+</edge>
+<edge source="C37" target="Q1">
+  <data key="d6">PROCESSES</data>
+  <data key="d7">49</data>
+</edge>
+<edge source="C37" target="Q2">
+  <data key="d6">PROCESSES</data>
+  <data key="d7">26</data>
+</edge>
+<edge source="C37" target="Q3">
+  <data key="d6">PROCESSES</data>
+  <data key="d7">8</data>
+</edge>
+<edge source="C37" target="F5">
+  <data key="d6">HAS-FAILURE</data>
+  <data key="d7">1</data>
+</edge>
+<edge source="C38" target="Q1">
+  <data key="d6">PROCESSES</data>
+  <data key="d7">45</data>
+</edge>
+<edge source="C38" target="Q2">
+  <data key="d6">PROCESSES</data>
+  <data key="d7">28</data>
+</edge>
+<edge source="C38" target="Q3">
+  <data key="d6">PROCESSES</data>
+  <data key="d7">10</data>
+</edge>
+<edge source="C38" target="F4">
+  <data key="d6">HAS-FAILURE</data>
+  <data key="d7">1</data>
+</edge>
+<edge source="C39" target="Q1">
+  <data key="d6">PROCESSES</data>
+  <data key="d7">43</data>
+</edge>
+<edge source="C39" target="Q2">
+  <data key="d6">PROCESSES</data>
+  <data key="d7">30</data>
+</edge>
+<edge source="C39" target="Q3">
+  <data key="d6">PROCESSES</data>
+  <data key="d7">8</data>
+</edge>
+<edge source="C39" target="F2">
+  <data key="d6">HAS-FAILURE</data>
+  <data key="d7">1</data>
+</edge>
+<edge source="C39" target="F3">
+  <data key="d6">HAS-FAILURE</data>
+  <data key="d7">1</data>
+</edge>
+<edge source="C40" target="Q1">
+  <data key="d6">PROCESSES</data>
+  <data key="d7">66</data>
+</edge>
+<edge source="C40" target="Q2">
+  <data key="d6">PROCESSES</data>
+  <data key="d7">19</data>
+</edge>
+<edge source="C40" target="Q3">
+  <data key="d6">PROCESSES</data>
+  <data key="d7">5</data>
+</edge>
+<edge source="C40" target="F3">
+  <data key="d6">HAS-FAILURE</data>
+  <data key="d7">2</data>
+</edge>
+<edge source="C41" target="Q1">
+  <data key="d6">PROCESSES</data>
+  <data key="d7">57</data>
+</edge>
+<edge source="C41" target="Q2">
+  <data key="d6">PROCESSES</data>
+  <data key="d7">20</data>
+</edge>
+<edge source="C41" target="Q3">
+  <data key="d6">PROCESSES</data>
+  <data key="d7">10</data>
+</edge>
+<edge source="C41" target="F4">
+  <data key="d6">HAS-FAILURE</data>
+  <data key="d7">1</data>
+</edge>
+<edge source="C42" target="Q1">
+  <data key="d6">PROCESSES</data>
+  <data key="d7">47</data>
+</edge>
+<edge source="C42" target="Q2">
+  <data key="d6">PROCESSES</data>
+  <data key="d7">19</data>
+</edge>
+<edge source="C42" target="Q3">
+  <data key="d6">PROCESSES</data>
+  <data key="d7">13</data>
+</edge>
+<edge source="C42" target="F1">
+  <data key="d6">HAS-FAILURE</data>
+  <data key="d7">1</data>
+</edge>
+<edge source="C42" target="F3">
+  <data key="d6">HAS-FAILURE</data>
+  <data key="d7">1</data>
+</edge>
+<edge source="C42" target="F4">
+  <data key="d6">HAS-FAILURE</data>
+  <data key="d7">1</data>
+</edge>
+<edge source="C42" target="F5">
+  <data key="d6">HAS-FAILURE</data>
+  <data key="d7">1</data>
+</edge>
+<edge source="C43" target="Q1">
+  <data key="d6">PROCESSES</data>
+  <data key="d7">47</data>
+</edge>
+<edge source="C43" target="Q2">
+  <data key="d6">PROCESSES</data>
+  <data key="d7">30</data>
+</edge>
+<edge source="C43" target="Q3">
+  <data key="d6">PROCESSES</data>
+  <data key="d7">5</data>
+</edge>
+<edge source="C43" target="F1">
+  <data key="d6">HAS-FAILURE</data>
+  <data key="d7">1</data>
+</edge>
+<edge source="C43" target="F4">
+  <data key="d6">HAS-FAILURE</data>
+  <data key="d7">1</data>
+</edge>
+<edge source="C43" target="F5">
+  <data key="d6">HAS-FAILURE</data>
+  <data key="d7">1</data>
+</edge>
+<edge source="C44" target="Q1">
+  <data key="d6">PROCESSES</data>
+  <data key="d7">49</data>
+</edge>
+<edge source="C44" target="Q2">
+  <data key="d6">PROCESSES</data>
+  <data key="d7">32</data>
+</edge>
+<edge source="C44" target="Q3">
+  <data key="d6">PROCESSES</data>
+  <data key="d7">3</data>
+</edge>
+<edge source="C44" target="F1">
+  <data key="d6">HAS-FAILURE</data>
+  <data key="d7">1</data>
+</edge>
+<edge source="C44" target="F3">
+  <data key="d6">HAS-FAILURE</data>
+  <data key="d7">1</data>
+</edge>
+<edge source="C45" target="Q1">
+  <data key="d6">PROCESSES</data>
+  <data key="d7">47</data>
+</edge>
+<edge source="C45" target="Q2">
+  <data key="d6">PROCESSES</data>
+  <data key="d7">28</data>
+</edge>
+<edge source="C45" target="Q3">
+  <data key="d6">PROCESSES</data>
+  <data key="d7">7</data>
+</edge>
+<edge source="C45" target="F2">
+  <data key="d6">HAS-FAILURE</data>
+  <data key="d7">1</data>
+</edge>
+<edge source="C46" target="Q1">
+  <data key="d6">PROCESSES</data>
+  <data key="d7">49</data>
+</edge>
+<edge source="C46" target="Q2">
+  <data key="d6">PROCESSES</data>
+  <data key="d7">30</data>
+</edge>
+<edge source="C46" target="Q3">
+  <data key="d6">PROCESSES</data>
+  <data key="d7">9</data>
+</edge>
+<edge source="C46" target="F1">
+  <data key="d6">HAS-FAILURE</data>
+  <data key="d7">1</data>
+</edge>
+<edge source="C46" target="F2">
+  <data key="d6">HAS-FAILURE</data>
+  <data key="d7">5</data>
+</edge>
+<edge source="C46" target="F3">
+  <data key="d6">HAS-FAILURE</data>
+  <data key="d7">1</data>
+</edge>
+<edge source="C46" target="F4">
+  <data key="d6">HAS-FAILURE</data>
+  <data key="d7">1</data>
+</edge>
+<edge source="C47" target="Q1">
+  <data key="d6">PROCESSES</data>
+  <data key="d7">44</data>
+</edge>
+<edge source="C47" target="Q2">
+  <data key="d6">PROCESSES</data>
+  <data key="d7">27</data>
+</edge>
+<edge source="C47" target="Q3">
+  <data key="d6">PROCESSES</data>
+  <data key="d7">8</data>
+</edge>
+<edge source="C47" target="F3">
+  <data key="d6">HAS-FAILURE</data>
+  <data key="d7">2</data>
+</edge>
+<edge source="C47" target="F4">
+  <data key="d6">HAS-FAILURE</data>
+  <data key="d7">3</data>
+</edge>
+<edge source="C48" target="Q1">
+  <data key="d6">PROCESSES</data>
+  <data key="d7">53</data>
+</edge>
+<edge source="C48" target="Q2">
+  <data key="d6">PROCESSES</data>
+  <data key="d7">27</data>
+</edge>
+<edge source="C48" target="Q3">
+  <data key="d6">PROCESSES</data>
+  <data key="d7">10</data>
+</edge>
+<edge source="C48" target="F1">
+  <data key="d6">HAS-FAILURE</data>
+  <data key="d7">1</data>
+</edge>
+<edge source="C48" target="F3">
+  <data key="d6">HAS-FAILURE</data>
+  <data key="d7">2</data>
+</edge>
+<edge source="C48" target="F4">
+  <data key="d6">HAS-FAILURE</data>
+  <data key="d7">1</data>
+</edge>
+<edge source="C49" target="Q1">
+  <data key="d6">PROCESSES</data>
+  <data key="d7">57</data>
+</edge>
+<edge source="C49" target="Q2">
+  <data key="d6">PROCESSES</data>
+  <data key="d7">24</data>
+</edge>
+<edge source="C49" target="Q3">
+  <data key="d6">PROCESSES</data>
+  <data key="d7">6</data>
+</edge>
+<edge source="C49" target="F2">
+  <data key="d6">HAS-FAILURE</data>
+  <data key="d7">8</data>
+</edge>
+<edge source="C49" target="F3">
+  <data key="d6">HAS-FAILURE</data>
+  <data key="d7">1</data>
+</edge>
+<edge source="C49" target="F4">
+  <data key="d6">HAS-FAILURE</data>
+  <data key="d7">2</data>
+</edge>
+<edge source="C49" target="F9">
+  <data key="d6">HAS-FAILURE</data>
+  <data key="d7">1</data>
+</edge>
+<edge source="C50" target="Q1">
+  <data key="d6">PROCESSES</data>
+  <data key="d7">49</data>
+</edge>
+<edge source="C50" target="Q2">
+  <data key="d6">PROCESSES</data>
+  <data key="d7">31</data>
+</edge>
+<edge source="C50" target="Q3">
+  <data key="d6">PROCESSES</data>
+  <data key="d7">6</data>
+</edge>
+<edge source="C50" target="F1">
+  <data key="d6">HAS-FAILURE</data>
+  <data key="d7">1</data>
+</edge>
+<edge source="C50" target="F2">
+  <data key="d6">HAS-FAILURE</data>
+  <data key="d7">14</data>
+</edge>
+<edge source="C51" target="Q1">
+  <data key="d6">PROCESSES</data>
+  <data key="d7">58</data>
+</edge>
+<edge source="C51" target="Q2">
+  <data key="d6">PROCESSES</data>
+  <data key="d7">28</data>
+</edge>
+<edge source="C51" target="Q3">
+  <data key="d6">PROCESSES</data>
+  <data key="d7">4</data>
+</edge>
+<edge source="C51" target="F2">
+  <data key="d6">HAS-FAILURE</data>
+  <data key="d7">13</data>
+</edge>
+<edge source="C51" target="F4">
+  <data key="d6">HAS-FAILURE</data>
+  <data key="d7">3</data>
+</edge>
+<edge source="C52" target="Q1">
+  <data key="d6">PROCESSES</data>
+  <data key="d7">53</data>
+</edge>
+<edge source="C52" target="Q2">
+  <data key="d6">PROCESSES</data>
+  <data key="d7">23</data>
+</edge>
+<edge source="C52" target="Q3">
+  <data key="d6">PROCESSES</data>
+  <data key="d7">12</data>
+</edge>
+<edge source="C52" target="F1">
+  <data key="d6">HAS-FAILURE</data>
+  <data key="d7">1</data>
+</edge>
+<edge source="C52" target="F2">
+  <data key="d6">HAS-FAILURE</data>
+  <data key="d7">9</data>
+</edge>
+<edge source="C52" target="F3">
+  <data key="d6">HAS-FAILURE</data>
+  <data key="d7">2</data>
+</edge>
+<edge source="C52" target="F4">
+  <data key="d6">HAS-FAILURE</data>
+  <data key="d7">2</data>
+</edge>
+<edge source="C53" target="Q1">
+  <data key="d6">PROCESSES</data>
+  <data key="d7">55</data>
+</edge>
+<edge source="C53" target="Q2">
+  <data key="d6">PROCESSES</data>
+  <data key="d7">21</data>
+</edge>
+<edge source="C53" target="Q3">
+  <data key="d6">PROCESSES</data>
+  <data key="d7">8</data>
+</edge>
+<edge source="C53" target="F1">
+  <data key="d6">HAS-FAILURE</data>
+  <data key="d7">1</data>
+</edge>
+<edge source="C53" target="F2">
+  <data key="d6">HAS-FAILURE</data>
+  <data key="d7">14</data>
+</edge>
+<edge source="C53" target="F3">
+  <data key="d6">HAS-FAILURE</data>
+  <data key="d7">1</data>
+</edge>
+<edge source="C53" target="F4">
+  <data key="d6">HAS-FAILURE</data>
+  <data key="d7">2</data>
+</edge>
+<edge source="C54" target="Q1">
+  <data key="d6">PROCESSES</data>
+  <data key="d7">53</data>
+</edge>
+<edge source="C54" target="Q2">
+  <data key="d6">PROCESSES</data>
+  <data key="d7">23</data>
+</edge>
+<edge source="C54" target="Q3">
+  <data key="d6">PROCESSES</data>
+  <data key="d7">7</data>
+</edge>
+<edge source="C54" target="F2">
+  <data key="d6">HAS-FAILURE</data>
+  <data key="d7">9</data>
+</edge>
+<edge source="C55" target="Q1">
+  <data key="d6">PROCESSES</data>
+  <data key="d7">62</data>
+</edge>
+<edge source="C55" target="Q2">
+  <data key="d6">PROCESSES</data>
+  <data key="d7">24</data>
+</edge>
+<edge source="C55" target="Q3">
+  <data key="d6">PROCESSES</data>
+  <data key="d7">8</data>
+</edge>
+<edge source="C55" target="F1">
+  <data key="d6">HAS-FAILURE</data>
+  <data key="d7">1</data>
+</edge>
+<edge source="C55" target="F2">
+  <data key="d6">HAS-FAILURE</data>
+  <data key="d7">15</data>
+</edge>
+<edge source="C55" target="F3">
+  <data key="d6">HAS-FAILURE</data>
+  <data key="d7">2</data>
+</edge>
+<edge source="C56" target="Q1">
+  <data key="d6">PROCESSES</data>
+  <data key="d7">54</data>
+</edge>
+<edge source="C56" target="Q2">
+  <data key="d6">PROCESSES</data>
+  <data key="d7">27</data>
+</edge>
+<edge source="C56" target="Q3">
+  <data key="d6">PROCESSES</data>
+  <data key="d7">8</data>
+</edge>
+<edge source="C56" target="F2">
+  <data key="d6">HAS-FAILURE</data>
+  <data key="d7">11</data>
+</edge>
+<edge source="C56" target="F3">
+  <data key="d6">HAS-FAILURE</data>
+  <data key="d7">1</data>
+</edge>
+<edge source="C56" target="F9">
+  <data key="d6">HAS-FAILURE</data>
+  <data key="d7">1</data>
+</edge>
+<edge source="C57" target="Q1">
+  <data key="d6">PROCESSES</data>
+  <data key="d7">52</data>
+</edge>
+<edge source="C57" target="Q2">
+  <data key="d6">PROCESSES</data>
+  <data key="d7">16</data>
+</edge>
+<edge source="C57" target="Q3">
+  <data key="d6">PROCESSES</data>
+  <data key="d7">13</data>
+</edge>
+<edge source="C57" target="F1">
+  <data key="d6">HAS-FAILURE</data>
+  <data key="d7">1</data>
+</edge>
+<edge source="C57" target="F2">
+  <data key="d6">HAS-FAILURE</data>
+  <data key="d7">9</data>
+</edge>
+<edge source="C57" target="F3">
+  <data key="d6">HAS-FAILURE</data>
+  <data key="d7">1</data>
+</edge>
+<edge source="C57" target="F4">
+  <data key="d6">HAS-FAILURE</data>
+  <data key="d7">1</data>
+</edge>
+<edge source="C58" target="Q1">
+  <data key="d6">PROCESSES</data>
+  <data key="d7">50</data>
+</edge>
+<edge source="C58" target="Q2">
+  <data key="d6">PROCESSES</data>
+  <data key="d7">26</data>
+</edge>
+<edge source="C58" target="Q3">
+  <data key="d6">PROCESSES</data>
+  <data key="d7">10</data>
+</edge>
+<edge source="C58" target="F2">
+  <data key="d6">HAS-FAILURE</data>
+  <data key="d7">6</data>
+</edge>
+<edge source="C59" target="Q1">
+  <data key="d6">PROCESSES</data>
+  <data key="d7">47</data>
+</edge>
+<edge source="C59" target="Q2">
+  <data key="d6">PROCESSES</data>
+  <data key="d7">28</data>
+</edge>
+<edge source="C59" target="Q3">
+  <data key="d6">PROCESSES</data>
+  <data key="d7">8</data>
+</edge>
+<edge source="C59" target="F3">
+  <data key="d6">HAS-FAILURE</data>
+  <data key="d7">2</data>
+</edge>
+<edge source="C59" target="F4">
+  <data key="d6">HAS-FAILURE</data>
+  <data key="d7">2</data>
+</edge>
+<edge source="C60" target="Q1">
+  <data key="d6">PROCESSES</data>
+  <data key="d7">41</data>
+</edge>
+<edge source="C60" target="Q2">
+  <data key="d6">PROCESSES</data>
+  <data key="d7">29</data>
+</edge>
+<edge source="C60" target="Q3">
+  <data key="d6">PROCESSES</data>
+  <data key="d7">7</data>
+</edge>
+<edge source="C60" target="F3">
+  <data key="d6">HAS-FAILURE</data>
+  <data key="d7">1</data>
+</edge>
+<edge source="C60" target="F4">
+  <data key="d6">HAS-FAILURE</data>
+  <data key="d7">3</data>
+</edge>
+<edge source="C61" target="Q1">
+  <data key="d6">PROCESSES</data>
+  <data key="d7">40</data>
+</edge>
+<edge source="C61" target="Q2">
+  <data key="d6">PROCESSES</data>
+  <data key="d7">34</data>
+</edge>
+<edge source="C61" target="Q3">
+  <data key="d6">PROCESSES</data>
+  <data key="d7">5</data>
+</edge>
+<edge source="C61" target="F1">
+  <data key="d6">HAS-FAILURE</data>
+  <data key="d7">1</data>
+</edge>
+<edge source="C62" target="Q1">
+  <data key="d6">PROCESSES</data>
+  <data key="d7">49</data>
+</edge>
+<edge source="C62" target="Q2">
+  <data key="d6">PROCESSES</data>
+  <data key="d7">21</data>
+</edge>
+<edge source="C62" target="Q3">
+  <data key="d6">PROCESSES</data>
+  <data key="d7">10</data>
+</edge>
+<edge source="C62" target="F3">
+  <data key="d6">HAS-FAILURE</data>
+  <data key="d7">1</data>
+</edge>
+<edge source="C63" target="Q1">
+  <data key="d6">PROCESSES</data>
+  <data key="d7">58</data>
+</edge>
+<edge source="C63" target="Q2">
+  <data key="d6">PROCESSES</data>
+  <data key="d7">24</data>
+</edge>
+<edge source="C63" target="Q3">
+  <data key="d6">PROCESSES</data>
+  <data key="d7">6</data>
+</edge>
+<edge source="C63" target="F1">
+  <data key="d6">HAS-FAILURE</data>
+  <data key="d7">1</data>
+</edge>
+<edge source="C64" target="Q1">
+  <data key="d6">PROCESSES</data>
+  <data key="d7">48</data>
+</edge>
+<edge source="C64" target="Q2">
+  <data key="d6">PROCESSES</data>
+  <data key="d7">30</data>
+</edge>
+<edge source="C64" target="Q3">
+  <data key="d6">PROCESSES</data>
+  <data key="d7">14</data>
+</edge>
+<edge source="C64" target="F1">
+  <data key="d6">HAS-FAILURE</data>
+  <data key="d7">1</data>
+</edge>
+<edge source="C64" target="F3">
+  <data key="d6">HAS-FAILURE</data>
+  <data key="d7">4</data>
+</edge>
+<edge source="C64" target="F4">
+  <data key="d6">HAS-FAILURE</data>
+  <data key="d7">2</data>
+</edge>
+<edge source="C65" target="Q1">
+  <data key="d6">PROCESSES</data>
+  <data key="d7">57</data>
+</edge>
+<edge source="C65" target="Q2">
+  <data key="d6">PROCESSES</data>
+  <data key="d7">26</data>
+</edge>
+<edge source="C65" target="Q3">
+  <data key="d6">PROCESSES</data>
+  <data key="d7">5</data>
+</edge>
+<edge source="C65" target="F3">
+  <data key="d6">HAS-FAILURE</data>
+  <data key="d7">1</data>
+</edge>
+<edge source="C65" target="F5">
+  <data key="d6">HAS-FAILURE</data>
+  <data key="d7">2</data>
+</edge>
+<edge source="C66" target="Q1">
+  <data key="d6">PROCESSES</data>
+  <data key="d7">43</data>
+</edge>
+<edge source="C66" target="Q2">
+  <data key="d6">PROCESSES</data>
+  <data key="d7">24</data>
+</edge>
+<edge source="C66" target="Q3">
+  <data key="d6">PROCESSES</data>
+  <data key="d7">10</data>
+</edge>
+<edge source="C66" target="F4">
+  <data key="d6">HAS-FAILURE</data>
+  <data key="d7">1</data>
+</edge>
+<edge source="C66" target="F5">
+  <data key="d6">HAS-FAILURE</data>
+  <data key="d7">3</data>
+</edge>
+<edge source="C66" target="F9">
+  <data key="d6">HAS-FAILURE</data>
+  <data key="d7">1</data>
+</edge>
+<edge source="C67" target="Q1">
+  <data key="d6">PROCESSES</data>
+  <data key="d7">54</data>
+</edge>
+<edge source="C67" target="Q2">
+  <data key="d6">PROCESSES</data>
+  <data key="d7">28</data>
+</edge>
+<edge source="C67" target="Q3">
+  <data key="d6">PROCESSES</data>
+  <data key="d7">5</data>
+</edge>
+<edge source="C67" target="F4">
+  <data key="d6">HAS-FAILURE</data>
+  <data key="d7">2</data>
+</edge>
+<edge source="C67" target="F5">
+  <data key="d6">HAS-FAILURE</data>
+  <data key="d7">1</data>
+</edge>
+<edge source="C68" target="Q1">
+  <data key="d6">PROCESSES</data>
+  <data key="d7">51</data>
+</edge>
+<edge source="C68" target="Q2">
+  <data key="d6">PROCESSES</data>
+  <data key="d7">25</data>
+</edge>
+<edge source="C68" target="Q3">
+  <data key="d6">PROCESSES</data>
+  <data key="d7">8</data>
+</edge>
+<edge source="C68" target="F3">
+  <data key="d6">HAS-FAILURE</data>
+  <data key="d7">1</data>
+</edge>
+<edge source="C68" target="F4">
+  <data key="d6">HAS-FAILURE</data>
+  <data key="d7">1</data>
+</edge>
+<edge source="C69" target="Q1">
+  <data key="d6">PROCESSES</data>
+  <data key="d7">57</data>
+</edge>
+<edge source="C69" target="Q2">
+  <data key="d6">PROCESSES</data>
+  <data key="d7">24</data>
+</edge>
+<edge source="C69" target="Q3">
+  <data key="d6">PROCESSES</data>
+  <data key="d7">8</data>
+</edge>
+<edge source="C70" target="Q1">
+  <data key="d6">PROCESSES</data>
+  <data key="d7">50</data>
+</edge>
+<edge source="C70" target="Q2">
+  <data key="d6">PROCESSES</data>
+  <data key="d7">26</data>
+</edge>
+<edge source="C70" target="Q3">
+  <data key="d6">PROCESSES</data>
+  <data key="d7">7</data>
+</edge>
+<edge source="C70" target="F1">
+  <data key="d6">HAS-FAILURE</data>
+  <data key="d7">1</data>
+</edge>
+<edge source="C70" target="F3">
+  <data key="d6">HAS-FAILURE</data>
+  <data key="d7">1</data>
+</edge>
+<edge source="C70" target="F4">
+  <data key="d6">HAS-FAILURE</data>
+  <data key="d7">1</data>
+</edge>
+<edge source="C71" target="Q1">
+  <data key="d6">PROCESSES</data>
+  <data key="d7">55</data>
+</edge>
+<edge source="C71" target="Q2">
+  <data key="d6">PROCESSES</data>
+  <data key="d7">24</data>
+</edge>
+<edge source="C71" target="Q3">
+  <data key="d6">PROCESSES</data>
+  <data key="d7">11</data>
+</edge>
+<edge source="C71" target="F1">
+  <data key="d6">HAS-FAILURE</data>
+  <data key="d7">1</data>
+</edge>
+<edge source="C71" target="F9">
+  <data key="d6">HAS-FAILURE</data>
+  <data key="d7">1</data>
+</edge>
+<edge source="C72" target="Q1">
+  <data key="d6">PROCESSES</data>
+  <data key="d7">50</data>
+</edge>
+<edge source="C72" target="Q2">
+  <data key="d6">PROCESSES</data>
+  <data key="d7">27</data>
+</edge>
+<edge source="C72" target="Q3">
+  <data key="d6">PROCESSES</data>
+  <data key="d7">7</data>
+</edge>
+<edge source="C72" target="F3">
+  <data key="d6">HAS-FAILURE</data>
+  <data key="d7">1</data>
+</edge>
+<edge source="C72" target="F4">
+  <data key="d6">HAS-FAILURE</data>
+  <data key="d7">1</data>
+</edge>
+<edge source="C73" target="Q1">
+  <data key="d6">PROCESSES</data>
+  <data key="d7">52</data>
+</edge>
+<edge source="C73" target="Q2">
+  <data key="d6">PROCESSES</data>
+  <data key="d7">30</data>
+</edge>
+<edge source="C73" target="Q3">
+  <data key="d6">PROCESSES</data>
+  <data key="d7">7</data>
+</edge>
+<edge source="C73" target="F1">
+  <data key="d6">HAS-FAILURE</data>
+  <data key="d7">1</data>
+</edge>
+<edge source="C73" target="F3">
+  <data key="d6">HAS-FAILURE</data>
+  <data key="d7">2</data>
+</edge>
+<edge source="C73" target="F5">
+  <data key="d6">HAS-FAILURE</data>
+  <data key="d7">1</data>
+</edge>
+<edge source="C74" target="Q1">
+  <data key="d6">PROCESSES</data>
+  <data key="d7">58</data>
+</edge>
+<edge source="C74" target="Q2">
+  <data key="d6">PROCESSES</data>
+  <data key="d7">19</data>
+</edge>
+<edge source="C74" target="Q3">
+  <data key="d6">PROCESSES</data>
+  <data key="d7">7</data>
+</edge>
+<edge source="C74" target="F1">
+  <data key="d6">HAS-FAILURE</data>
+  <data key="d7">1</data>
+</edge>
+<edge source="C74" target="F3">
+  <data key="d6">HAS-FAILURE</data>
+  <data key="d7">2</data>
+</edge>
+<edge source="C74" target="F4">
+  <data key="d6">HAS-FAILURE</data>
+  <data key="d7">2</data>
+</edge>
+<edge source="C75" target="Q1">
+  <data key="d6">PROCESSES</data>
+  <data key="d7">47</data>
+</edge>
+<edge source="C75" target="Q2">
+  <data key="d6">PROCESSES</data>
+  <data key="d7">32</data>
+</edge>
+<edge source="C75" target="Q3">
+  <data key="d6">PROCESSES</data>
+  <data key="d7">5</data>
+</edge>
+<edge source="C75" target="F1">
+  <data key="d6">HAS-FAILURE</data>
+  <data key="d7">1</data>
+</edge>
+<edge source="C76" target="Q1">
+  <data key="d6">PROCESSES</data>
+  <data key="d7">44</data>
+</edge>
+<edge source="C76" target="Q2">
+  <data key="d6">PROCESSES</data>
+  <data key="d7">24</data>
+</edge>
+<edge source="C76" target="Q3">
+  <data key="d6">PROCESSES</data>
+  <data key="d7">11</data>
+</edge>
+<edge source="C76" target="F1">
+  <data key="d6">HAS-FAILURE</data>
+  <data key="d7">1</data>
+</edge>
+<edge source="C77" target="Q1">
+  <data key="d6">PROCESSES</data>
+  <data key="d7">57</data>
+</edge>
+<edge source="C77" target="Q2">
+  <data key="d6">PROCESSES</data>
+  <data key="d7">21</data>
+</edge>
+<edge source="C77" target="Q3">
+  <data key="d6">PROCESSES</data>
+  <data key="d7">9</data>
+</edge>
+<edge source="C77" target="F3">
+  <data key="d6">HAS-FAILURE</data>
+  <data key="d7">1</data>
+</edge>
+<edge source="C77" target="F9">
+  <data key="d6">HAS-FAILURE</data>
+  <data key="d7">1</data>
+</edge>
+<edge source="C78" target="Q1">
+  <data key="d6">PROCESSES</data>
+  <data key="d7">51</data>
+</edge>
+<edge source="C78" target="Q2">
+  <data key="d6">PROCESSES</data>
+  <data key="d7">21</data>
+</edge>
+<edge source="C78" target="Q3">
+  <data key="d6">PROCESSES</data>
+  <data key="d7">10</data>
+</edge>
+<edge source="C78" target="F4">
+  <data key="d6">HAS-FAILURE</data>
+  <data key="d7">2</data>
+</edge>
+<edge source="C79" target="Q1">
+  <data key="d6">PROCESSES</data>
+  <data key="d7">53</data>
+</edge>
+<edge source="C79" target="Q2">
+  <data key="d6">PROCESSES</data>
+  <data key="d7">30</data>
+</edge>
+<edge source="C79" target="Q3">
+  <data key="d6">PROCESSES</data>
+  <data key="d7">6</data>
+</edge>
+<edge source="C79" target="F3">
+  <data key="d6">HAS-FAILURE</data>
+  <data key="d7">1</data>
+</edge>
+<edge source="C79" target="F4">
+  <data key="d6">HAS-FAILURE</data>
+  <data key="d7">1</data>
+</edge>
+<edge source="C80" target="Q1">
+  <data key="d6">PROCESSES</data>
+  <data key="d7">48</data>
+</edge>
+<edge source="C80" target="Q2">
+  <data key="d6">PROCESSES</data>
+  <data key="d7">28</data>
+</edge>
+<edge source="C80" target="Q3">
+  <data key="d6">PROCESSES</data>
+  <data key="d7">6</data>
+</edge>
+<edge source="C80" target="F1">
+  <data key="d6">HAS-FAILURE</data>
+  <data key="d7">1</data>
+</edge>
+<edge source="C80" target="F4">
+  <data key="d6">HAS-FAILURE</data>
+  <data key="d7">1</data>
+</edge>
+<edge source="C81" target="Q1">
+  <data key="d6">PROCESSES</data>
+  <data key="d7">49</data>
+</edge>
+<edge source="C81" target="Q2">
+  <data key="d6">PROCESSES</data>
+  <data key="d7">30</data>
+</edge>
+<edge source="C81" target="Q3">
+  <data key="d6">PROCESSES</data>
+  <data key="d7">6</data>
+</edge>
+<edge source="C81" target="F4">
+  <data key="d6">HAS-FAILURE</data>
+  <data key="d7">1</data>
+</edge>
+<edge source="C82" target="Q1">
+  <data key="d6">PROCESSES</data>
+  <data key="d7">46</data>
+</edge>
+<edge source="C82" target="Q2">
+  <data key="d6">PROCESSES</data>
+  <data key="d7">27</data>
+</edge>
+<edge source="C82" target="Q3">
+  <data key="d6">PROCESSES</data>
+  <data key="d7">8</data>
+</edge>
+<edge source="C82" target="F3">
+  <data key="d6">HAS-FAILURE</data>
+  <data key="d7">1</data>
+</edge>
+<edge source="C82" target="F5">
+  <data key="d6">HAS-FAILURE</data>
+  <data key="d7">1</data>
+</edge>
+<edge source="C83" target="Q1">
+  <data key="d6">PROCESSES</data>
+  <data key="d7">43</data>
+</edge>
+<edge source="C83" target="Q2">
+  <data key="d6">PROCESSES</data>
+  <data key="d7">28</data>
+</edge>
+<edge source="C83" target="Q3">
+  <data key="d6">PROCESSES</data>
+  <data key="d7">8</data>
+</edge>
+<edge source="C83" target="F4">
+  <data key="d6">HAS-FAILURE</data>
+  <data key="d7">2</data>
+</edge>
+<edge source="C83" target="F5">
+  <data key="d6">HAS-FAILURE</data>
+  <data key="d7">1</data>
+</edge>
+<edge source="C84" target="Q1">
+  <data key="d6">PROCESSES</data>
+  <data key="d7">52</data>
+</edge>
+<edge source="C84" target="Q2">
+  <data key="d6">PROCESSES</data>
+  <data key="d7">20</data>
+</edge>
+<edge source="C84" target="Q3">
+  <data key="d6">PROCESSES</data>
+  <data key="d7">11</data>
+</edge>
+<edge source="C84" target="F1">
+  <data key="d6">HAS-FAILURE</data>
+  <data key="d7">1</data>
+</edge>
+<edge source="C84" target="F3">
+  <data key="d6">HAS-FAILURE</data>
+  <data key="d7">1</data>
+</edge>
+<edge source="C84" target="F4">
+  <data key="d6">HAS-FAILURE</data>
+  <data key="d7">2</data>
+</edge>
+<edge source="C85" target="Q1">
+  <data key="d6">PROCESSES</data>
+  <data key="d7">46</data>
+</edge>
+<edge source="C85" target="Q2">
+  <data key="d6">PROCESSES</data>
+  <data key="d7">27</data>
+</edge>
+<edge source="C85" target="Q3">
+  <data key="d6">PROCESSES</data>
+  <data key="d7">7</data>
+</edge>
+<edge source="C85" target="F3">
+  <data key="d6">HAS-FAILURE</data>
+  <data key="d7">1</data>
+</edge>
+<edge source="C86" target="Q1">
+  <data key="d6">PROCESSES</data>
+  <data key="d7">52</data>
+</edge>
+<edge source="C86" target="Q2">
+  <data key="d6">PROCESSES</data>
+  <data key="d7">30</data>
+</edge>
+<edge source="C86" target="Q3">
+  <data key="d6">PROCESSES</data>
+  <data key="d7">6</data>
+</edge>
+<edge source="C87" target="Q1">
+  <data key="d6">PROCESSES</data>
+  <data key="d7">50</data>
+</edge>
+<edge source="C87" target="Q2">
+  <data key="d6">PROCESSES</data>
+  <data key="d7">24</data>
+</edge>
+<edge source="C87" target="Q3">
+  <data key="d6">PROCESSES</data>
+  <data key="d7">9</data>
+</edge>
+<edge source="C87" target="F4">
+  <data key="d6">HAS-FAILURE</data>
+  <data key="d7">1</data>
+</edge>
+<edge source="C88" target="Q1">
+  <data key="d6">PROCESSES</data>
+  <data key="d7">53</data>
+</edge>
+<edge source="C88" target="Q2">
+  <data key="d6">PROCESSES</data>
+  <data key="d7">31</data>
+</edge>
+<edge source="C88" target="Q3">
+  <data key="d6">PROCESSES</data>
+  <data key="d7">4</data>
+</edge>
+<edge source="C88" target="F1">
+  <data key="d6">HAS-FAILURE</data>
+  <data key="d7">1</data>
+</edge>
+<edge source="C89" target="Q1">
+  <data key="d6">PROCESSES</data>
+  <data key="d7">52</data>
+</edge>
+<edge source="C89" target="Q2">
+  <data key="d6">PROCESSES</data>
+  <data key="d7">24</data>
+</edge>
+<edge source="C89" target="Q3">
+  <data key="d6">PROCESSES</data>
+  <data key="d7">8</data>
+</edge>
+<edge source="C89" target="F1">
+  <data key="d6">HAS-FAILURE</data>
+  <data key="d7">1</data>
+</edge>
+<edge source="C89" target="F3">
+  <data key="d6">HAS-FAILURE</data>
+  <data key="d7">1</data>
+</edge>
+<edge source="C89" target="F5">
+  <data key="d6">HAS-FAILURE</data>
+  <data key="d7">1</data>
+</edge>
+<edge source="C90" target="Q1">
+  <data key="d6">PROCESSES</data>
+  <data key="d7">49</data>
+</edge>
+<edge source="C90" target="Q2">
+  <data key="d6">PROCESSES</data>
+  <data key="d7">29</data>
+</edge>
+<edge source="C90" target="Q3">
+  <data key="d6">PROCESSES</data>
+  <data key="d7">5</data>
+</edge>
+<edge source="C90" target="F3">
+  <data key="d6">HAS-FAILURE</data>
+  <data key="d7">2</data>
+</edge>
+<edge source="C90" target="F4">
+  <data key="d6">HAS-FAILURE</data>
+  <data key="d7">3</data>
+</edge>
+<edge source="C91" target="Q1">
+  <data key="d6">PROCESSES</data>
+  <data key="d7">61</data>
+</edge>
+<edge source="C91" target="Q2">
+  <data key="d6">PROCESSES</data>
+  <data key="d7">26</data>
+</edge>
+<edge source="C91" target="Q3">
+  <data key="d6">PROCESSES</data>
+  <data key="d7">7</data>
+</edge>
+<edge source="C91" target="F1">
+  <data key="d6">HAS-FAILURE</data>
+  <data key="d7">1</data>
+</edge>
+<edge source="C91" target="F3">
+  <data key="d6">HAS-FAILURE</data>
+  <data key="d7">1</data>
+</edge>
+<edge source="C92" target="Q1">
+  <data key="d6">PROCESSES</data>
+  <data key="d7">38</data>
+</edge>
+<edge source="C92" target="Q2">
+  <data key="d6">PROCESSES</data>
+  <data key="d7">24</data>
+</edge>
+<edge source="C92" target="Q3">
+  <data key="d6">PROCESSES</data>
+  <data key="d7">12</data>
+</edge>
+<edge source="C92" target="F3">
+  <data key="d6">HAS-FAILURE</data>
+  <data key="d7">2</data>
+</edge>
+<edge source="C93" target="Q1">
+  <data key="d6">PROCESSES</data>
+  <data key="d7">57</data>
+</edge>
+<edge source="C93" target="Q2">
+  <data key="d6">PROCESSES</data>
+  <data key="d7">22</data>
+</edge>
+<edge source="C93" target="Q3">
+  <data key="d6">PROCESSES</data>
+  <data key="d7">9</data>
+</edge>
+<edge source="C93" target="F1">
+  <data key="d6">HAS-FAILURE</data>
+  <data key="d7">1</data>
+</edge>
+<edge source="C93" target="F4">
+  <data key="d6">HAS-FAILURE</data>
+  <data key="d7">1</data>
+</edge>
+<edge source="C94" target="Q1">
+  <data key="d6">PROCESSES</data>
+  <data key="d7">61</data>
+</edge>
+<edge source="C94" target="Q2">
+  <data key="d6">PROCESSES</data>
+  <data key="d7">21</data>
+</edge>
+<edge source="C94" target="Q3">
+  <data key="d6">PROCESSES</data>
+  <data key="d7">8</data>
+</edge>
+<edge source="C94" target="F3">
+  <data key="d6">HAS-FAILURE</data>
+  <data key="d7">1</data>
+</edge>
+<edge source="C94" target="F4">
+  <data key="d6">HAS-FAILURE</data>
+  <data key="d7">1</data>
+</edge>
+<edge source="C94" target="F5">
+  <data key="d6">HAS-FAILURE</data>
+  <data key="d7">1</data>
+</edge>
+<edge source="C95" target="Q1">
+  <data key="d6">PROCESSES</data>
+  <data key="d7">55</data>
+</edge>
+<edge source="C95" target="Q2">
+  <data key="d6">PROCESSES</data>
+  <data key="d7">26</data>
+</edge>
+<edge source="C95" target="Q3">
+  <data key="d6">PROCESSES</data>
+  <data key="d7">8</data>
+</edge>
+<edge source="C95" target="F3">
+  <data key="d6">HAS-FAILURE</data>
+  <data key="d7">1</data>
+</edge>
+<edge source="C95" target="F4">
+  <data key="d6">HAS-FAILURE</data>
+  <data key="d7">1</data>
+</edge>
+<edge source="C96" target="Q1">
+  <data key="d6">PROCESSES</data>
+  <data key="d7">57</data>
+</edge>
+<edge source="C96" target="Q2">
+  <data key="d6">PROCESSES</data>
+  <data key="d7">16</data>
+</edge>
+<edge source="C96" target="Q3">
+  <data key="d6">PROCESSES</data>
+  <data key="d7">10</data>
+</edge>
+<edge source="C96" target="F1">
+  <data key="d6">HAS-FAILURE</data>
+  <data key="d7">1</data>
+</edge>
+<edge source="C97" target="Q1">
+  <data key="d6">PROCESSES</data>
+  <data key="d7">57</data>
+</edge>
+<edge source="C97" target="Q2">
+  <data key="d6">PROCESSES</data>
+  <data key="d7">21</data>
+</edge>
+<edge source="C97" target="Q3">
+  <data key="d6">PROCESSES</data>
+  <data key="d7">10</data>
+</edge>
+<edge source="C97" target="F1">
+  <data key="d6">HAS-FAILURE</data>
+  <data key="d7">1</data>
+</edge>
+<edge source="C97" target="F3">
+  <data key="d6">HAS-FAILURE</data>
+  <data key="d7">2</data>
+</edge>
+<edge source="C98" target="Q1">
+  <data key="d6">PROCESSES</data>
+  <data key="d7">50</data>
+</edge>
+<edge source="C98" target="Q2">
+  <data key="d6">PROCESSES</data>
+  <data key="d7">22</data>
+</edge>
+<edge source="C98" target="Q3">
+  <data key="d6">PROCESSES</data>
+  <data key="d7">12</data>
+</edge>
+<edge source="C98" target="F4">
+  <data key="d6">HAS-FAILURE</data>
+  <data key="d7">1</data>
+</edge>
+<edge source="C99" target="Q1">
+  <data key="d6">PROCESSES</data>
+  <data key="d7">35</data>
+</edge>
+<edge source="C99" target="Q2">
+  <data key="d6">PROCESSES</data>
+  <data key="d7">30</data>
+</edge>
+<edge source="C99" target="Q3">
+  <data key="d6">PROCESSES</data>
+  <data key="d7">9</data>
+</edge>
+<edge source="C99" target="F1">
+  <data key="d6">HAS-FAILURE</data>
+  <data key="d7">1</data>
+</edge>
+<edge source="C99" target="F4">
+  <data key="d6">HAS-FAILURE</data>
+  <data key="d7">1</data>
+</edge>
+<edge source="C100" target="Q1">
+  <data key="d6">PROCESSES</data>
+  <data key="d7">51</data>
+</edge>
+<edge source="C100" target="Q2">
+  <data key="d6">PROCESSES</data>
+  <data key="d7">24</data>
+</edge>
+<edge source="C100" target="Q3">
+  <data key="d6">PROCESSES</data>
+  <data key="d7">7</data>
+</edge>
+<edge source="C100" target="F3">
+  <data key="d6">HAS-FAILURE</data>
+  <data key="d7">1</data>
+</edge>
+<edge source="C100" target="F4">
+  <data key="d6">HAS-FAILURE</data>
+  <data key="d7">1</data>
+</edge>
+<edge source="C101" target="Q1">
+  <data key="d6">PROCESSES</data>
+  <data key="d7">52</data>
+</edge>
+<edge source="C101" target="Q2">
+  <data key="d6">PROCESSES</data>
+  <data key="d7">25</data>
+</edge>
+<edge source="C101" target="Q3">
+  <data key="d6">PROCESSES</data>
+  <data key="d7">5</data>
+</edge>
+<edge source="C101" target="F9">
+  <data key="d6">HAS-FAILURE</data>
+  <data key="d7">1</data>
+</edge>
+<edge source="C102" target="Q1">
+  <data key="d6">PROCESSES</data>
+  <data key="d7">56</data>
+</edge>
+<edge source="C102" target="Q2">
+  <data key="d6">PROCESSES</data>
+  <data key="d7">24</data>
+</edge>
+<edge source="C102" target="Q3">
+  <data key="d6">PROCESSES</data>
+  <data key="d7">8</data>
+</edge>
+<edge source="C102" target="F1">
+  <data key="d6">HAS-FAILURE</data>
+  <data key="d7">1</data>
+</edge>
+<edge source="C102" target="F3">
+  <data key="d6">HAS-FAILURE</data>
+  <data key="d7">1</data>
+</edge>
+<edge source="C102" target="F4">
+  <data key="d6">HAS-FAILURE</data>
+  <data key="d7">1</data>
+</edge>
+<edge source="C103" target="Q1">
+  <data key="d6">PROCESSES</data>
+  <data key="d7">52</data>
+</edge>
+<edge source="C103" target="Q2">
+  <data key="d6">PROCESSES</data>
+  <data key="d7">20</data>
+</edge>
+<edge source="C103" target="Q3">
+  <data key="d6">PROCESSES</data>
+  <data key="d7">9</data>
+</edge>
+<edge source="C103" target="F1">
+  <data key="d6">HAS-FAILURE</data>
+  <data key="d7">1</data>
+</edge>
+<edge source="C104" target="Q1">
+  <data key="d6">PROCESSES</data>
+  <data key="d7">51</data>
+</edge>
+<edge source="C104" target="Q2">
+  <data key="d6">PROCESSES</data>
+  <data key="d7">24</data>
+</edge>
+<edge source="C104" target="Q3">
+  <data key="d6">PROCESSES</data>
+  <data key="d7">6</data>
+</edge>
+<edge source="C105" target="Q1">
+  <data key="d6">PROCESSES</data>
+  <data key="d7">40</data>
+</edge>
+<edge source="C105" target="Q2">
+  <data key="d6">PROCESSES</data>
+  <data key="d7">24</data>
+</edge>
+<edge source="C105" target="Q3">
+  <data key="d6">PROCESSES</data>
+  <data key="d7">11</data>
+</edge>
+<edge source="C105" target="F1">
+  <data key="d6">HAS-FAILURE</data>
+  <data key="d7">1</data>
+</edge>
+<edge source="C105" target="F3">
+  <data key="d6">HAS-FAILURE</data>
+  <data key="d7">1</data>
+</edge>
+<edge source="C106" target="Q1">
+  <data key="d6">PROCESSES</data>
+  <data key="d7">45</data>
+</edge>
+<edge source="C106" target="Q2">
+  <data key="d6">PROCESSES</data>
+  <data key="d7">31</data>
+</edge>
+<edge source="C106" target="Q3">
+  <data key="d6">PROCESSES</data>
+  <data key="d7">7</data>
+</edge>
+<edge source="C106" target="F3">
+  <data key="d6">HAS-FAILURE</data>
+  <data key="d7">1</data>
+</edge>
+<edge source="C106" target="F4">
+  <data key="d6">HAS-FAILURE</data>
+  <data key="d7">1</data>
+</edge>
+<edge source="C107" target="Q1">
+  <data key="d6">PROCESSES</data>
+  <data key="d7">56</data>
+</edge>
+<edge source="C107" target="Q2">
+  <data key="d6">PROCESSES</data>
+  <data key="d7">29</data>
+</edge>
+<edge source="C107" target="Q3">
+  <data key="d6">PROCESSES</data>
+  <data key="d7">4</data>
+</edge>
+<edge source="C107" target="F1">
+  <data key="d6">HAS-FAILURE</data>
+  <data key="d7">1</data>
+</edge>
+<edge source="C107" target="F3">
+  <data key="d6">HAS-FAILURE</data>
+  <data key="d7">2</data>
+</edge>
+<edge source="C107" target="F9">
+  <data key="d6">HAS-FAILURE</data>
+  <data key="d7">1</data>
+</edge>
+<edge source="C108" target="Q1">
+  <data key="d6">PROCESSES</data>
+  <data key="d7">47</data>
+</edge>
+<edge source="C108" target="Q2">
+  <data key="d6">PROCESSES</data>
+  <data key="d7">23</data>
+</edge>
+<edge source="C108" target="Q3">
+  <data key="d6">PROCESSES</data>
+  <data key="d7">9</data>
+</edge>
+<edge source="C108" target="F3">
+  <data key="d6">HAS-FAILURE</data>
+  <data key="d7">1</data>
+</edge>
+<edge source="C108" target="F4">
+  <data key="d6">HAS-FAILURE</data>
+  <data key="d7">1</data>
+</edge>
+<edge source="C109" target="Q1">
+  <data key="d6">PROCESSES</data>
+  <data key="d7">47</data>
+</edge>
+<edge source="C109" target="Q2">
+  <data key="d6">PROCESSES</data>
+  <data key="d7">21</data>
+</edge>
+<edge source="C109" target="Q3">
+  <data key="d6">PROCESSES</data>
+  <data key="d7">9</data>
+</edge>
+<edge source="C109" target="F1">
+  <data key="d6">HAS-FAILURE</data>
+  <data key="d7">1</data>
+</edge>
+<edge source="C110" target="Q1">
+  <data key="d6">PROCESSES</data>
+  <data key="d7">53</data>
+</edge>
+<edge source="C110" target="Q2">
+  <data key="d6">PROCESSES</data>
+  <data key="d7">26</data>
+</edge>
+<edge source="C110" target="Q3">
+  <data key="d6">PROCESSES</data>
+  <data key="d7">4</data>
+</edge>
+<edge source="C110" target="F4">
+  <data key="d6">HAS-FAILURE</data>
+  <data key="d7">1</data>
+</edge>
+<edge source="C111" target="Q1">
+  <data key="d6">PROCESSES</data>
+  <data key="d7">51</data>
+</edge>
+<edge source="C111" target="Q2">
+  <data key="d6">PROCESSES</data>
+  <data key="d7">19</data>
+</edge>
+<edge source="C111" target="Q3">
+  <data key="d6">PROCESSES</data>
+  <data key="d7">12</data>
+</edge>
+<edge source="C112" target="Q1">
+  <data key="d6">PROCESSES</data>
+  <data key="d7">40</data>
+</edge>
+<edge source="C112" target="Q2">
+  <data key="d6">PROCESSES</data>
+  <data key="d7">23</data>
+</edge>
+<edge source="C112" target="Q3">
+  <data key="d6">PROCESSES</data>
+  <data key="d7">12</data>
+</edge>
+<edge source="C112" target="F3">
+  <data key="d6">HAS-FAILURE</data>
+  <data key="d7">1</data>
+</edge>
+<edge source="C113" target="Q1">
+  <data key="d6">PROCESSES</data>
+  <data key="d7">39</data>
+</edge>
+<edge source="C113" target="Q2">
+  <data key="d6">PROCESSES</data>
+  <data key="d7">32</data>
+</edge>
+<edge source="C113" target="Q3">
+  <data key="d6">PROCESSES</data>
+  <data key="d7">11</data>
+</edge>
+<edge source="C113" target="F3">
+  <data key="d6">HAS-FAILURE</data>
+  <data key="d7">1</data>
+</edge>
+<edge source="C114" target="Q1">
+  <data key="d6">PROCESSES</data>
+  <data key="d7">47</data>
+</edge>
+<edge source="C114" target="Q2">
+  <data key="d6">PROCESSES</data>
+  <data key="d7">26</data>
+</edge>
+<edge source="C114" target="Q3">
+  <data key="d6">PROCESSES</data>
+  <data key="d7">7</data>
+</edge>
+<edge source="C114" target="F1">
+  <data key="d6">HAS-FAILURE</data>
+  <data key="d7">1</data>
+</edge>
+<edge source="C115" target="Q1">
+  <data key="d6">PROCESSES</data>
+  <data key="d7">59</data>
+</edge>
+<edge source="C115" target="Q2">
+  <data key="d6">PROCESSES</data>
+  <data key="d7">25</data>
+</edge>
+<edge source="C115" target="Q3">
+  <data key="d6">PROCESSES</data>
+  <data key="d7">11</data>
+</edge>
+<edge source="C115" target="F3">
+  <data key="d6">HAS-FAILURE</data>
+  <data key="d7">6</data>
+</edge>
+<edge source="C115" target="F4">
+  <data key="d6">HAS-FAILURE</data>
+  <data key="d7">1</data>
+</edge>
+<edge source="C116" target="Q1">
+  <data key="d6">PROCESSES</data>
+  <data key="d7">57</data>
+</edge>
+<edge source="C116" target="Q2">
+  <data key="d6">PROCESSES</data>
+  <data key="d7">22</data>
+</edge>
+<edge source="C116" target="Q3">
+  <data key="d6">PROCESSES</data>
+  <data key="d7">8</data>
+</edge>
+<edge source="C116" target="F1">
+  <data key="d6">HAS-FAILURE</data>
+  <data key="d7">1</data>
+</edge>
+<edge source="C117" target="Q1">
+  <data key="d6">PROCESSES</data>
+  <data key="d7">37</data>
+</edge>
+<edge source="C117" target="Q2">
+  <data key="d6">PROCESSES</data>
+  <data key="d7">25</data>
+</edge>
+<edge source="C117" target="Q3">
+  <data key="d6">PROCESSES</data>
+  <data key="d7">13</data>
+</edge>
+<edge source="C117" target="F3">
+  <data key="d6">HAS-FAILURE</data>
+  <data key="d7">2</data>
+</edge>
+<edge source="C117" target="F4">
+  <data key="d6">HAS-FAILURE</data>
+  <data key="d7">1</data>
+</edge>
+<edge source="C118" target="Q1">
+  <data key="d6">PROCESSES</data>
+  <data key="d7">37</data>
+</edge>
+<edge source="C118" target="Q2">
+  <data key="d6">PROCESSES</data>
+  <data key="d7">25</data>
+</edge>
+<edge source="C118" target="Q3">
+  <data key="d6">PROCESSES</data>
+  <data key="d7">12</data>
+</edge>
+<edge source="C119" target="Q1">
+  <data key="d6">PROCESSES</data>
+  <data key="d7">48</data>
+</edge>
+<edge source="C119" target="Q2">
+  <data key="d6">PROCESSES</data>
+  <data key="d7">23</data>
+</edge>
+<edge source="C119" target="Q3">
+  <data key="d6">PROCESSES</data>
+  <data key="d7">10</data>
+</edge>
+<edge source="C119" target="F3">
+  <data key="d6">HAS-FAILURE</data>
+  <data key="d7">1</data>
+</edge>
+<edge source="C119" target="F4">
+  <data key="d6">HAS-FAILURE</data>
+  <data key="d7">1</data>
+</edge>
+<edge source="C120" target="Q1">
+  <data key="d6">PROCESSES</data>
+  <data key="d7">4</data>
+</edge>
+<edge source="C120" target="Q2">
+  <data key="d6">PROCESSES</data>
+  <data key="d7">5</data>
+</edge>
+<edge source="C120" target="Q3">
+  <data key="d6">PROCESSES</data>
+  <data key="d7">2</data>
+</edge>
+<edge source="F1" target="A1">
+  <data key="d6">RECOMMENDS</data>
+  <data key="d7">1</data>
+</edge>
+<edge source="F2" target="A2">
+  <data key="d6">RECOMMENDS</data>
+  <data key="d7">1</data>
+</edge>
+<edge source="F3" target="A3">
+  <data key="d6">RECOMMENDS</data>
+  <data key="d7">1</data>
+</edge>
+<edge source="F4" target="A4">
+  <data key="d6">RECOMMENDS</data>
+  <data key="d7">1</data>
+</edge>
+<edge source="F9" target="A5">
+  <data key="d6">RECOMMENDS</data>
+  <data key="d7">1</data>
+</edge>
+</graph></graphml>

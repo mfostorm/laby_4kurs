@@ -1,0 +1,699 @@
+[
+  {
+    "title": "PWF",
+    "udi": 51,
+    "result": {
+      "facts": {
+        "air_temp_k": 298.9,
+        "process_temp_k": 309.1,
+        "rot_speed_rpm": 2861.0,
+        "torque_nm": 4.6,
+        "tool_wear_min": 143.0,
+        "temp_diff_k": 10.2,
+        "power_w": 1378.2,
+        "power_margin_w": -2121.8,
+        "osf_margin": 10342.2,
+        "wear_torque": 657.8,
+        "class_code": "L",
+        "osf_limit": 11000.0,
+        "power_min_w": 3500.0,
+        "power_max_w": 9000.0,
+        "hdf_temp_diff_min_k": 8.6,
+        "hdf_speed_max_rpm": 1380.0,
+        "twf_wear_min_min": 200.0,
+        "twf_wear_max_min": 240.0,
+        "udi": 51.0,
+        "pwf_risk": true,
+        "risk_level": "critical",
+        "predicted_failure": true,
+        "action": "drive_diagnostics"
+      },
+      "trace": [
+        {
+          "rule": "R001",
+          "stage": 1,
+          "conflict_set": [
+            "R001"
+          ],
+          "explanation": "Мощность ниже допустимой: условие PWF.",
+          "premises": [
+            {
+              "condition": "power_w < power_min_w",
+              "observed": 1378.2,
+              "threshold": 3500.0
+            }
+          ],
+          "new_facts": {
+            "pwf_risk": true
+          },
+          "blocked": {}
+        },
+        {
+          "rule": "R009",
+          "stage": 2,
+          "conflict_set": [
+            "R009"
+          ],
+          "explanation": "Признак pwf_risk: уровень риска critical.",
+          "premises": [
+            {
+              "condition": "pwf_risk = True",
+              "observed": true,
+              "threshold": true
+            }
+          ],
+          "new_facts": {
+            "risk_level": "critical",
+            "predicted_failure": true
+          },
+          "blocked": {}
+        },
+        {
+          "rule": "R017",
+          "stage": 3,
+          "conflict_set": [
+            "R017"
+          ],
+          "explanation": "Диагностика привода",
+          "premises": [
+            {
+              "condition": "pwf_risk = True",
+              "observed": true,
+              "threshold": true
+            }
+          ],
+          "new_facts": {
+            "action": "drive_diagnostics"
+          },
+          "blocked": {}
+        }
+      ],
+      "applied_count": 3,
+      "terminated": "fixed_point"
+    },
+    "explanation": "UDI 51: риск=critical; действие=drive_diagnostics; прогноз отказа=True.\nR001: power_w < power_min_w (факт: 1378.2). Мощность ниже допустимой: условие PWF. Новые факты: {'pwf_risk': True}.\nR009: pwf_risk = True (факт: True). Признак pwf_risk: уровень риска critical. Новые факты: {'risk_level': 'critical', 'predicted_failure': True}.\nR017: pwf_risk = True (факт: True). Диагностика привода Новые факты: {'action': 'drive_diagnostics'}."
+  },
+  {
+    "title": "OSF",
+    "udi": 161,
+    "result": {
+      "facts": {
+        "air_temp_k": 298.4,
+        "process_temp_k": 308.2,
+        "rot_speed_rpm": 1282.0,
+        "torque_nm": 60.7,
+        "tool_wear_min": 216.0,
+        "temp_diff_k": 9.8,
+        "power_w": 8149.0,
+        "power_margin_w": 851.0,
+        "osf_margin": -2111.2,
+        "wear_torque": 13111.2,
+        "class_code": "L",
+        "osf_limit": 11000.0,
+        "power_min_w": 3500.0,
+        "power_max_w": 9000.0,
+        "hdf_temp_diff_min_k": 8.6,
+        "hdf_speed_max_rpm": 1380.0,
+        "twf_wear_min_min": 200.0,
+        "twf_wear_max_min": 240.0,
+        "udi": 161.0,
+        "osf_risk": true,
+        "twf_risk": true,
+        "worn_tool": true,
+        "risk_level": "critical",
+        "predicted_failure": true,
+        "action": "reduce_load"
+      },
+      "trace": [
+        {
+          "rule": "R003",
+          "stage": 1,
+          "conflict_set": [
+            "R003",
+            "R005",
+            "R008"
+          ],
+          "explanation": "Износ × момент превышает порог класса: условие OSF.",
+          "premises": [
+            {
+              "condition": "wear_torque > osf_limit",
+              "observed": 13111.2,
+              "threshold": 11000.0
+            }
+          ],
+          "new_facts": {
+            "osf_risk": true
+          },
+          "blocked": {}
+        },
+        {
+          "rule": "R005",
+          "stage": 1,
+          "conflict_set": [
+            "R005",
+            "R008"
+          ],
+          "explanation": "Инструмент в зоне риска TWF; это не доказательство отказа.",
+          "premises": [
+            {
+              "condition": "tool_wear_min ≥ twf_wear_min_min",
+              "observed": 216.0,
+              "threshold": 200.0
+            },
+            {
+              "condition": "tool_wear_min ≤ twf_wear_max_min",
+              "observed": 216.0,
+              "threshold": 240.0
+            }
+          ],
+          "new_facts": {
+            "twf_risk": true
+          },
+          "blocked": {}
+        },
+        {
+          "rule": "R008",
+          "stage": 1,
+          "conflict_set": [
+            "R008"
+          ],
+          "explanation": "Высокий накопленный износ: подготовить инструмент.",
+          "premises": [
+            {
+              "condition": "tool_wear_min ≥ 180",
+              "observed": 216.0,
+              "threshold": 180
+            }
+          ],
+          "new_facts": {
+            "worn_tool": true
+          },
+          "blocked": {}
+        },
+        {
+          "rule": "R010",
+          "stage": 2,
+          "conflict_set": [
+            "R010",
+            "R012",
+            "R015"
+          ],
+          "explanation": "Признак osf_risk: уровень риска critical.",
+          "premises": [
+            {
+              "condition": "osf_risk = True",
+              "observed": true,
+              "threshold": true
+            }
+          ],
+          "new_facts": {
+            "risk_level": "critical",
+            "predicted_failure": true
+          },
+          "blocked": {}
+        },
+        {
+          "rule": "R012",
+          "stage": 2,
+          "conflict_set": [
+            "R012",
+            "R015"
+          ],
+          "explanation": "Признак twf_risk: уровень риска medium.",
+          "premises": [
+            {
+              "condition": "twf_risk = True",
+              "observed": true,
+              "threshold": true
+            }
+          ],
+          "new_facts": {},
+          "blocked": {
+            "risk_level": {
+              "retained": "critical",
+              "rejected": "medium"
+            }
+          }
+        },
+        {
+          "rule": "R015",
+          "stage": 2,
+          "conflict_set": [
+            "R015"
+          ],
+          "explanation": "Признак worn_tool: уровень риска low.",
+          "premises": [
+            {
+              "condition": "worn_tool = True",
+              "observed": true,
+              "threshold": true
+            }
+          ],
+          "new_facts": {},
+          "blocked": {
+            "risk_level": {
+              "retained": "critical",
+              "rejected": "low"
+            }
+          }
+        },
+        {
+          "rule": "R018",
+          "stage": 3,
+          "conflict_set": [
+            "R018",
+            "R020",
+            "R023"
+          ],
+          "explanation": "Снижение подачи, внеочередной осмотр",
+          "premises": [
+            {
+              "condition": "osf_risk = True",
+              "observed": true,
+              "threshold": true
+            }
+          ],
+          "new_facts": {
+            "action": "reduce_load"
+          },
+          "blocked": {}
+        },
+        {
+          "rule": "R020",
+          "stage": 3,
+          "conflict_set": [
+            "R020",
+            "R023"
+          ],
+          "explanation": "Плановая замена инструмента",
+          "premises": [
+            {
+              "condition": "twf_risk = True",
+              "observed": true,
+              "threshold": true
+            }
+          ],
+          "new_facts": {},
+          "blocked": {
+            "action": {
+              "retained": "reduce_load",
+              "rejected": "plan_tool_replacement"
+            }
+          }
+        },
+        {
+          "rule": "R023",
+          "stage": 3,
+          "conflict_set": [
+            "R023"
+          ],
+          "explanation": "Подготовить сменный инструмент",
+          "premises": [
+            {
+              "condition": "worn_tool = True",
+              "observed": true,
+              "threshold": true
+            }
+          ],
+          "new_facts": {},
+          "blocked": {
+            "action": {
+              "retained": "reduce_load",
+              "rejected": "prepare_tool"
+            }
+          }
+        }
+      ],
+      "applied_count": 5,
+      "terminated": "fixed_point"
+    },
+    "explanation": "UDI 161: риск=critical; действие=reduce_load; прогноз отказа=True.\nR003: wear_torque > osf_limit (факт: 13111.2). Износ × момент превышает порог класса: условие OSF. Новые факты: {'osf_risk': True}.\nR005: tool_wear_min ≥ twf_wear_min_min (факт: 216.0); tool_wear_min ≤ twf_wear_max_min (факт: 216.0). Инструмент в зоне риска TWF; это не доказательство отказа. Новые факты: {'twf_risk': True}.\nR008: tool_wear_min ≥ 180 (факт: 216.0). Высокий накопленный износ: подготовить инструмент. Новые факты: {'worn_tool': True}.\nR010: osf_risk = True (факт: True). Признак osf_risk: уровень риска critical. Новые факты: {'risk_level': 'critical', 'predicted_failure': True}.\nR012: twf_risk = True (факт: True). Признак twf_risk: уровень риска medium. Новые факты: {}.\n  Сохранено более приоритетное заключение: {'risk_level': {'retained': 'critical', 'rejected': 'medium'}}.\nR015: worn_tool = True (факт: True). Признак worn_tool: уровень риска low. Новые факты: {}.\n  Сохранено более приоритетное заключение: {'risk_level': {'retained': 'critical', 'rejected': 'low'}}.\nR018: osf_risk = True (факт: True). Снижение подачи, внеочередной осмотр Новые факты: {'action': 'reduce_load'}.\nR020: twf_risk = True (факт: True). Плановая замена инструмента Новые факты: {}.\n  Сохранено более приоритетное заключение: {'action': {'retained': 'reduce_load', 'rejected': 'plan_tool_replacement'}}.\nR023: worn_tool = True (факт: True). Подготовить сменный инструмент Новые факты: {}.\n  Сохранено более приоритетное заключение: {'action': {'retained': 'reduce_load', 'rejected': 'prepare_tool'}}."
+  },
+  {
+    "title": "HDF",
+    "udi": 3788,
+    "result": {
+      "facts": {
+        "air_temp_k": 302.3,
+        "process_temp_k": 310.8,
+        "rot_speed_rpm": 1377.0,
+        "torque_nm": 47.3,
+        "tool_wear_min": 22.0,
+        "temp_diff_k": 8.5,
+        "power_w": 6820.6,
+        "power_margin_w": 2179.4,
+        "osf_margin": 9959.4,
+        "wear_torque": 1040.6,
+        "class_code": "L",
+        "osf_limit": 11000.0,
+        "power_min_w": 3500.0,
+        "power_max_w": 9000.0,
+        "hdf_temp_diff_min_k": 8.6,
+        "hdf_speed_max_rpm": 1380.0,
+        "twf_wear_min_min": 200.0,
+        "twf_wear_max_min": 240.0,
+        "udi": 3788.0,
+        "hdf_risk": true,
+        "risk_level": "high",
+        "predicted_failure": true,
+        "action": "check_cooling"
+      },
+      "trace": [
+        {
+          "rule": "R004",
+          "stage": 1,
+          "conflict_set": [
+            "R004"
+          ],
+          "explanation": "Малый теплоотвод при низких оборотах: условие HDF.",
+          "premises": [
+            {
+              "condition": "temp_diff_k < hdf_temp_diff_min_k",
+              "observed": 8.5,
+              "threshold": 8.6
+            },
+            {
+              "condition": "rot_speed_rpm < hdf_speed_max_rpm",
+              "observed": 1377.0,
+              "threshold": 1380.0
+            }
+          ],
+          "new_facts": {
+            "hdf_risk": true
+          },
+          "blocked": {}
+        },
+        {
+          "rule": "R011",
+          "stage": 2,
+          "conflict_set": [
+            "R011"
+          ],
+          "explanation": "Признак hdf_risk: уровень риска high.",
+          "premises": [
+            {
+              "condition": "hdf_risk = True",
+              "observed": true,
+              "threshold": true
+            }
+          ],
+          "new_facts": {
+            "risk_level": "high",
+            "predicted_failure": true
+          },
+          "blocked": {}
+        },
+        {
+          "rule": "R019",
+          "stage": 3,
+          "conflict_set": [
+            "R019"
+          ],
+          "explanation": "Проверка системы охлаждения",
+          "premises": [
+            {
+              "condition": "hdf_risk = True",
+              "observed": true,
+              "threshold": true
+            }
+          ],
+          "new_facts": {
+            "action": "check_cooling"
+          },
+          "blocked": {}
+        }
+      ],
+      "applied_count": 3,
+      "terminated": "fixed_point"
+    },
+    "explanation": "UDI 3788: риск=high; действие=check_cooling; прогноз отказа=True.\nR004: temp_diff_k < hdf_temp_diff_min_k (факт: 8.5); rot_speed_rpm < hdf_speed_max_rpm (факт: 1377.0). Малый теплоотвод при низких оборотах: условие HDF. Новые факты: {'hdf_risk': True}.\nR011: hdf_risk = True (факт: True). Признак hdf_risk: уровень риска high. Новые факты: {'risk_level': 'high', 'predicted_failure': True}.\nR019: hdf_risk = True (факт: True). Проверка системы охлаждения Новые факты: {'action': 'check_cooling'}."
+  },
+  {
+    "title": "Риск TWF без отказа",
+    "udi": 74,
+    "result": {
+      "facts": {
+        "air_temp_k": 299.0,
+        "process_temp_k": 309.1,
+        "rot_speed_rpm": 1592.0,
+        "torque_nm": 35.0,
+        "tool_wear_min": 200.0,
+        "temp_diff_k": 10.1,
+        "power_w": 5835.0,
+        "power_margin_w": 2335.0,
+        "osf_margin": 4000.0,
+        "wear_torque": 7000.0,
+        "class_code": "L",
+        "osf_limit": 11000.0,
+        "power_min_w": 3500.0,
+        "power_max_w": 9000.0,
+        "hdf_temp_diff_min_k": 8.6,
+        "hdf_speed_max_rpm": 1380.0,
+        "twf_wear_min_min": 200.0,
+        "twf_wear_max_min": 240.0,
+        "udi": 74.0,
+        "twf_risk": true,
+        "worn_tool": true,
+        "risk_level": "medium",
+        "action": "plan_tool_replacement",
+        "predicted_failure": false
+      },
+      "trace": [
+        {
+          "rule": "R005",
+          "stage": 1,
+          "conflict_set": [
+            "R005",
+            "R008"
+          ],
+          "explanation": "Инструмент в зоне риска TWF; это не доказательство отказа.",
+          "premises": [
+            {
+              "condition": "tool_wear_min ≥ twf_wear_min_min",
+              "observed": 200.0,
+              "threshold": 200.0
+            },
+            {
+              "condition": "tool_wear_min ≤ twf_wear_max_min",
+              "observed": 200.0,
+              "threshold": 240.0
+            }
+          ],
+          "new_facts": {
+            "twf_risk": true
+          },
+          "blocked": {}
+        },
+        {
+          "rule": "R008",
+          "stage": 1,
+          "conflict_set": [
+            "R008"
+          ],
+          "explanation": "Высокий накопленный износ: подготовить инструмент.",
+          "premises": [
+            {
+              "condition": "tool_wear_min ≥ 180",
+              "observed": 200.0,
+              "threshold": 180
+            }
+          ],
+          "new_facts": {
+            "worn_tool": true
+          },
+          "blocked": {}
+        },
+        {
+          "rule": "R012",
+          "stage": 2,
+          "conflict_set": [
+            "R012",
+            "R015"
+          ],
+          "explanation": "Признак twf_risk: уровень риска medium.",
+          "premises": [
+            {
+              "condition": "twf_risk = True",
+              "observed": true,
+              "threshold": true
+            }
+          ],
+          "new_facts": {
+            "risk_level": "medium"
+          },
+          "blocked": {}
+        },
+        {
+          "rule": "R015",
+          "stage": 2,
+          "conflict_set": [
+            "R015"
+          ],
+          "explanation": "Признак worn_tool: уровень риска low.",
+          "premises": [
+            {
+              "condition": "worn_tool = True",
+              "observed": true,
+              "threshold": true
+            }
+          ],
+          "new_facts": {},
+          "blocked": {
+            "risk_level": {
+              "retained": "medium",
+              "rejected": "low"
+            }
+          }
+        },
+        {
+          "rule": "R020",
+          "stage": 3,
+          "conflict_set": [
+            "R020",
+            "R023"
+          ],
+          "explanation": "Плановая замена инструмента",
+          "premises": [
+            {
+              "condition": "twf_risk = True",
+              "observed": true,
+              "threshold": true
+            }
+          ],
+          "new_facts": {
+            "action": "plan_tool_replacement"
+          },
+          "blocked": {}
+        },
+        {
+          "rule": "R023",
+          "stage": 3,
+          "conflict_set": [
+            "R023"
+          ],
+          "explanation": "Подготовить сменный инструмент",
+          "premises": [
+            {
+              "condition": "worn_tool = True",
+              "observed": true,
+              "threshold": true
+            }
+          ],
+          "new_facts": {},
+          "blocked": {
+            "action": {
+              "retained": "plan_tool_replacement",
+              "rejected": "prepare_tool"
+            }
+          }
+        }
+      ],
+      "applied_count": 4,
+      "terminated": "fixed_point"
+    },
+    "explanation": "UDI 74: риск=medium; действие=plan_tool_replacement; прогноз отказа=False.\nR005: tool_wear_min ≥ twf_wear_min_min (факт: 200.0); tool_wear_min ≤ twf_wear_max_min (факт: 200.0). Инструмент в зоне риска TWF; это не доказательство отказа. Новые факты: {'twf_risk': True}.\nR008: tool_wear_min ≥ 180 (факт: 200.0). Высокий накопленный износ: подготовить инструмент. Новые факты: {'worn_tool': True}.\nR012: twf_risk = True (факт: True). Признак twf_risk: уровень риска medium. Новые факты: {'risk_level': 'medium'}.\nR015: worn_tool = True (факт: True). Признак worn_tool: уровень риска low. Новые факты: {}.\n  Сохранено более приоритетное заключение: {'risk_level': {'retained': 'medium', 'rejected': 'low'}}.\nR020: twf_risk = True (факт: True). Плановая замена инструмента Новые факты: {'action': 'plan_tool_replacement'}.\nR023: worn_tool = True (факт: True). Подготовить сменный инструмент Новые факты: {}.\n  Сохранено более приоритетное заключение: {'action': {'retained': 'plan_tool_replacement', 'rejected': 'prepare_tool'}}.\nУсловия PWF/OSF/HDF не доказаны: прогноз 0 по замкнутому миру; это не исключает TWF и неуказанный тип отказа."
+  },
+  {
+    "title": "Нет известных признаков",
+    "udi": 1,
+    "result": {
+      "facts": {
+        "air_temp_k": 298.1,
+        "process_temp_k": 308.6,
+        "rot_speed_rpm": 1551.0,
+        "torque_nm": 42.8,
+        "tool_wear_min": 0.0,
+        "temp_diff_k": 10.5,
+        "power_w": 6951.6,
+        "power_margin_w": 2048.4,
+        "osf_margin": 12000.0,
+        "wear_torque": 0.0,
+        "class_code": "M",
+        "osf_limit": 12000.0,
+        "power_min_w": 3500.0,
+        "power_max_w": 9000.0,
+        "hdf_temp_diff_min_k": 8.6,
+        "hdf_speed_max_rpm": 1380.0,
+        "twf_wear_min_min": 200.0,
+        "twf_wear_max_min": 240.0,
+        "udi": 1.0,
+        "risk_level": "low",
+        "action": "continue_monitoring",
+        "predicted_failure": false
+      },
+      "trace": [
+        {
+          "rule": "R016",
+          "stage": 2,
+          "conflict_set": [
+            "R016"
+          ],
+          "explanation": "Известные условия риска отсутствуют.",
+          "premises": [
+            {
+              "condition": "нет pwf_risk",
+              "observed": "<отсутствует>",
+              "threshold": null
+            },
+            {
+              "condition": "нет osf_risk",
+              "observed": "<отсутствует>",
+              "threshold": null
+            },
+            {
+              "condition": "нет hdf_risk",
+              "observed": "<отсутствует>",
+              "threshold": null
+            },
+            {
+              "condition": "нет twf_risk",
+              "observed": "<отсутствует>",
+              "threshold": null
+            },
+            {
+              "condition": "нет near_power",
+              "observed": "<отсутствует>",
+              "threshold": null
+            },
+            {
+              "condition": "нет near_osf",
+              "observed": "<отсутствует>",
+              "threshold": null
+            },
+            {
+              "condition": "нет worn_tool",
+              "observed": "<отсутствует>",
+              "threshold": null
+            }
+          ],
+          "new_facts": {
+            "risk_level": "low"
+          },
+          "blocked": {}
+        },
+        {
+          "rule": "R024",
+          "stage": 3,
+          "conflict_set": [
+            "R024"
+          ],
+          "explanation": "Продолжить наблюдение; случайный и неизвестный отказ не исключены.",
+          "premises": [
+            {
+              "condition": "risk_level = low",
+              "observed": "low",
+              "threshold": "low"
+            }
+          ],
+          "new_facts": {
+            "action": "continue_monitoring"
+          },
+          "blocked": {}
+        }
+      ],
+      "applied_count": 2,
+      "terminated": "fixed_point"
+    },
+    "explanation": "UDI 1: риск=low; действие=continue_monitoring; прогноз отказа=False.\nR016: нет pwf_risk (факт: <отсутствует>); нет osf_risk (факт: <отсутствует>); нет hdf_risk (факт: <отсутствует>); нет twf_risk (факт: <отсутствует>); нет near_power (факт: <отсутствует>); нет near_osf (факт: <отсутствует>); нет worn_tool (факт: <отсутствует>). Известные условия риска отсутствуют. Новые факты: {'risk_level': 'low'}.\nR024: risk_level = low (факт: low). Продолжить наблюдение; случайный и неизвестный отказ не исключены. Новые факты: {'action': 'continue_monitoring'}.\nУсловия PWF/OSF/HDF не доказаны: прогноз 0 по замкнутому миру; это не исключает TWF и неуказанный тип отказа."
+  }
+]

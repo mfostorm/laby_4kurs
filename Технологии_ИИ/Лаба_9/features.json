@@ -1,0 +1,193 @@
+[
+  {
+    "name": "air_temp_k",
+    "type": "number",
+    "domain": [
+      273,
+      343
+    ],
+    "source": "fact_observation.air_temp_k",
+    "description": "Температура воздуха, K"
+  },
+  {
+    "name": "process_temp_k",
+    "type": "number",
+    "domain": [
+      273,
+      373
+    ],
+    "source": "fact_observation.process_temp_k",
+    "description": "Температура процесса, K"
+  },
+  {
+    "name": "rot_speed_rpm",
+    "type": "number",
+    "domain": [
+      1,
+      5000
+    ],
+    "source": "fact_observation.rot_speed_rpm",
+    "description": "Скорость вращения, об/мин"
+  },
+  {
+    "name": "torque_nm",
+    "type": "number",
+    "domain": [
+      0,
+      150
+    ],
+    "source": "fact_observation.torque_nm",
+    "description": "Момент, Н·м"
+  },
+  {
+    "name": "tool_wear_min",
+    "type": "number",
+    "domain": [
+      0,
+      400
+    ],
+    "source": "fact_observation.tool_wear_min",
+    "description": "Износ инструмента, мин"
+  },
+  {
+    "name": "temp_diff_k",
+    "type": "number",
+    "domain": [
+      0,
+      100
+    ],
+    "source": "fact_observation.temp_diff_k",
+    "description": "Разность температур, K"
+  },
+  {
+    "name": "power_w",
+    "type": "number",
+    "domain": [
+      0,
+      100000
+    ],
+    "source": "fact_observation.power_w",
+    "description": "Мощность, Вт"
+  },
+  {
+    "name": "power_margin_w",
+    "type": "number",
+    "domain": [
+      -100000,
+      100000
+    ],
+    "source": "fact_observation.power_margin_w",
+    "description": "Запас до границы мощности, Вт"
+  },
+  {
+    "name": "osf_margin",
+    "type": "number",
+    "domain": [
+      -100000,
+      100000
+    ],
+    "source": "fact_observation.osf_margin",
+    "description": "Запас до перегрузки, мин·Н·м"
+  },
+  {
+    "name": "wear_torque",
+    "type": "number",
+    "domain": [
+      0,
+      60000
+    ],
+    "source": "fact_observation.wear_torque",
+    "description": "Износ × момент, мин·Н·м"
+  },
+  {
+    "name": "class_code",
+    "type": "string",
+    "domain": [
+      "L",
+      "M",
+      "H"
+    ],
+    "source": "dim_quality_class.class_code",
+    "description": "Класс изделия"
+  },
+  {
+    "name": "osf_limit",
+    "type": "number",
+    "domain": [
+      1,
+      60000
+    ],
+    "source": "dim_quality_class.osf_limit",
+    "description": "Порог перегрузки"
+  },
+  {
+    "name": "power_min_w",
+    "type": "number",
+    "domain": [
+      0,
+      100000
+    ],
+    "source": "dim_equipment.power_min_w",
+    "description": "Нижний порог мощности"
+  },
+  {
+    "name": "power_max_w",
+    "type": "number",
+    "domain": [
+      0,
+      100000
+    ],
+    "source": "dim_equipment.power_max_w",
+    "description": "Верхний порог мощности"
+  },
+  {
+    "name": "hdf_temp_diff_min_k",
+    "type": "number",
+    "domain": [
+      0,
+      100
+    ],
+    "source": "dim_equipment.hdf_temp_diff_min_k",
+    "description": "Порог теплоотвода"
+  },
+  {
+    "name": "hdf_speed_max_rpm",
+    "type": "number",
+    "domain": [
+      1,
+      5000
+    ],
+    "source": "dim_equipment.hdf_speed_max_rpm",
+    "description": "Порог оборотов HDF"
+  },
+  {
+    "name": "twf_wear_min_min",
+    "type": "number",
+    "domain": [
+      0,
+      400
+    ],
+    "source": "dim_equipment.twf_wear_min_min",
+    "description": "Начало зоны износа TWF"
+  },
+  {
+    "name": "twf_wear_max_min",
+    "type": "number",
+    "domain": [
+      0,
+      400
+    ],
+    "source": "dim_equipment.twf_wear_max_min",
+    "description": "Конец зоны износа TWF"
+  },
+  {
+    "name": "udi",
+    "type": "number",
+    "domain": [
+      1,
+      2147483647
+    ],
+    "source": "fact_observation.udi",
+    "description": "Ключ наблюдения, только для трассировки"
+  }
+]

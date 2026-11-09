@@ -1,0 +1,9 @@
+digraph rules {
+rankdir=TB; graph [bgcolor="white"]; node [shape=box,style="rounded,filled",fontname="DejaVu Sans",fillcolor="#eaf1f8"];
+a [label="PostgreSQL: телеметрия + пороги\nметки отказов исключены из входа"];
+b [label="Стадия 1: симптомы R001–R008\nPWF, OSF, HDF, зона TWF, профилактика"];
+c [label="Стадия 2: риск R009–R016\nприоритет → специфичность → ID"];
+d [label="Стадия 3: действие R017–R024\nсохраняется первое приоритетное значение"];
+e [label="Результат + трасса + объяснение\nпо умолчанию прогноз отказа = 0"];
+a -> b -> c -> d -> e;
+}

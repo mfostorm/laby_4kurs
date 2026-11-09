@@ -1,0 +1,576 @@
+[
+  {
+    "name": "Нормальный режим",
+    "facts": {
+      "udi": 1,
+      "air_temp_k": 300.0,
+      "process_temp_k": 310.0,
+      "rot_speed_rpm": 1500,
+      "torque_nm": 40.0,
+      "tool_wear_min": 100,
+      "temp_diff_k": 10.0,
+      "power_w": 6000.0,
+      "power_margin_w": 2500.0,
+      "osf_margin": 7000.0,
+      "wear_torque": 4000.0,
+      "class_code": "L",
+      "osf_limit": 11000.0,
+      "power_min_w": 3500.0,
+      "power_max_w": 9000.0,
+      "hdf_temp_diff_min_k": 8.6,
+      "hdf_speed_max_rpm": 1380,
+      "twf_wear_min_min": 200,
+      "twf_wear_max_min": 240
+    },
+    "expected_diagnostic": [],
+    "expected": {
+      "risk_level": "low",
+      "action": "continue_monitoring",
+      "predicted_failure": false
+    }
+  },
+  {
+    "name": "Низкая мощность",
+    "facts": {
+      "udi": 1,
+      "air_temp_k": 300.0,
+      "process_temp_k": 310.0,
+      "rot_speed_rpm": 1500,
+      "torque_nm": 40.0,
+      "tool_wear_min": 100,
+      "temp_diff_k": 10.0,
+      "power_w": 3499.9,
+      "power_margin_w": -0.1,
+      "osf_margin": 7000.0,
+      "wear_torque": 4000.0,
+      "class_code": "L",
+      "osf_limit": 11000.0,
+      "power_min_w": 3500.0,
+      "power_max_w": 9000.0,
+      "hdf_temp_diff_min_k": 8.6,
+      "hdf_speed_max_rpm": 1380,
+      "twf_wear_min_min": 200,
+      "twf_wear_max_min": 240
+    },
+    "expected_diagnostic": [
+      "R001"
+    ],
+    "expected": {
+      "risk_level": "critical",
+      "action": "drive_diagnostics",
+      "predicted_failure": true
+    }
+  },
+  {
+    "name": "Высокая мощность",
+    "facts": {
+      "udi": 1,
+      "air_temp_k": 300.0,
+      "process_temp_k": 310.0,
+      "rot_speed_rpm": 1500,
+      "torque_nm": 40.0,
+      "tool_wear_min": 100,
+      "temp_diff_k": 10.0,
+      "power_w": 9000.1,
+      "power_margin_w": -0.1,
+      "osf_margin": 7000.0,
+      "wear_torque": 4000.0,
+      "class_code": "L",
+      "osf_limit": 11000.0,
+      "power_min_w": 3500.0,
+      "power_max_w": 9000.0,
+      "hdf_temp_diff_min_k": 8.6,
+      "hdf_speed_max_rpm": 1380,
+      "twf_wear_min_min": 200,
+      "twf_wear_max_min": 240
+    },
+    "expected_diagnostic": [
+      "R002"
+    ],
+    "expected": {
+      "risk_level": "critical",
+      "action": "drive_diagnostics",
+      "predicted_failure": true
+    }
+  },
+  {
+    "name": "Перегрузка L",
+    "facts": {
+      "udi": 1,
+      "air_temp_k": 300.0,
+      "process_temp_k": 310.0,
+      "rot_speed_rpm": 1500,
+      "torque_nm": 40.0,
+      "tool_wear_min": 100,
+      "temp_diff_k": 10.0,
+      "power_w": 6000.0,
+      "power_margin_w": 2500.0,
+      "osf_margin": -0.1,
+      "wear_torque": 11000.1,
+      "class_code": "L",
+      "osf_limit": 11000.0,
+      "power_min_w": 3500.0,
+      "power_max_w": 9000.0,
+      "hdf_temp_diff_min_k": 8.6,
+      "hdf_speed_max_rpm": 1380,
+      "twf_wear_min_min": 200,
+      "twf_wear_max_min": 240
+    },
+    "expected_diagnostic": [
+      "R003"
+    ],
+    "expected": {
+      "risk_level": "critical",
+      "action": "reduce_load",
+      "predicted_failure": true
+    }
+  },
+  {
+    "name": "Теплоотвод",
+    "facts": {
+      "udi": 1,
+      "air_temp_k": 300.0,
+      "process_temp_k": 310.0,
+      "rot_speed_rpm": 1379,
+      "torque_nm": 40.0,
+      "tool_wear_min": 100,
+      "temp_diff_k": 8.5,
+      "power_w": 6000.0,
+      "power_margin_w": 2500.0,
+      "osf_margin": 7000.0,
+      "wear_torque": 4000.0,
+      "class_code": "L",
+      "osf_limit": 11000.0,
+      "power_min_w": 3500.0,
+      "power_max_w": 9000.0,
+      "hdf_temp_diff_min_k": 8.6,
+      "hdf_speed_max_rpm": 1380,
+      "twf_wear_min_min": 200,
+      "twf_wear_max_min": 240
+    },
+    "expected_diagnostic": [
+      "R004"
+    ],
+    "expected": {
+      "risk_level": "high",
+      "action": "check_cooling",
+      "predicted_failure": true
+    }
+  },
+  {
+    "name": "Только зона износа",
+    "facts": {
+      "udi": 1,
+      "air_temp_k": 300.0,
+      "process_temp_k": 310.0,
+      "rot_speed_rpm": 1500,
+      "torque_nm": 40.0,
+      "tool_wear_min": 200,
+      "temp_diff_k": 10.0,
+      "power_w": 6000.0,
+      "power_margin_w": 2500.0,
+      "osf_margin": 7000.0,
+      "wear_torque": 4000.0,
+      "class_code": "L",
+      "osf_limit": 11000.0,
+      "power_min_w": 3500.0,
+      "power_max_w": 9000.0,
+      "hdf_temp_diff_min_k": 8.6,
+      "hdf_speed_max_rpm": 1380,
+      "twf_wear_min_min": 200,
+      "twf_wear_max_min": 240
+    },
+    "expected_diagnostic": [
+      "R005",
+      "R008"
+    ],
+    "expected": {
+      "risk_level": "medium",
+      "action": "plan_tool_replacement",
+      "predicted_failure": false
+    }
+  },
+  {
+    "name": "Приоритет мощности над перегрузкой",
+    "facts": {
+      "udi": 1,
+      "air_temp_k": 300.0,
+      "process_temp_k": 310.0,
+      "rot_speed_rpm": 1500,
+      "torque_nm": 40.0,
+      "tool_wear_min": 100,
+      "temp_diff_k": 10.0,
+      "power_w": 9001,
+      "power_margin_w": -1,
+      "osf_margin": -1000,
+      "wear_torque": 12000,
+      "class_code": "L",
+      "osf_limit": 11000.0,
+      "power_min_w": 3500.0,
+      "power_max_w": 9000.0,
+      "hdf_temp_diff_min_k": 8.6,
+      "hdf_speed_max_rpm": 1380,
+      "twf_wear_min_min": 200,
+      "twf_wear_max_min": 240
+    },
+    "expected_diagnostic": [
+      "R002",
+      "R003"
+    ],
+    "expected": {
+      "risk_level": "critical",
+      "action": "drive_diagnostics",
+      "predicted_failure": true
+    }
+  },
+  {
+    "name": "Ровно 8.6 K",
+    "facts": {
+      "udi": 1,
+      "air_temp_k": 300.0,
+      "process_temp_k": 310.0,
+      "rot_speed_rpm": 1300,
+      "torque_nm": 40.0,
+      "tool_wear_min": 100,
+      "temp_diff_k": 8.6,
+      "power_w": 6000.0,
+      "power_margin_w": 2500.0,
+      "osf_margin": 7000.0,
+      "wear_torque": 4000.0,
+      "class_code": "L",
+      "osf_limit": 11000.0,
+      "power_min_w": 3500.0,
+      "power_max_w": 9000.0,
+      "hdf_temp_diff_min_k": 8.6,
+      "hdf_speed_max_rpm": 1380,
+      "twf_wear_min_min": 200,
+      "twf_wear_max_min": 240
+    },
+    "expected_diagnostic": [],
+    "expected": {
+      "risk_level": "low",
+      "action": "continue_monitoring",
+      "predicted_failure": false
+    }
+  },
+  {
+    "name": "Ровно 1380 об/мин",
+    "facts": {
+      "udi": 1,
+      "air_temp_k": 300.0,
+      "process_temp_k": 310.0,
+      "rot_speed_rpm": 1380,
+      "torque_nm": 40.0,
+      "tool_wear_min": 100,
+      "temp_diff_k": 8.5,
+      "power_w": 6000.0,
+      "power_margin_w": 2500.0,
+      "osf_margin": 7000.0,
+      "wear_torque": 4000.0,
+      "class_code": "L",
+      "osf_limit": 11000.0,
+      "power_min_w": 3500.0,
+      "power_max_w": 9000.0,
+      "hdf_temp_diff_min_k": 8.6,
+      "hdf_speed_max_rpm": 1380,
+      "twf_wear_min_min": 200,
+      "twf_wear_max_min": 240
+    },
+    "expected_diagnostic": [],
+    "expected": {
+      "risk_level": "low",
+      "action": "continue_monitoring",
+      "predicted_failure": false
+    }
+  },
+  {
+    "name": "Ровно 3500 Вт",
+    "facts": {
+      "udi": 1,
+      "air_temp_k": 300.0,
+      "process_temp_k": 310.0,
+      "rot_speed_rpm": 1500,
+      "torque_nm": 40.0,
+      "tool_wear_min": 100,
+      "temp_diff_k": 10.0,
+      "power_w": 3500,
+      "power_margin_w": 0,
+      "osf_margin": 7000.0,
+      "wear_torque": 4000.0,
+      "class_code": "L",
+      "osf_limit": 11000.0,
+      "power_min_w": 3500.0,
+      "power_max_w": 9000.0,
+      "hdf_temp_diff_min_k": 8.6,
+      "hdf_speed_max_rpm": 1380,
+      "twf_wear_min_min": 200,
+      "twf_wear_max_min": 240
+    },
+    "expected_diagnostic": [
+      "R006"
+    ],
+    "expected": {
+      "risk_level": "medium",
+      "action": "inspect_power",
+      "predicted_failure": false
+    }
+  },
+  {
+    "name": "Ровно 9000 Вт",
+    "facts": {
+      "udi": 1,
+      "air_temp_k": 300.0,
+      "process_temp_k": 310.0,
+      "rot_speed_rpm": 1500,
+      "torque_nm": 40.0,
+      "tool_wear_min": 100,
+      "temp_diff_k": 10.0,
+      "power_w": 9000,
+      "power_margin_w": 0,
+      "osf_margin": 7000.0,
+      "wear_torque": 4000.0,
+      "class_code": "L",
+      "osf_limit": 11000.0,
+      "power_min_w": 3500.0,
+      "power_max_w": 9000.0,
+      "hdf_temp_diff_min_k": 8.6,
+      "hdf_speed_max_rpm": 1380,
+      "twf_wear_min_min": 200,
+      "twf_wear_max_min": 240
+    },
+    "expected_diagnostic": [
+      "R006"
+    ],
+    "expected": {
+      "risk_level": "medium",
+      "action": "inspect_power",
+      "predicted_failure": false
+    }
+  },
+  {
+    "name": "Ровно порог OSF L",
+    "facts": {
+      "udi": 1,
+      "air_temp_k": 300.0,
+      "process_temp_k": 310.0,
+      "rot_speed_rpm": 1500,
+      "torque_nm": 40.0,
+      "tool_wear_min": 100,
+      "temp_diff_k": 10.0,
+      "power_w": 6000.0,
+      "power_margin_w": 2500.0,
+      "osf_margin": 0,
+      "wear_torque": 11000,
+      "class_code": "L",
+      "osf_limit": 11000.0,
+      "power_min_w": 3500.0,
+      "power_max_w": 9000.0,
+      "hdf_temp_diff_min_k": 8.6,
+      "hdf_speed_max_rpm": 1380,
+      "twf_wear_min_min": 200,
+      "twf_wear_max_min": 240
+    },
+    "expected_diagnostic": [
+      "R007"
+    ],
+    "expected": {
+      "risk_level": "medium",
+      "action": "inspect_load",
+      "predicted_failure": false
+    }
+  },
+  {
+    "name": "Износ 180 мин",
+    "facts": {
+      "udi": 1,
+      "air_temp_k": 300.0,
+      "process_temp_k": 310.0,
+      "rot_speed_rpm": 1500,
+      "torque_nm": 40.0,
+      "tool_wear_min": 180,
+      "temp_diff_k": 10.0,
+      "power_w": 6000.0,
+      "power_margin_w": 2500.0,
+      "osf_margin": 7000.0,
+      "wear_torque": 4000.0,
+      "class_code": "L",
+      "osf_limit": 11000.0,
+      "power_min_w": 3500.0,
+      "power_max_w": 9000.0,
+      "hdf_temp_diff_min_k": 8.6,
+      "hdf_speed_max_rpm": 1380,
+      "twf_wear_min_min": 200,
+      "twf_wear_max_min": 240
+    },
+    "expected_diagnostic": [
+      "R008"
+    ],
+    "expected": {
+      "risk_level": "low",
+      "action": "prepare_tool",
+      "predicted_failure": false
+    }
+  },
+  {
+    "name": "Износ 240 мин включительно",
+    "facts": {
+      "udi": 1,
+      "air_temp_k": 300.0,
+      "process_temp_k": 310.0,
+      "rot_speed_rpm": 1500,
+      "torque_nm": 40.0,
+      "tool_wear_min": 240,
+      "temp_diff_k": 10.0,
+      "power_w": 6000.0,
+      "power_margin_w": 2500.0,
+      "osf_margin": 7000.0,
+      "wear_torque": 4000.0,
+      "class_code": "L",
+      "osf_limit": 11000.0,
+      "power_min_w": 3500.0,
+      "power_max_w": 9000.0,
+      "hdf_temp_diff_min_k": 8.6,
+      "hdf_speed_max_rpm": 1380,
+      "twf_wear_min_min": 200,
+      "twf_wear_max_min": 240
+    },
+    "expected_diagnostic": [
+      "R005",
+      "R008"
+    ],
+    "expected": {
+      "risk_level": "medium",
+      "action": "plan_tool_replacement",
+      "predicted_failure": false
+    }
+  },
+  {
+    "name": "Износ 241 мин",
+    "facts": {
+      "udi": 1,
+      "air_temp_k": 300.0,
+      "process_temp_k": 310.0,
+      "rot_speed_rpm": 1500,
+      "torque_nm": 40.0,
+      "tool_wear_min": 241,
+      "temp_diff_k": 10.0,
+      "power_w": 6000.0,
+      "power_margin_w": 2500.0,
+      "osf_margin": 7000.0,
+      "wear_torque": 4000.0,
+      "class_code": "L",
+      "osf_limit": 11000.0,
+      "power_min_w": 3500.0,
+      "power_max_w": 9000.0,
+      "hdf_temp_diff_min_k": 8.6,
+      "hdf_speed_max_rpm": 1380,
+      "twf_wear_min_min": 200,
+      "twf_wear_max_min": 240
+    },
+    "expected_diagnostic": [
+      "R008"
+    ],
+    "expected": {
+      "risk_level": "low",
+      "action": "prepare_tool",
+      "predicted_failure": false
+    }
+  },
+  {
+    "name": "Перегрузка M",
+    "facts": {
+      "udi": 1,
+      "air_temp_k": 300.0,
+      "process_temp_k": 310.0,
+      "rot_speed_rpm": 1500,
+      "torque_nm": 40.0,
+      "tool_wear_min": 100,
+      "temp_diff_k": 10.0,
+      "power_w": 6000.0,
+      "power_margin_w": 2500.0,
+      "osf_margin": -1,
+      "wear_torque": 12001,
+      "class_code": "M",
+      "osf_limit": 12000,
+      "power_min_w": 3500.0,
+      "power_max_w": 9000.0,
+      "hdf_temp_diff_min_k": 8.6,
+      "hdf_speed_max_rpm": 1380,
+      "twf_wear_min_min": 200,
+      "twf_wear_max_min": 240
+    },
+    "expected_diagnostic": [
+      "R003"
+    ],
+    "expected": {
+      "risk_level": "critical",
+      "action": "reduce_load",
+      "predicted_failure": true
+    }
+  },
+  {
+    "name": "Ровно порог OSF H",
+    "facts": {
+      "udi": 1,
+      "air_temp_k": 300.0,
+      "process_temp_k": 310.0,
+      "rot_speed_rpm": 1500,
+      "torque_nm": 40.0,
+      "tool_wear_min": 100,
+      "temp_diff_k": 10.0,
+      "power_w": 6000.0,
+      "power_margin_w": 2500.0,
+      "osf_margin": 0,
+      "wear_torque": 13000,
+      "class_code": "H",
+      "osf_limit": 13000,
+      "power_min_w": 3500.0,
+      "power_max_w": 9000.0,
+      "hdf_temp_diff_min_k": 8.6,
+      "hdf_speed_max_rpm": 1380,
+      "twf_wear_min_min": 200,
+      "twf_wear_max_min": 240
+    },
+    "expected_diagnostic": [
+      "R007"
+    ],
+    "expected": {
+      "risk_level": "medium",
+      "action": "inspect_load",
+      "predicted_failure": false
+    }
+  },
+  {
+    "name": "Равные приоритеты: более ранний ID",
+    "facts": {
+      "udi": 1,
+      "air_temp_k": 300.0,
+      "process_temp_k": 310.0,
+      "rot_speed_rpm": 1500,
+      "torque_nm": 40.0,
+      "tool_wear_min": 100,
+      "temp_diff_k": 10.0,
+      "power_w": 6000.0,
+      "power_margin_w": 300,
+      "osf_margin": 500,
+      "wear_torque": 4000.0,
+      "class_code": "L",
+      "osf_limit": 11000.0,
+      "power_min_w": 3500.0,
+      "power_max_w": 9000.0,
+      "hdf_temp_diff_min_k": 8.6,
+      "hdf_speed_max_rpm": 1380,
+      "twf_wear_min_min": 200,
+      "twf_wear_max_min": 240
+    },
+    "expected_diagnostic": [
+      "R006",
+      "R007"
+    ],
+    "expected": {
+      "risk_level": "medium",
+      "action": "inspect_power",
+      "predicted_failure": false
+    }
+  }
+]

@@ -1,0 +1,205 @@
+{
+  "cases": [
+    {
+      "name": "Нормальный режим",
+      "passed": true,
+      "rules": [
+        "R016",
+        "R024"
+      ]
+    },
+    {
+      "name": "Низкая мощность",
+      "passed": true,
+      "rules": [
+        "R001",
+        "R009",
+        "R017"
+      ]
+    },
+    {
+      "name": "Высокая мощность",
+      "passed": true,
+      "rules": [
+        "R002",
+        "R009",
+        "R017"
+      ]
+    },
+    {
+      "name": "Перегрузка L",
+      "passed": true,
+      "rules": [
+        "R003",
+        "R010",
+        "R018"
+      ]
+    },
+    {
+      "name": "Теплоотвод",
+      "passed": true,
+      "rules": [
+        "R004",
+        "R011",
+        "R019"
+      ]
+    },
+    {
+      "name": "Только зона износа",
+      "passed": true,
+      "rules": [
+        "R005",
+        "R008",
+        "R012",
+        "R020"
+      ]
+    },
+    {
+      "name": "Приоритет мощности над перегрузкой",
+      "passed": true,
+      "rules": [
+        "R002",
+        "R003",
+        "R009",
+        "R017"
+      ]
+    },
+    {
+      "name": "Ровно 8.6 K",
+      "passed": true,
+      "rules": [
+        "R016",
+        "R024"
+      ]
+    },
+    {
+      "name": "Ровно 1380 об/мин",
+      "passed": true,
+      "rules": [
+        "R016",
+        "R024"
+      ]
+    },
+    {
+      "name": "Ровно 3500 Вт",
+      "passed": true,
+      "rules": [
+        "R006",
+        "R013",
+        "R021"
+      ]
+    },
+    {
+      "name": "Ровно 9000 Вт",
+      "passed": true,
+      "rules": [
+        "R006",
+        "R013",
+        "R021"
+      ]
+    },
+    {
+      "name": "Ровно порог OSF L",
+      "passed": true,
+      "rules": [
+        "R007",
+        "R014",
+        "R022"
+      ]
+    },
+    {
+      "name": "Износ 180 мин",
+      "passed": true,
+      "rules": [
+        "R008",
+        "R015",
+        "R023"
+      ]
+    },
+    {
+      "name": "Износ 240 мин включительно",
+      "passed": true,
+      "rules": [
+        "R005",
+        "R008",
+        "R012",
+        "R020"
+      ]
+    },
+    {
+      "name": "Износ 241 мин",
+      "passed": true,
+      "rules": [
+        "R008",
+        "R015",
+        "R023"
+      ]
+    },
+    {
+      "name": "Перегрузка M",
+      "passed": true,
+      "rules": [
+        "R003",
+        "R010",
+        "R018"
+      ]
+    },
+    {
+      "name": "Ровно порог OSF H",
+      "passed": true,
+      "rules": [
+        "R007",
+        "R014",
+        "R022"
+      ]
+    },
+    {
+      "name": "Равные приоритеты: более ранний ID",
+      "passed": true,
+      "rules": [
+        "R006",
+        "R007",
+        "R013",
+        "R021"
+      ]
+    }
+  ],
+  "covered_rules": [
+    "R001",
+    "R002",
+    "R003",
+    "R004",
+    "R005",
+    "R006",
+    "R007",
+    "R008",
+    "R009",
+    "R010",
+    "R011",
+    "R012",
+    "R013",
+    "R014",
+    "R015",
+    "R016",
+    "R017",
+    "R018",
+    "R019",
+    "R020",
+    "R021",
+    "R022",
+    "R023",
+    "R024"
+  ],
+  "passed": true,
+  "additional_checks": [
+    "input_unchanged",
+    "rule_order",
+    "target_leakage",
+    "invalid_input",
+    "missing_input",
+    "step_limit",
+    "specificity",
+    "id",
+    "duplicates"
+  ]
+}

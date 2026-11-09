@@ -1,0 +1,480 @@
+[
+  {
+    "id": "R001",
+    "stage": 1,
+    "conditions": [
+      {
+        "field": "power_w",
+        "op": "lt",
+        "ref": "power_min_w"
+      }
+    ],
+    "then": {
+      "pwf_risk": true
+    },
+    "priority": 100,
+    "group": "Диагностика",
+    "explanation": "Мощность ниже допустимой: условие PWF.",
+    "basis": "AI4I 2020, пороги из dim_equipment"
+  },
+  {
+    "id": "R002",
+    "stage": 1,
+    "conditions": [
+      {
+        "field": "power_w",
+        "op": "gt",
+        "ref": "power_max_w"
+      }
+    ],
+    "then": {
+      "pwf_risk": true
+    },
+    "priority": 100,
+    "group": "Диагностика",
+    "explanation": "Мощность выше допустимой: условие PWF.",
+    "basis": "AI4I 2020, пороги из dim_equipment"
+  },
+  {
+    "id": "R003",
+    "stage": 1,
+    "conditions": [
+      {
+        "field": "wear_torque",
+        "op": "gt",
+        "ref": "osf_limit"
+      }
+    ],
+    "then": {
+      "osf_risk": true
+    },
+    "priority": 95,
+    "group": "Диагностика",
+    "explanation": "Износ × момент превышает порог класса: условие OSF.",
+    "basis": "AI4I 2020, dim_quality_class.osf_limit"
+  },
+  {
+    "id": "R004",
+    "stage": 1,
+    "conditions": [
+      {
+        "field": "temp_diff_k",
+        "op": "lt",
+        "ref": "hdf_temp_diff_min_k"
+      },
+      {
+        "field": "rot_speed_rpm",
+        "op": "lt",
+        "ref": "hdf_speed_max_rpm"
+      }
+    ],
+    "then": {
+      "hdf_risk": true
+    },
+    "priority": 90,
+    "group": "Диагностика",
+    "explanation": "Малый теплоотвод при низких оборотах: условие HDF.",
+    "basis": "Строгий < из v_rule_check; граничная погрешность меток разобрана в лабе 6"
+  },
+  {
+    "id": "R005",
+    "stage": 1,
+    "conditions": [
+      {
+        "field": "tool_wear_min",
+        "op": "ge",
+        "ref": "twf_wear_min_min"
+      },
+      {
+        "field": "tool_wear_min",
+        "op": "le",
+        "ref": "twf_wear_max_min"
+      }
+    ],
+    "then": {
+      "twf_risk": true
+    },
+    "priority": 70,
+    "group": "Диагностика",
+    "explanation": "Инструмент в зоне риска TWF; это не доказательство отказа.",
+    "basis": "AI4I 2020, интервал 200–240 мин; низкая точность правила установлена в лабе 8"
+  },
+  {
+    "id": "R006",
+    "stage": 1,
+    "conditions": [
+      {
+        "field": "power_margin_w",
+        "op": "ge",
+        "value": 0
+      },
+      {
+        "field": "power_margin_w",
+        "op": "le",
+        "value": 500
+      }
+    ],
+    "then": {
+      "near_power": true
+    },
+    "priority": 60,
+    "group": "Профилактика",
+    "explanation": "До границы мощности осталось не более 500 Вт.",
+    "basis": "Учебная эвристика; порог не обучен и не является паспортным нормативом"
+  },
+  {
+    "id": "R007",
+    "stage": 1,
+    "conditions": [
+      {
+        "field": "osf_margin",
+        "op": "ge",
+        "value": 0
+      },
+      {
+        "field": "osf_margin",
+        "op": "le",
+        "value": 1000
+      }
+    ],
+    "then": {
+      "near_osf": true
+    },
+    "priority": 60,
+    "group": "Профилактика",
+    "explanation": "Запас до перегрузки не более 1000 мин·Н·м.",
+    "basis": "Учебная эвристика; требуется проверка экспертом"
+  },
+  {
+    "id": "R008",
+    "stage": 1,
+    "conditions": [
+      {
+        "field": "tool_wear_min",
+        "op": "ge",
+        "value": 180
+      }
+    ],
+    "then": {
+      "worn_tool": true
+    },
+    "priority": 50,
+    "group": "Профилактика",
+    "explanation": "Высокий накопленный износ: подготовить инструмент.",
+    "basis": "Учебная эвристика: предупреждение за 20 мин до зоны 200–240 мин"
+  },
+  {
+    "id": "R009",
+    "stage": 2,
+    "conditions": [
+      {
+        "field": "pwf_risk",
+        "op": "eq",
+        "value": true
+      }
+    ],
+    "then": {
+      "risk_level": "critical",
+      "predicted_failure": true
+    },
+    "priority": 100,
+    "group": "Оценка риска",
+    "explanation": "Признак pwf_risk: уровень риска critical.",
+    "basis": "Иерархия PWF > OSF > HDF > TWF из лабы 5; учебная политика обслуживания"
+  },
+  {
+    "id": "R010",
+    "stage": 2,
+    "conditions": [
+      {
+        "field": "osf_risk",
+        "op": "eq",
+        "value": true
+      }
+    ],
+    "then": {
+      "risk_level": "critical",
+      "predicted_failure": true
+    },
+    "priority": 95,
+    "group": "Оценка риска",
+    "explanation": "Признак osf_risk: уровень риска critical.",
+    "basis": "Иерархия PWF > OSF > HDF > TWF из лабы 5; учебная политика обслуживания"
+  },
+  {
+    "id": "R011",
+    "stage": 2,
+    "conditions": [
+      {
+        "field": "hdf_risk",
+        "op": "eq",
+        "value": true
+      }
+    ],
+    "then": {
+      "risk_level": "high",
+      "predicted_failure": true
+    },
+    "priority": 90,
+    "group": "Оценка риска",
+    "explanation": "Признак hdf_risk: уровень риска high.",
+    "basis": "Иерархия PWF > OSF > HDF > TWF из лабы 5; учебная политика обслуживания"
+  },
+  {
+    "id": "R012",
+    "stage": 2,
+    "conditions": [
+      {
+        "field": "twf_risk",
+        "op": "eq",
+        "value": true
+      }
+    ],
+    "then": {
+      "risk_level": "medium"
+    },
+    "priority": 70,
+    "group": "Оценка риска",
+    "explanation": "Признак twf_risk: уровень риска medium.",
+    "basis": "Иерархия PWF > OSF > HDF > TWF из лабы 5; учебная политика обслуживания"
+  },
+  {
+    "id": "R013",
+    "stage": 2,
+    "conditions": [
+      {
+        "field": "near_power",
+        "op": "eq",
+        "value": true
+      }
+    ],
+    "then": {
+      "risk_level": "medium"
+    },
+    "priority": 60,
+    "group": "Оценка риска",
+    "explanation": "Признак near_power: уровень риска medium.",
+    "basis": "Иерархия PWF > OSF > HDF > TWF из лабы 5; учебная политика обслуживания"
+  },
+  {
+    "id": "R014",
+    "stage": 2,
+    "conditions": [
+      {
+        "field": "near_osf",
+        "op": "eq",
+        "value": true
+      }
+    ],
+    "then": {
+      "risk_level": "medium"
+    },
+    "priority": 60,
+    "group": "Оценка риска",
+    "explanation": "Признак near_osf: уровень риска medium.",
+    "basis": "Иерархия PWF > OSF > HDF > TWF из лабы 5; учебная политика обслуживания"
+  },
+  {
+    "id": "R015",
+    "stage": 2,
+    "conditions": [
+      {
+        "field": "worn_tool",
+        "op": "eq",
+        "value": true
+      }
+    ],
+    "then": {
+      "risk_level": "low"
+    },
+    "priority": 50,
+    "group": "Оценка риска",
+    "explanation": "Признак worn_tool: уровень риска low.",
+    "basis": "Иерархия PWF > OSF > HDF > TWF из лабы 5; учебная политика обслуживания"
+  },
+  {
+    "id": "R016",
+    "stage": 2,
+    "conditions": [
+      {
+        "field": "pwf_risk",
+        "op": "absent"
+      },
+      {
+        "field": "osf_risk",
+        "op": "absent"
+      },
+      {
+        "field": "hdf_risk",
+        "op": "absent"
+      },
+      {
+        "field": "twf_risk",
+        "op": "absent"
+      },
+      {
+        "field": "near_power",
+        "op": "absent"
+      },
+      {
+        "field": "near_osf",
+        "op": "absent"
+      },
+      {
+        "field": "worn_tool",
+        "op": "absent"
+      }
+    ],
+    "then": {
+      "risk_level": "low"
+    },
+    "priority": 10,
+    "group": "Оценка риска",
+    "explanation": "Известные условия риска отсутствуют.",
+    "basis": "Замкнутый мир только после завершения диагностической стадии; не гарантия исправности"
+  },
+  {
+    "id": "R017",
+    "stage": 3,
+    "conditions": [
+      {
+        "field": "pwf_risk",
+        "op": "eq",
+        "value": true
+      }
+    ],
+    "then": {
+      "action": "drive_diagnostics"
+    },
+    "priority": 100,
+    "group": "Рекомендации",
+    "explanation": "Диагностика привода",
+    "basis": "Рекомендации dim_failure_type; для near_* и worn_tool — учебная профилактика"
+  },
+  {
+    "id": "R018",
+    "stage": 3,
+    "conditions": [
+      {
+        "field": "osf_risk",
+        "op": "eq",
+        "value": true
+      }
+    ],
+    "then": {
+      "action": "reduce_load"
+    },
+    "priority": 95,
+    "group": "Рекомендации",
+    "explanation": "Снижение подачи, внеочередной осмотр",
+    "basis": "Рекомендации dim_failure_type; для near_* и worn_tool — учебная профилактика"
+  },
+  {
+    "id": "R019",
+    "stage": 3,
+    "conditions": [
+      {
+        "field": "hdf_risk",
+        "op": "eq",
+        "value": true
+      }
+    ],
+    "then": {
+      "action": "check_cooling"
+    },
+    "priority": 90,
+    "group": "Рекомендации",
+    "explanation": "Проверка системы охлаждения",
+    "basis": "Рекомендации dim_failure_type; для near_* и worn_tool — учебная профилактика"
+  },
+  {
+    "id": "R020",
+    "stage": 3,
+    "conditions": [
+      {
+        "field": "twf_risk",
+        "op": "eq",
+        "value": true
+      }
+    ],
+    "then": {
+      "action": "plan_tool_replacement"
+    },
+    "priority": 70,
+    "group": "Рекомендации",
+    "explanation": "Плановая замена инструмента",
+    "basis": "Рекомендации dim_failure_type; для near_* и worn_tool — учебная профилактика"
+  },
+  {
+    "id": "R021",
+    "stage": 3,
+    "conditions": [
+      {
+        "field": "near_power",
+        "op": "eq",
+        "value": true
+      }
+    ],
+    "then": {
+      "action": "inspect_power"
+    },
+    "priority": 60,
+    "group": "Рекомендации",
+    "explanation": "Проверить запас мощности",
+    "basis": "Рекомендации dim_failure_type; для near_* и worn_tool — учебная профилактика"
+  },
+  {
+    "id": "R022",
+    "stage": 3,
+    "conditions": [
+      {
+        "field": "near_osf",
+        "op": "eq",
+        "value": true
+      }
+    ],
+    "then": {
+      "action": "inspect_load"
+    },
+    "priority": 60,
+    "group": "Рекомендации",
+    "explanation": "Проверить нагрузку",
+    "basis": "Рекомендации dim_failure_type; для near_* и worn_tool — учебная профилактика"
+  },
+  {
+    "id": "R023",
+    "stage": 3,
+    "conditions": [
+      {
+        "field": "worn_tool",
+        "op": "eq",
+        "value": true
+      }
+    ],
+    "then": {
+      "action": "prepare_tool"
+    },
+    "priority": 50,
+    "group": "Рекомендации",
+    "explanation": "Подготовить сменный инструмент",
+    "basis": "Рекомендации dim_failure_type; для near_* и worn_tool — учебная профилактика"
+  },
+  {
+    "id": "R024",
+    "stage": 3,
+    "conditions": [
+      {
+        "field": "risk_level",
+        "op": "eq",
+        "value": "low"
+      }
+    ],
+    "then": {
+      "action": "continue_monitoring"
+    },
+    "priority": 10,
+    "group": "Рекомендации",
+    "explanation": "Продолжить наблюдение; случайный и неизвестный отказ не исключены.",
+    "basis": "Правило по умолчанию, не заменяет диагностику"
+  }
+]
